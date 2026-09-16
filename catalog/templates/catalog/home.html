@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>US Watches — Umar Subhan Watches</title>
+
+    <meta
+        name="description"
+        content="US Watches — Umar Subhan Watches. Discover watches selected for style, confidence and everyday character."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            background: #0d0d0d;
+            color: #f5f1e8;
+            font-family: "Montserrat", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #c9a961;
+            color: #111;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            min-height: 86px;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.97);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.18);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #f5f1e8;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 31px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        nav a {
+            position: relative;
+            padding: 9px 0;
+            color: #e8e1d5;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: #c9a961;
+            transition: width .3s ease;
+        }
+
+        nav a:hover {
+            color: #c9a961;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           APPROVED US WATCHES LOGO
+           DO NOT CHANGE
+        ========================= */
+
+        .luxury-mark {
+            overflow: visible;
+        }
+
+        .luxury-mark .outer-ring {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 1.2;
+        }
+
+        .luxury-mark .inner-ring {
+            fill: none;
+            stroke: rgba(201, 169, 97, .42);
+            stroke-width: .7;
+        }
+
+        .luxury-mark .inner-face {
+            fill: none;
+            stroke: rgba(245, 241, 232, .13);
+            stroke-width: .5;
+        }
+
+        .luxury-mark .gold {
+            fill: #c9a961;
+        }
+
+        .luxury-mark .ivory {
+            fill: none;
+            stroke: #f5f1e8;
+        }
+
+        .luxury-mark .fine {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: .8;
+            stroke-linecap: round;
+        }
+
+        .luxury-mark .crown {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: .9;
+            stroke-linejoin: round;
+        }
+
+        .luxury-mark .monogram-u {
+            fill: none;
+            stroke: #f5f1e8;
+            stroke-width: 2.1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .luxury-mark .monogram-s {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .luxury-mark .hour-hand {
+            stroke: #f5f1e8;
+            stroke-width: 1.25;
+            stroke-linecap: round;
+        }
+
+        .luxury-mark .minute-hand {
+            stroke: #c9a961;
+            stroke-width: 1;
+            stroke-linecap: round;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: calc(100vh - 86px);
+            padding: 75px 30px 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(201, 169, 97, .075),
+                    transparent 38%
+                ),
+                #0d0d0d;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 560px;
+            height: 560px;
+            border: 1px solid rgba(201, 169, 97, .055);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 410px;
+            height: 410px;
+            border: 1px solid rgba(245, 241, 232, .035);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* HERO LOGO */
+
+        .hero-logo {
+            width: 112px;
+            height: 112px;
+            margin-bottom: 27px;
+            filter: drop-shadow(0 8px 24px rgba(201, 169, 97, .08));
+        }
+
+
+        /* HERO BRAND NAME */
+
+        .hero-kicker {
+            margin-bottom: 13px;
+            color: #c9a961;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+
+        /* MAIN WORDMARK */
+
+        .hero-wordmark {
+            margin: 0;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(58px, 9vw, 112px);
+            font-weight: 600;
+            line-height: .85;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            padding-left: 7px;
+        }
+
+
+        /* TAGLINE */
+
+        .hero-tagline {
+            margin: 27px auto 0;
+            color: #c9a961;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(25px, 3vw, 37px);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            max-width: 540px;
+            margin: 22px auto 32px;
+            color: #aaa399;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.9;
+            letter-spacing: .5px;
+        }
+
+
+        /* HERO BUTTON */
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 210px;
+            min-height: 49px;
+            padding: 14px 24px;
+            background: #c9a961;
+            border: 1px solid #c9a961;
+            color: #111;
+            text-decoration: none;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition:
+                background .3s ease,
+                color .3s ease,
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .hero-button:hover {
+            background: #e1c98f;
+            border-color: #e1c98f;
+            color: #111;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, .12);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #68635c;
+            font-size: 7px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           SECTION BASICS
+        ========================= */
+
+        .section {
+            padding: 105px 30px;
+        }
+
+        .section-heading {
+            max-width: 1180px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .section-kicker {
+            margin-bottom: 12px;
+            color: #c9a961;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 55px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .section-line {
+            width: 44px;
+            height: 1px;
+            margin: 21px auto 0;
+            background: #c9a961;
+        }
+
+
+        /* =========================
+           COLLECTION
+        ========================= */
+
+        #collection {
+            background: #f0ece4;
+            color: #171717;
+        }
+
+        #collection .section-heading h2 {
+            color: #171717;
+        }
+
+        #collection .section-kicker {
+            color: #a7864a;
+        }
+
+        .collection-grid {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            min-width: 0;
+            background: #e8e4dc;
+            border: 1px solid rgba(17, 17, 17, .07);
+            text-decoration: none;
+            color: #171717;
+            overflow: hidden;
+            position: relative;
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(201, 169, 97, .45);
+            box-shadow: 0 18px 40px rgba(20, 20, 20, .11);
+        }
+
+        .product-image {
+            height: 300px;
+            background: #e8e4dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: "";
+            position: absolute;
+            inset: 13px;
+            border: 1px solid rgba(17, 17, 17, .065);
+            pointer-events: none;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+            transition: transform .55s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.045);
+        }
+
+        .product-info {
+            padding: 20px 21px 23px;
+            background: #f0ece4;
+            border-top: 1px solid rgba(17, 17, 17, .055);
+        }
+
+        .product-collection {
+            margin-bottom: 7px;
+            color: #a7864a;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            margin: 0;
+            color: #171717;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 27px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .product-bottom {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .product-price {
+            color: #292929;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+
+        .view-product {
+            color: #8d723d;
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .empty-collection {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            color: #77716a;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        #about {
+            background: #0d0d0d;
+        }
+
+        .about-content {
+            max-width: 1050px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #aaa399;
+            font-size: 13px;
+            line-height: 2;
+            letter-spacing: .15px;
+        }
+
+        .values {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .value-card {
+            padding: 30px 24px;
+            border: 1px solid rgba(201, 169, 97, .15);
+            background: rgba(255, 255, 255, .018);
+            transition:
+                border-color .3s ease,
+                transform .3s ease,
+                background .3s ease;
+        }
+
+        .value-card:hover {
+            border-color: rgba(201, 169, 97, .38);
+            background: rgba(255, 255, 255, .028);
+            transform: translateY(-4px);
+        }
+
+        .value-number {
+            margin-bottom: 15px;
+            color: #c9a961;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 20px;
+        }
+
+        .value-card h3 {
+            margin: 0 0 10px;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 29px;
+            font-weight: 500;
+        }
+
+        .value-card p {
+            margin: 0;
+            color: #8e8981;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        #contact {
+            background: #f0ece4;
+            color: #171717;
+        }
+
+        #contact .section-heading h2 {
+            color: #171717;
+        }
+
+        .contact-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            max-width: 560px;
+            margin: 0 auto 35px;
+            color: #706b64;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 13px;
+        }
+
+        .contact-card {
+            min-height: 72px;
+            padding: 17px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid rgba(17, 17, 17, .14);
+            background: rgba(255, 255, 255, .2);
+            color: #171717;
+            text-decoration: none;
+            transition:
+                background .3s ease,
+                color .3s ease,
+                border-color .3s ease,
+                transform .3s ease;
+        }
+
+        .contact-card:hover {
+            background: #171717;
+            border-color: #171717;
+            color: #f5f1e8;
+            transform: translateY(-3px);
+        }
+
+        .contact-label {
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        .contact-name {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .instagram-card {
+            background: #171717;
+            border-color: #171717;
+            color: #f5f1e8;
+        }
+
+        .instagram-card:hover {
+            background: #c9a961;
+            border-color: #c9a961;
+            color: #111;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 42px 30px 35px;
+            background: #0d0d0d;
+            border-top: 1px solid rgba(201, 169, 97, .16);
+            text-align: center;
+            color: #858078;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-mark {
+            width: 58px;
+            height: 58px;
+            margin-bottom: 11px;
+        }
+
+        .footer-brand {
+            margin-bottom: 7px;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 23px;
+            font-weight: 500;
+            letter-spacing: 4px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            nav {
+                gap: 22px;
+            }
+
+            .collection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .product-image {
+                height: 285px;
+            }
+
+            .contact-options {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero-wordmark {
+                font-size: clamp(54px, 9vw, 90px);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            html {
+                scroll-padding-top: 102px;
+            }
+
+            header {
+                min-height: 0;
+                padding: 9px 16px 8px;
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand-mark {
+                width: 32px;
+                height: 32px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+                letter-spacing: 3px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+                gap: 6px 13px;
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                font-size: 7.5px;
+                letter-spacing: 1px;
+                padding: 4px 0;
+                white-space: nowrap;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                min-height: calc(100svh - 94px);
+                padding: 48px 18px 70px;
+            }
+
+            .hero::before {
+                width: 390px;
+                height: 390px;
+            }
+
+            .hero::after {
+                width: 285px;
+                height: 285px;
+            }
+
+            .hero-logo {
+                width: 82px;
+                height: 82px;
+                margin-bottom: 22px;
+            }
+
+            .hero-kicker {
+                margin-bottom: 11px;
+                font-size: 8px;
+                letter-spacing: 3px;
+            }
+
+            .hero-wordmark {
+                font-size: clamp(43px, 13vw, 68px);
+                line-height: .88;
+                letter-spacing: 4px;
+                padding-left: 4px;
+            }
+
+            .hero-tagline {
+                margin-top: 21px;
+                font-size: 25px;
+                line-height: 1;
+            }
+
+            .hero-description {
+                max-width: 370px;
+                margin: 19px auto 26px;
+                font-size: 10.5px;
+                line-height: 1.8;
+            }
+
+            .hero-button {
+                min-width: 190px;
+                min-height: 46px;
+                padding: 13px 20px;
+                font-size: 8px;
+                letter-spacing: 1.6px;
+            }
+
+            .hero-scroll {
+                bottom: 19px;
+                font-size: 6px;
+                letter-spacing: 2.4px;
+            }
+
+
+            /* SECTIONS */
+
+            .section {
+                padding: 70px 18px;
+            }
+
+            .section-heading {
+                margin-bottom: 35px;
+            }
+
+            .section-kicker {
+                margin-bottom: 10px;
+                font-size: 8px;
+                letter-spacing: 2.8px;
+            }
+
+            .section-heading h2 {
+                font-size: 43px;
+            }
+
+            .section-line {
+                margin-top: 16px;
+            }
+
+
+            /* COLLECTION */
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .product-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .product-image {
+                height: 270px;
+            }
+
+            .product-image::after {
+                inset: 10px;
+            }
+
+            .product-image img {
+                padding: 21px;
+            }
+
+            .product-card:hover .product-image img {
+                transform: none;
+            }
+
+            .product-info {
+                padding: 17px 17px 19px;
+            }
+
+            .product-collection {
+                font-size: 7px;
+                letter-spacing: 2px;
+            }
+
+            .product-name {
+                font-size: 25px;
+            }
+
+            .product-bottom {
+                margin-top: 12px;
+            }
+
+            .product-price {
+                font-size: 11px;
+            }
+
+            .view-product {
+                font-size: 6.5px;
+                letter-spacing: 1.4px;
+            }
+
+
+            /* ABOUT */
+
+            .about-text {
+                font-size: 11px;
+                line-height: 1.85;
+            }
+
+            .values {
+                margin-top: 36px;
+                grid-template-columns: 1fr;
+                gap: 11px;
+            }
+
+            .value-card {
+                padding: 22px 20px;
+            }
+
+            .value-number {
+                margin-bottom: 9px;
+                font-size: 17px;
+            }
+
+            .value-card h3 {
+                margin-bottom: 7px;
+                font-size: 26px;
+            }
+
+            .value-card p {
+                font-size: 9.5px;
+                line-height: 1.7;
+            }
+
+            .value-card:hover {
+                transform: none;
+            }
+
+
+            /* CONTACT */
+
+            .contact-intro {
+                margin-bottom: 25px;
+                font-size: 10px;
+                line-height: 1.75;
+            }
+
+            .contact-options {
+                gap: 9px;
+            }
+
+            .contact-card {
+                min-height: 66px;
+                padding: 14px 12px;
+            }
+
+            .contact-label {
+                font-size: 7px;
+                letter-spacing: 1.5px;
+            }
+
+            .contact-name {
+                font-size: 19px;
+            }
+
+            .contact-card:hover {
+                transform: none;
+            }
+
+
+            /* FOOTER */
+
+            footer {
+                padding: 30px 20px 27px;
+                font-size: 9px;
+                line-height: 1.6;
+            }
+
+            .footer-mark {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 9px;
+            }
+
+            .footer-brand {
+                margin-bottom: 5px;
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================= */
+
+        @media (max-width: 400px) {
+
+            header {
+                padding: 8px 12px 7px;
+            }
+
+            .brand {
+                gap: 7px;
+            }
+
+            .brand-mark {
+                width: 30px;
+                height: 30px;
+            }
+
+            .brand-name {
+                font-size: 22px;
+                letter-spacing: 2.3px;
+            }
+
+            nav {
+                gap: 5px 11px;
+            }
+
+            nav a {
+                font-size: 7px;
+                letter-spacing: .9px;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .hero-logo {
+                width: 72px;
+                height: 72px;
+                margin-bottom: 19px;
+            }
+
+            .hero-kicker {
+                font-size: 7.5px;
+                letter-spacing: 2.5px;
+            }
+
+            .hero-wordmark {
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+
+            .hero-tagline {
+                font-size: 22px;
+            }
+
+            .hero-description {
+                font-size: 10px;
+            }
+
+
+            /* SECTIONS */
+
+            .section {
+                padding: 62px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 39px;
+            }
+
+
+            /* PRODUCTS */
+
+            .product-image {
+                height: 255px;
+            }
+
+            .product-image img {
+                padding: 17px;
+            }
+
+            .product-name {
+                font-size: 24px;
+            }
+
+
+            /* ABOUT */
+
+            .about-text {
+                font-size: 10.5px;
+            }
+
+
+            /* FOOTER */
+
+            footer {
+                padding: 27px 15px 24px;
+                font-size: 8px;
+            }
+
+            .footer-mark {
+                width: 44px;
+                height: 44px;
+            }
+
+            .footer-brand {
+                font-size: 19px;
+            }
+
+        }
+
+
+        /* =========================
+           VERY SMALL PHONES
+        ========================= */
+
+        @media (max-width: 340px) {
+
+            header {
+                padding: 7px 10px 6px;
+            }
+
+            .brand {
+                gap: 6px;
+            }
+
+            .brand-mark {
+                width: 28px;
+                height: 28px;
+            }
+
+            .brand-name {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            nav {
+                gap: 4px 8px;
+            }
+
+            nav a {
+                font-size: 6.5px;
+                letter-spacing: .65px;
+            }
+
+
+            /* HERO */
+
+            .hero-logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .hero-kicker {
+                font-size: 7px;
+                letter-spacing: 2px;
+            }
+
+            .hero-wordmark {
+                font-size: 34px;
+                letter-spacing: 2.2px;
+            }
+
+            .hero-tagline {
+                font-size: 20px;
+            }
+
+
+            /* SECTIONS */
+
+            .section-heading h2 {
+                font-size: 36px;
+            }
+
+            .product-image {
+                height: 235px;
+            }
+
+            .product-name {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a href="/" class="brand" aria-label="US Watches Home">
+
+        <!-- APPROVED LOGO — DO NOT CHANGE -->
+
+        <svg
+            class="brand-mark luxury-mark"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
+
+            <circle class="outer-ring" cx="50" cy="50" r="44" />
+            <circle class="inner-ring" cx="50" cy="50" r="39" />
+            <circle class="inner-face" cx="50" cy="50" r="34" />
+
+            <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+
+            <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+
+            <path class="fine" d="M50 17 V23" />
+            <path class="fine" d="M50 77 V83" />
+            <path class="fine" d="M17 50 H23" />
+            <path class="fine" d="M77 50 H83" />
+
+            <path class="fine" d="M27 27 L31 31" />
+            <path class="fine" d="M73 27 L69 31" />
+            <path class="fine" d="M27 73 L31 69" />
+            <path class="fine" d="M73 73 L69 69" />
+
+            <path
+                class="monogram-u"
+                d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+            />
+
+            <path
+                class="monogram-s"
+                d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+            />
+
+            <path class="hour-hand" d="M50 50 L42 42" />
+            <path class="minute-hand" d="M50 50 L61 37" />
+
+            <circle class="gold" cx="50" cy="50" r="2.4" />
+
+        </svg>
+
+        <span class="brand-name">
+            US WATCHES
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="#collection">
+            Shop
+        </a>
+
+        <a href="#collection">
+            Collections
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+
+        <!-- LARGE OPENING LOGO -->
+
+        <svg
+            class="hero-logo luxury-mark"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
+
+            <circle class="outer-ring" cx="50" cy="50" r="44" />
+            <circle class="inner-ring" cx="50" cy="50" r="39" />
+            <circle class="inner-face" cx="50" cy="50" r="34" />
+
+            <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+
+            <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+
+            <path class="fine" d="M50 17 V23" />
+            <path class="fine" d="M50 77 V83" />
+            <path class="fine" d="M17 50 H23" />
+            <path class="fine" d="M77 50 H83" />
+
+            <path class="fine" d="M27 27 L31 31" />
+            <path class="fine" d="M73 27 L69 31" />
+            <path class="fine" d="M27 73 L31 69" />
+            <path class="fine" d="M73 73 L69 69" />
+
+            <path
+                class="monogram-u"
+                d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+            />
+
+            <path
+                class="monogram-s"
+                d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+            />
+
+            <path class="hour-hand" d="M50 50 L42 42" />
+            <path class="minute-hand" d="M50 50 L61 37" />
+
+            <circle class="gold" cx="50" cy="50" r="2.4" />
+
+        </svg>
+
+
+        <!-- BRAND NAME -->
+
+        <div class="hero-kicker">
+            Umar Subhan Watches
+        </div>
+
+
+        <!-- LARGE US WATCHES -->
+
+        <div class="hero-wordmark">
+            US WATCHES
+        </div>
+
+
+        <!-- TAGLINE -->
+
+        <div class="hero-tagline">
+            Time, Defined By You.
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="hero-description">
+            Discover watches chosen to complement your style,
+            your moments and your everyday life.
+        </p>
+
+
+        <!-- COLLECTION BUTTON -->
+
+        <a href="#collection" class="hero-button">
+            EXPLORE COLLECTION
+        </a>
+
+    </div>
+
+
+    <div class="hero-scroll">
+        Scroll to discover
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section id="collection" class="section">
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            The Collection
+        </div>
+
+        <h2>
+            Find Your Time
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    {% if watches %}
+
+    <div class="collection-grid">
+
+        {% for watch in watches %}
+
+        <a
+            href="{% url 'watch_detail' watch.id %}"
+            class="product-card"
+            aria-label="View {{ watch.name }}"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="{{ watch.image.url }}"
+                    alt="{{ watch.name }}"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-collection">
+                    {{ watch.collection }}
+                </div>
+
+                <h3 class="product-name">
+                    {{ watch.name }}
+                </h3>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        Rs. {{ watch.price }}
+                    </div>
+
+                    <div class="view-product">
+                        View Watch →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-collection">
+        Our collection is being prepared.
+        Check back soon for the latest US Watches.
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="section">
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            Our Story
+        </div>
+
+        <h2>
+            About US Watches
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="about-content">
+
+        <p class="about-text">
+            US Watches — Umar Subhan Watches — is built around a simple idea:
+            a good watch should feel personal. We bring together distinctive
+            designs and accessible choices for people who want their timepiece
+            to reflect their own style.
+        </p>
+
+
+        <div class="values">
+
+
+            <div class="value-card">
+
+                <div class="value-number">
+                    01
+                </div>
+
+                <h3>
+                    Style
+                </h3>
+
+                <p>
+                    Designs selected to add character to your everyday look.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-number">
+                    02
+                </div>
+
+                <h3>
+                    Choice
+                </h3>
+
+                <p>
+                    Different designs and price points so you can find your fit.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-number">
+                    03
+                </div>
+
+                <h3>
+                    Confidence
+                </h3>
+
+                <p>
+                    A watch should feel right when you put it on and step out.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="section">
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            Get In Touch
+        </div>
+
+        <h2>
+            Make It Yours
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="contact-content">
+
+        <p class="contact-intro">
+            Interested in a watch? Message us directly.
+            Instagram is our preferred way to get in touch,
+            with WhatsApp also available.
+        </p>
+
+
+        <div class="contact-options">
+
+
+            <!-- INSTAGRAM — PRIMARY -->
+
+            <a
+                href="https://ig.me/m/usstorepk2026"
+                class="contact-card instagram-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message US Watches on Instagram"
+            >
+
+                <span class="contact-label">
+                    Instagram
+                </span>
+
+                <span class="contact-name">
+                    @usstorepk2026
+                </span>
+
+            </a>
+
+
+            <!-- WHATSAPP — ABDUL SUBHAN -->
+
+            <a
+                href="https://wa.me/923345883182"
+                class="contact-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message Abdul Subhan on WhatsApp"
+            >
+
+                <span class="contact-label">
+                    WhatsApp
+                </span>
+
+                <span class="contact-name">
+                    Abdul Subhan
+                </span>
+
+            </a>
+
+
+            <!-- WHATSAPP — MUHAMMAD UMAR -->
+
+            <a
+                href="https://wa.me/923085144595"
+                class="contact-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message Muhammad Umar on WhatsApp"
+            >
+
+                <span class="contact-label">
+                    WhatsApp
+                </span>
+
+                <span class="contact-name">
+                    Muhammad Umar
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+    <!-- APPROVED LOGO — DO NOT CHANGE -->
+
+    <svg
+        class="footer-mark luxury-mark"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+    >
+
+        <circle class="outer-ring" cx="50" cy="50" r="44" />
+        <circle class="inner-ring" cx="50" cy="50" r="39" />
+        <circle class="inner-face" cx="50" cy="50" r="34" />
+
+        <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+
+        <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+
+        <path class="fine" d="M50 17 V23" />
+        <path class="fine" d="M50 77 V83" />
+        <path class="fine" d="M17 50 H23" />
+        <path class="fine" d="M77 50 H83" />
+
+        <path class="fine" d="M27 27 L31 31" />
+        <path class="fine" d="M73 27 L69 31" />
+        <path class="fine" d="M27 73 L31 69" />
+        <path class="fine" d="M73 73 L69 69" />
+
+        <path
+            class="monogram-u"
+            d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+        />
+
+        <path
+            class="monogram-s"
+            d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+        />
+
+        <path class="hour-hand" d="M50 50 L42 42" />
+        <path class="minute-hand" d="M50 50 L61 37" />
+
+        <circle class="gold" cx="50" cy="50" r="2.4" />
+
+    </svg>
+
+
+    <div class="footer-brand">
+        US WATCHES
+    </div>
+
+
+    © 2026 US Watches — Umar Subhan Watches
+
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ watch.name }} | US Watches</title>
+
+    <meta
+        name="description"
+        content="{{ watch.name }} — US Watches — Umar Subhan Watches."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            background: #0d0d0d;
+            color: #f5f1e8;
+            font-family: "Montserrat", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #c9a961;
+            color: #111;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            min-height: 86px;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.97);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.18);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #f5f1e8;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 31px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        nav a {
+            position: relative;
+            color: #e8e1d5;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            padding: 9px 0;
+            transition: color .3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: #c9a961;
+            transition: width .3s ease;
+        }
+
+        nav a:hover {
+            color: #c9a961;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           APPROVED US WATCHES LOGO
+           DO NOT CHANGE
+        ========================= */
+
+        .luxury-mark {
+            overflow: visible;
+        }
+
+        .luxury-mark .outer-ring {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 1.2;
+        }
+
+        .luxury-mark .inner-ring {
+            fill: none;
+            stroke: rgba(201, 169, 97, .42);
+            stroke-width: .7;
+        }
+
+        .luxury-mark .inner-face {
+            fill: none;
+            stroke: rgba(245, 241, 232, .13);
+            stroke-width: .5;
+        }
+
+        .luxury-mark .gold {
+            fill: #c9a961;
+        }
+
+        .luxury-mark .ivory {
+            fill: none;
+            stroke: #f5f1e8;
+        }
+
+        .luxury-mark .fine {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: .8;
+        }
+
+        .luxury-mark .crown {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 1.2;
+        }
+
+        .luxury-mark .crown-line {
+            fill: none;
+            stroke: rgba(201, 169, 97, .6);
+            stroke-width: .7;
+        }
+
+        .luxury-mark .monogram-u {
+            fill: none;
+            stroke: #f5f1e8;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .luxury-mark .monogram-s {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .luxury-mark .hand-hour {
+            fill: none;
+            stroke: #f5f1e8;
+            stroke-width: 1.3;
+            stroke-linecap: round;
+        }
+
+        .luxury-mark .hand-minute {
+            fill: none;
+            stroke: #c9a961;
+            stroke-width: 1.1;
+            stroke-linecap: round;
+        }
+
+
+        /* =========================
+           PRODUCT DETAIL
+        ========================= */
+
+        .product-detail {
+            min-height: calc(100vh - 86px);
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 75px 30px 95px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 65px;
+            align-items: center;
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .product-detail-image {
+            height: 500px;
+            background: #e8e4dc;
+            border: 1px solid rgba(201, 169, 97, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-detail-image::after {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(17, 17, 17, .08);
+            pointer-events: none;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 32px;
+            position: relative;
+            z-index: 1;
+            transition: transform .6s ease;
+        }
+
+        .product-detail-image:hover img {
+            transform: scale(1.035);
+        }
+
+
+        /* =========================
+           PRODUCT INFORMATION
+        ========================= */
+
+        .product-detail-info {
+            padding: 10px 0;
+        }
+
+        .collection-name {
+            margin-bottom: 14px;
+            color: #c9a961;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .product-detail h1 {
+            margin: 0 0 24px;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 64px;
+            font-weight: 500;
+            line-height: .92;
+            letter-spacing: 1px;
+        }
+
+        .description {
+            max-width: 520px;
+            margin: 0;
+            color: #aaa399;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price {
+            margin: 30px 0;
+            color: #f5f1e8;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+
+
+        /* =========================
+           ORDER SECTION
+        ========================= */
+
+        .order-title {
+            margin-bottom: 13px;
+            color: #8c877e;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .order-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 520px;
+        }
+
+        .order-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 14px 18px;
+            background: transparent;
+            border: 1px solid rgba(201, 169, 97, .38);
+            color: #f5f1e8;
+            text-decoration: none;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-align: center;
+            transition:
+                background .3s ease,
+                color .3s ease,
+                border-color .3s ease,
+                transform .3s ease;
+        }
+
+        .order-button:hover {
+            background: #c9a961;
+            color: #111;
+            border-color: #c9a961;
+            transform: translateY(-2px);
+        }
+
+        .instagram-button {
+            background: #c9a961;
+            border-color: #c9a961;
+            color: #111;
+        }
+
+        .instagram-button:hover {
+            background: #e1c98f;
+            border-color: #e1c98f;
+            color: #111;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            color: #858078;
+            text-decoration: none;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+        }
+
+        .back-button:hover {
+            color: #c9a961;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 42px 30px 35px;
+            background: #0d0d0d;
+            border-top: 1px solid rgba(201, 169, 97, .16);
+            text-align: center;
+            color: #858078;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-mark {
+            width: 58px;
+            height: 58px;
+            margin-bottom: 11px;
+        }
+
+        .footer-brand {
+            margin-bottom: 7px;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 23px;
+            font-weight: 500;
+            letter-spacing: 4px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            nav {
+                gap: 22px;
+            }
+
+            .product-detail {
+                gap: 40px;
+            }
+
+            .product-detail h1 {
+                font-size: 55px;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            html {
+                scroll-padding-top: 102px;
+            }
+
+            header {
+                min-height: 0;
+                padding: 9px 16px 8px;
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand-mark {
+                width: 32px;
+                height: 32px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+                letter-spacing: 3px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+                gap: 6px 13px;
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                font-size: 7.5px;
+                letter-spacing: 1px;
+                padding: 4px 0;
+                white-space: nowrap;
+            }
+
+
+            /* PRODUCT */
+
+            .product-detail {
+                min-height: auto;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 32px 18px 65px;
+            }
+
+            .product-detail-image {
+                height: 340px;
+            }
+
+            .product-detail-image::after {
+                inset: 10px;
+            }
+
+            .product-detail-image img {
+                padding: 20px;
+            }
+
+            .product-detail-info {
+                padding: 0;
+            }
+
+            .collection-name {
+                margin-bottom: 10px;
+                font-size: 8px;
+                letter-spacing: 2.5px;
+            }
+
+            .product-detail h1 {
+                margin-bottom: 18px;
+                font-size: 48px;
+                line-height: .94;
+            }
+
+            .description {
+                font-size: 11.5px;
+                line-height: 1.85;
+            }
+
+            .price {
+                margin: 22px 0;
+                font-size: 20px;
+            }
+
+            .order-title {
+                margin-bottom: 10px;
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            .order-options {
+                gap: 9px;
+            }
+
+            .order-button {
+                min-height: 46px;
+                padding: 13px 10px;
+                font-size: 8px;
+                letter-spacing: 1.1px;
+            }
+
+            .back-button {
+                margin-top: 20px;
+                font-size: 8px;
+            }
+
+
+            /* FOOTER */
+
+            footer {
+                padding: 30px 20px 27px;
+                font-size: 9px;
+                line-height: 1.6;
+            }
+
+            .footer-mark {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 9px;
+            }
+
+            .footer-brand {
+                margin-bottom: 5px;
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================= */
+
+        @media (max-width: 400px) {
+
+            header {
+                padding: 8px 12px 7px;
+            }
+
+            .brand {
+                gap: 7px;
+            }
+
+            .brand-mark {
+                width: 30px;
+                height: 30px;
+            }
+
+            .brand-name {
+                font-size: 22px;
+                letter-spacing: 2.3px;
+            }
+
+            nav {
+                gap: 5px 11px;
+            }
+
+            nav a {
+                font-size: 7px;
+                letter-spacing: .9px;
+            }
+
+            .product-detail {
+                padding: 26px 15px 55px;
+                gap: 27px;
+            }
+
+            .product-detail-image {
+                height: 295px;
+            }
+
+            .product-detail-image img {
+                padding: 17px;
+            }
+
+            .product-detail h1 {
+                font-size: 41px;
+            }
+
+            .description {
+                font-size: 10.5px;
+                line-height: 1.8;
+            }
+
+            .price {
+                font-size: 19px;
+            }
+
+            .order-button {
+                min-height: 44px;
+                padding: 12px 9px;
+                font-size: 7.5px;
+            }
+
+            footer {
+                padding: 27px 15px 24px;
+                font-size: 8px;
+            }
+
+            .footer-mark {
+                width: 44px;
+                height: 44px;
+            }
+
+            .footer-brand {
+                font-size: 19px;
+            }
+
+        }
+
+
+        /* =========================
+           VERY SMALL PHONES
+        ========================= */
+
+        @media (max-width: 340px) {
+
+            header {
+                padding: 7px 10px 6px;
+            }
+
+            .brand {
+                gap: 6px;
+            }
+
+            .brand-mark {
+                width: 28px;
+                height: 28px;
+            }
+
+            .brand-name {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            nav {
+                gap: 4px 8px;
+            }
+
+            nav a {
+                font-size: 6.5px;
+                letter-spacing: .65px;
+            }
+
+            .product-detail {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .product-detail-image {
+                height: 275px;
+            }
+
+            .product-detail h1 {
+                font-size: 37px;
+            }
+
+            .order-button {
+                font-size: 7px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a href="/" class="brand" aria-label="US Watches Home">
+
+        <!-- APPROVED LOGO — DO NOT CHANGE -->
+
+        <svg
+            class="brand-mark luxury-mark"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
+
+            <circle class="outer-ring" cx="50" cy="50" r="44" />
+            <circle class="inner-ring" cx="50" cy="50" r="39" />
+            <circle class="inner-face" cx="50" cy="50" r="34" />
+
+            <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+            <path class="crown-line" d="M44 8 H56" />
+
+            <path class="fine" d="M50 17 V23" />
+            <path class="fine" d="M77 50 H83" />
+            <path class="fine" d="M50 77 V83" />
+            <path class="fine" d="M17 50 H23" />
+
+            <path class="fine" d="M28 28 L32 32" />
+            <path class="fine" d="M72 28 L68 32" />
+            <path class="fine" d="M28 72 L32 68" />
+            <path class="fine" d="M72 72 L68 68" />
+
+            <path
+                class="monogram-u"
+                d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+            />
+
+            <path
+                class="monogram-s"
+                d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+            />
+
+            <path class="hand-hour" d="M50 50 L42 40" />
+            <path class="hand-minute" d="M50 50 L61 34" />
+
+            <circle class="gold" cx="50" cy="50" r="2.4" />
+
+        </svg>
+
+        <span class="brand-name">
+            US WATCHES
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/#collection">
+            Shop
+        </a>
+
+        <a href="/#collection">
+            Collections
+        </a>
+
+        <a href="/#about">
+            About
+        </a>
+
+        <a href="/#contact">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     PRODUCT DETAIL
+========================= -->
+
+<main class="product-detail">
+
+
+    <div class="product-detail-image">
+
+        <img
+            src="{{ watch.image.url }}"
+            alt="{{ watch.name }}"
+        >
+
+    </div>
+
+
+    <div class="product-detail-info">
+
+
+        <div class="collection-name">
+            {{ watch.collection }}
+        </div>
+
+
+        <h1>
+            {{ watch.name }}
+        </h1>
+
+
+        <p class="description">
+            {{ watch.description }}
+        </p>
+
+
+        <div class="price">
+            Rs. {{ watch.price }}
+        </div>
+
+
+        <div class="order-title">
+            Interested in this watch?
+        </div>
+
+
+        <div class="order-options">
+
+
+            <!-- PRIMARY: INSTAGRAM -->
+
+            <a
+                href="https://ig.me/m/usstorepk2026"
+                class="order-button instagram-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MESSAGE US ON INSTAGRAM — @USSTOREPK2026
+            </a>
+
+
+            <!-- WHATSAPP: ABDUL SUBHAN -->
+
+            <a
+                href="https://wa.me/923345883182?text=Hello%20US%20Watches%20(Abdul%20Subhan),%20I%E2%80%99m%20interested%20in%20{{ watch.name|urlencode }}.%20I%E2%80%99d%20like%20to%20know%20more%20about%20this%20watch."
+                class="order-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MESSAGE ON WHATSAPP — ABDUL SUBHAN
+            </a>
+
+
+            <!-- WHATSAPP: MUHAMMAD UMAR -->
+
+            <a
+                href="https://wa.me/923085144595?text=Hello%20US%20Watches%20(Muhammad%20Umar),%20I%E2%80%99m%20interested%20in%20{{ watch.name|urlencode }}.%20I%E2%80%99d%20like%20to%20know%20more%20about%20this%20watch."
+                class="order-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MESSAGE ON WHATSAPP — MUHAMMAD UMAR
+            </a>
+
+
+        </div>
+
+
+        <a href="/" class="back-button">
+            ← Back to Collection
+        </a>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+    <!-- APPROVED LOGO — DO NOT CHANGE -->
+
+    <svg
+        class="footer-mark luxury-mark"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+    >
+
+        <circle class="outer-ring" cx="50" cy="50" r="44" />
+        <circle class="inner-ring" cx="50" cy="50" r="39" />
+        <circle class="inner-face" cx="50" cy="50" r="34" />
+
+        <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+        <path class="crown-line" d="M44 8 H56" />
+
+        <path class="fine" d="M50 17 V23" />
+        <path class="fine" d="M77 50 H83" />
+        <path class="fine" d="M50 77 V83" />
+        <path class="fine" d="M17 50 H23" />
+
+        <path class="fine" d="M28 28 L32 32" />
+        <path class="fine" d="M72 28 L68 32" />
+        <path class="fine" d="M28 72 L32 68" />
+        <path class="fine" d="M72 72 L68 68" />
+
+        <path
+            class="monogram-u"
+            d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+        />
+
+        <path
+            class="monogram-s"
+            d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+        />
+
+        <path class="hand-hour" d="M50 50 L42 40" />
+        <path class="hand-minute" d="M50 50 L61 34" />
+
+        <circle class="gold" cx="50" cy="50" r="2.4" />
+
+    </svg>
+
+
+    <div class="footer-brand">
+        US WATCHES
+    </div>
+
+
+    © 2026 US Watches — Umar Subhan Watches
+
+
+</footer>
+
+
+</body>
+
+</html>
