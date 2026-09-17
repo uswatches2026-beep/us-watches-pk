@@ -1,17 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>US Watches — Umar Subhan Watches</title>
-
-    <meta
-        name="description"
-        content="US Watches — Umar Subhan Watches. Discover watches selected for style, confidence and everyday character."
-    >
+    <title>US Watches | Time, Defined By You</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,121 +18,37 @@
 
     <style>
 
-        /* =========================
-           GLOBAL
-        ========================= */
-
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
         }
 
         body {
-            margin: 0;
-            background: #0d0d0d;
-            color: #f5f1e8;
-            font-family: "Montserrat", Arial, sans-serif;
-            overflow-x: hidden;
-        }
-
-        ::selection {
-            background: #c9a961;
-            color: #111;
+            font-family: "Montserrat", sans-serif;
+            background: #f1eadc;
+            color: #181715;
+            line-height: 1.6;
         }
 
         a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            min-height: 86px;
-            padding: 0 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(13, 13, 13, 0.97);
-            border-bottom: 1px solid rgba(201, 169, 97, 0.18);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #f5f1e8;
             text-decoration: none;
-            flex-shrink: 0;
+            color: inherit;
         }
 
-        .brand-mark {
-            width: 45px;
-            height: 45px;
-            flex-shrink: 0;
-        }
-
-        .brand-name {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 31px;
-            font-weight: 600;
-            letter-spacing: 5px;
-            white-space: nowrap;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 34px;
-        }
-
-        nav a {
-            position: relative;
-            padding: 9px 0;
-            color: #e8e1d5;
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            transition: color .3s ease;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 1px;
-            background: #c9a961;
-            transition: width .3s ease;
-        }
-
-        nav a:hover {
-            color: #c9a961;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+        button,
+        input {
+            font-family: inherit;
         }
 
 
-        /* =========================
-           APPROVED US WATCHES LOGO
-           DO NOT CHANGE
-        ========================= */
+        /* =====================================================
+           APPROVED LOGO CSS — DO NOT CHANGE
+        ===================================================== */
 
         .luxury-mark {
             overflow: visible;
@@ -213,588 +124,789 @@
         }
 
 
-        /* =========================
-           HERO
-        ========================= */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-        .hero {
-            min-height: calc(100vh - 86px);
-            padding: 75px 30px 85px;
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(18, 17, 15, .97);
+            border-bottom: 1px solid rgba(201, 169, 97, .28);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-inner {
+            width: min(1180px, calc(100% - 40px));
+            min-height: 82px;
+            margin: auto;
+
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(
-                    circle at 50% 42%,
-                    rgba(201, 169, 97, .075),
-                    transparent 38%
-                ),
-                #0d0d0d;
+            justify-content: space-between;
+            gap: 25px;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 560px;
-            height: 560px;
-            border: 1px solid rgba(201, 169, 97, .055);
-            border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
         }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 410px;
-            height: 410px;
-            border: 1px solid rgba(245, 241, 232, .035);
-            border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+        .brand-mark {
+            width: 54px;
+            height: 54px;
+            display: block;
         }
 
-        .hero-content {
-            width: 100%;
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
+        .brand-text {
             display: flex;
             flex-direction: column;
+        }
+
+        .brand-name {
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            margin-top: 4px;
+            color: #c9a961;
+            font-size: 8px;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav a {
+            color: rgba(245, 241, 232, .82);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #c9a961;
+        }
+
+
+        /* =====================================================
+           DOMINANT SEARCH BUTTON
+        ===================================================== */
+
+        .header-search-button {
+            min-width: 108px;
+            padding: 12px 18px;
+
+            border: 1px solid #c9a961;
+            background: transparent;
+            color: #f5f1e8;
+
+            cursor: pointer;
+
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .header-search-button:hover {
+            background: #c9a961;
+            color: #171512;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-panel {
+            display: none;
+
+            background: #eee6d8;
+            border-bottom: 1px solid rgba(201, 169, 97, .5);
+
+            box-shadow: 0 12px 30px rgba(20, 18, 15, .12);
+        }
+
+        .search-panel.active {
+            display: block;
+        }
+
+        .search-inner {
+            width: min(900px, calc(100% - 40px));
+            margin: auto;
+            padding: 28px 0 30px;
+        }
+
+        .search-title {
+            margin-bottom: 14px;
+
+            color: #171512;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            height: 51px;
+
+            padding: 0 16px;
+
+            border: 1px solid rgba(24, 23, 21, .28);
+            outline: none;
+
+            background: #f8f3e9;
+            color: #171512;
+
+            font-size: 13px;
+        }
+
+        .search-input:focus {
+            border-color: #c9a961;
+        }
+
+        .search-submit {
+            height: 51px;
+            padding: 0 24px;
+
+            border: 1px solid #c9a961;
+            background: #191815;
+            color: #f5f1e8;
+
+            cursor: pointer;
+
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .search-submit:hover {
+            background: #c9a961;
+            color: #171512;
+        }
+
+        .search-results {
+            margin-top: 13px;
+        }
+
+        .search-result-item {
+            display: block;
+
+            margin-top: 7px;
+            padding: 13px 15px;
+
+            background: #e4dac9;
+            border: 1px solid rgba(201, 169, 97, .35);
+        }
+
+        .search-result-item:hover {
+            border-color: #c9a961;
+            background: #ddd1be;
+        }
+
+        .search-result-name {
+            color: #171512;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .search-result-meta {
+            color: #776f63;
+            font-size: 9px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .search-message {
+            padding-top: 8px;
+            color: #776f63;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 650px;
+
+            background:
+                radial-gradient(
+                    circle at 76% 42%,
+                    rgba(201, 169, 97, .18),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #11110f 0%,
+                    #1b1a17 48%,
+                    #24211c 100%
+                );
+
+            color: #f5f1e8;
+
+            display: flex;
             align-items: center;
         }
 
+        .hero-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
 
-        /* HERO LOGO */
+            padding: 85px 0;
 
-        .hero-logo {
-            width: 112px;
-            height: 112px;
-            margin-bottom: 27px;
-            filter: drop-shadow(0 8px 24px rgba(201, 169, 97, .08));
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center;
+            gap: 70px;
         }
 
+        .hero-eyebrow {
+            margin-bottom: 16px;
 
-        /* HERO BRAND NAME */
-
-        .hero-kicker {
-            margin-bottom: 13px;
             color: #c9a961;
-            font-size: 11px;
-            font-weight: 600;
+
+            font-size: 10px;
+            font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-
-        /* MAIN WORDMARK */
-
-        .hero-wordmark {
-            margin: 0;
+        .hero h1 {
             color: #f5f1e8;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(58px, 9vw, 112px);
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(58px, 8vw, 100px);
             font-weight: 600;
-            line-height: .85;
-            letter-spacing: 7px;
-            text-transform: uppercase;
-            padding-left: 7px;
+            letter-spacing: -2px;
+            line-height: .84;
         }
 
+        .hero h2 {
+            margin-top: 24px;
 
-        /* TAGLINE */
+            color: rgba(245, 241, 232, .86);
 
-        .hero-tagline {
-            margin: 27px auto 0;
-            color: #c9a961;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(25px, 3vw, 37px);
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(26px, 4vw, 39px);
             font-weight: 500;
-            line-height: 1;
-            letter-spacing: 1px;
+        }
+
+        .hero-line {
+            width: 75px;
+            height: 1px;
+
+            margin: 29px 0;
+
+            background: #c9a961;
         }
 
         .hero-description {
-            max-width: 540px;
-            margin: 22px auto 32px;
-            color: #aaa399;
+            max-width: 535px;
+
+            color: rgba(245, 241, 232, .65);
+
             font-size: 12px;
-            font-weight: 400;
-            line-height: 1.9;
-            letter-spacing: .5px;
+            line-height: 1.95;
         }
 
-
-        /* HERO BUTTON */
-
         .hero-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 210px;
-            min-height: 49px;
-            padding: 14px 24px;
-            background: #c9a961;
+            display: inline-block;
+
+            margin-top: 29px;
+            padding: 13px 23px;
+
             border: 1px solid #c9a961;
-            color: #111;
-            text-decoration: none;
-            font-size: 9px;
+
+            color: #f5f1e8;
+
+            font-size: 10px;
             font-weight: 700;
-            letter-spacing: 2px;
-            transition:
-                background .3s ease,
-                color .3s ease,
-                transform .3s ease,
-                box-shadow .3s ease;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
         }
 
         .hero-button:hover {
-            background: #e1c98f;
-            border-color: #e1c98f;
-            color: #111;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(201, 169, 97, .12);
+            background: #c9a961;
+            color: #171512;
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #68635c;
-            font-size: 7px;
-            font-weight: 600;
+
+        /* =====================================================
+           LARGE HOMEPAGE LOGO
+           RESTORED
+        ===================================================== */
+
+        .hero-logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo-frame {
+            width: 310px;
+            height: 310px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(201, 169, 97, .25);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 14px rgba(201, 169, 97, .025),
+                0 0 60px rgba(201, 169, 97, .08);
+        }
+
+        .hero-logo {
+            width: 235px;
+            height: 235px;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ===================================================== */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        .section-heading {
+            margin-bottom: 37px;
+        }
+
+        .section-eyebrow {
+            margin-bottom: 8px;
+
+            color: #a7894e;
+
+            font-size: 9px;
+            font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
+        .section-title {
+            color: #171512;
 
-        /* =========================
-           SECTION BASICS
-        ========================= */
-
-        .section {
-            padding: 105px 30px;
-        }
-
-        .section-heading {
-            max-width: 1180px;
-            margin: 0 auto 55px;
-            text-align: center;
-        }
-
-        .section-kicker {
-            margin-bottom: 12px;
-            color: #c9a961;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 3.5px;
-            text-transform: uppercase;
-        }
-
-        .section-heading h2 {
-            margin: 0;
-            color: #f5f1e8;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 55px;
-            font-weight: 500;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 55px);
+            font-weight: 600;
             line-height: 1;
         }
 
-        .section-line {
-            width: 44px;
-            height: 1px;
-            margin: 21px auto 0;
-            background: #c9a961;
+        .section-description {
+            max-width: 610px;
+            margin-top: 12px;
+
+            color: #71695e;
+
+            font-size: 12px;
         }
 
 
-        /* =========================
-           COLLECTION
-        ========================= */
+        /* =====================================================
+           SHOP
+        ===================================================== */
 
-        #collection {
-            background: #f0ece4;
-            color: #171717;
+        .shop-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3ecdf 0%,
+                    #ece2d2 100%
+                );
         }
 
-        #collection .section-heading h2 {
-            color: #171717;
+        .collection-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 38px;
         }
 
-        #collection .section-kicker {
-            color: #a7864a;
+        .collection-filter {
+            padding: 10px 16px;
+
+            border: 1px solid rgba(24, 23, 21, .22);
+            background: rgba(255, 251, 242, .45);
+            color: #292721;
+
+            cursor: pointer;
+
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .collection-grid {
-            max-width: 1180px;
-            margin: 0 auto;
+        .collection-filter:hover,
+        .collection-filter.active {
+            border-color: #c9a961;
+            background: #191815;
+            color: #f5f1e8;
+        }
+
+
+        /* =====================================================
+           PRODUCTS
+        ===================================================== */
+
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 24px;
         }
 
         .product-card {
-            min-width: 0;
-            background: #e8e4dc;
-            border: 1px solid rgba(17, 17, 17, .07);
-            text-decoration: none;
-            color: #171717;
+            display: block;
+
             overflow: hidden;
-            position: relative;
-            transition:
-                transform .35s ease,
-                box-shadow .35s ease,
-                border-color .35s ease;
+
+            background: #e4dbca;
+            border: 1px solid rgba(24, 23, 21, .08);
+
+            transition: .25s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(201, 169, 97, .45);
-            box-shadow: 0 18px 40px rgba(20, 20, 20, .11);
+            transform: translateY(-5px);
+
+            border-color: rgba(201, 169, 97, .58);
+
+            box-shadow:
+                0 16px 35px rgba(24, 23, 21, .11);
         }
 
         .product-image {
             height: 300px;
-            background: #e8e4dc;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
 
-        .product-image::after {
-            content: "";
-            position: absolute;
-            inset: 13px;
-            border: 1px solid rgba(17, 17, 17, .065);
-            pointer-events: none;
+            overflow: hidden;
+
+            background: #d9cfbd;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            padding: 25px;
-            position: relative;
-            z-index: 1;
-            transition: transform .55s ease;
+
+            display: block;
+
+            object-fit: cover;
         }
 
-        .product-card:hover .product-image img {
-            transform: scale(1.045);
+        .product-image-placeholder {
+            color: #777064;
+
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .product-info {
-            padding: 20px 21px 23px;
-            background: #f0ece4;
-            border-top: 1px solid rgba(17, 17, 17, .055);
+            padding: 22px;
         }
 
         .product-collection {
-            margin-bottom: 7px;
-            color: #a7864a;
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-        }
+            color: #a7894e;
 
-        .product-name {
-            margin: 0;
-            color: #171717;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 27px;
-            font-weight: 600;
-            line-height: 1;
-        }
-
-        .product-bottom {
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .product-price {
-            color: #292929;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .5px;
-        }
-
-        .view-product {
-            color: #8d723d;
-            font-size: 7px;
-            font-weight: 700;
-            letter-spacing: 1.6px;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .empty-collection {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            color: #77716a;
-            font-size: 11px;
-            line-height: 1.8;
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        #about {
-            background: #0d0d0d;
-        }
-
-        .about-content {
-            max-width: 1050px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            max-width: 760px;
-            margin: 0 auto;
-            color: #aaa399;
-            font-size: 13px;
-            line-height: 2;
-            letter-spacing: .15px;
-        }
-
-        .values {
-            margin-top: 55px;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .value-card {
-            padding: 30px 24px;
-            border: 1px solid rgba(201, 169, 97, .15);
-            background: rgba(255, 255, 255, .018);
-            transition:
-                border-color .3s ease,
-                transform .3s ease,
-                background .3s ease;
-        }
-
-        .value-card:hover {
-            border-color: rgba(201, 169, 97, .38);
-            background: rgba(255, 255, 255, .028);
-            transform: translateY(-4px);
-        }
-
-        .value-number {
-            margin-bottom: 15px;
-            color: #c9a961;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 20px;
-        }
-
-        .value-card h3 {
-            margin: 0 0 10px;
-            color: #f5f1e8;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 29px;
-            font-weight: 500;
-        }
-
-        .value-card p {
-            margin: 0;
-            color: #8e8981;
-            font-size: 10px;
-            line-height: 1.8;
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        #contact {
-            background: #f0ece4;
-            color: #171717;
-        }
-
-        #contact .section-heading h2 {
-            color: #171717;
-        }
-
-        .contact-content {
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-intro {
-            max-width: 560px;
-            margin: 0 auto 35px;
-            color: #706b64;
-            font-size: 11px;
-            line-height: 1.8;
-        }
-
-        .contact-options {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 13px;
-        }
-
-        .contact-card {
-            min-height: 72px;
-            padding: 17px 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            border: 1px solid rgba(17, 17, 17, .14);
-            background: rgba(255, 255, 255, .2);
-            color: #171717;
-            text-decoration: none;
-            transition:
-                background .3s ease,
-                color .3s ease,
-                border-color .3s ease,
-                transform .3s ease;
-        }
-
-        .contact-card:hover {
-            background: #171717;
-            border-color: #171717;
-            color: #f5f1e8;
-            transform: translateY(-3px);
-        }
-
-        .contact-label {
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 1.8px;
             text-transform: uppercase;
         }
 
-        .contact-name {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 20px;
+        .product-name {
+            margin-top: 7px;
+
+            color: #171512;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
             font-weight: 600;
             line-height: 1;
         }
 
-        .instagram-card {
-            background: #171717;
-            border-color: #171717;
+        .product-price {
+            margin-top: 13px;
+
+            color: #39352f;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .empty-products {
+            grid-column: 1 / -1;
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+            background: #e4dbca;
+            border: 1px solid rgba(24, 23, 21, .08);
+        }
+
+        .empty-products h3 {
+            color: #171512;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 34px;
+        }
+
+        .empty-products p {
+            margin-top: 8px;
+
+            color: #71695e;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1a1916,
+                    #24221e
+                );
+
             color: #f5f1e8;
         }
 
-        .instagram-card:hover {
-            background: #c9a961;
-            border-color: #c9a961;
-            color: #111;
+        .about-section .section-title {
+            color: #f5f1e8;
+        }
+
+        .about-content {
+            max-width: 760px;
+        }
+
+        .about-content p {
+            margin-bottom: 18px;
+
+            color: rgba(245, 241, 232, .68);
+
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        .about-highlight {
+            margin-top: 30px;
+            padding-left: 22px;
+
+            border-left: 1px solid #c9a961;
+
+            color: #f5f1e8;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            line-height: 1.35;
         }
 
 
-        /* =========================
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eee6d8,
+                    #e5dac9
+                );
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            padding: 30px 24px;
+
+            background: #f4eee3;
+            border: 1px solid rgba(24, 23, 21, .09);
+
+            transition: .25s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(201, 169, 97, .6);
+        }
+
+        .contact-label {
+            color: #a7894e;
+
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-name {
+            margin-top: 10px;
+
+            color: #171512;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .contact-detail {
+            margin-top: 7px;
+
+            color: #71695e;
+
+            font-size: 10px;
+        }
+
+        .contact-arrow {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #171512;
+
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
-            padding: 42px 30px 35px;
-            background: #0d0d0d;
-            border-top: 1px solid rgba(201, 169, 97, .16);
-            text-align: center;
-            color: #858078;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
+            background: #12110f;
+
+            color: rgba(245, 241, 232, .65);
+
+            border-top: 1px solid rgba(201, 169, 97, .22);
         }
 
-        .footer-mark {
-            width: 58px;
-            height: 58px;
-            margin-bottom: 11px;
+        .footer-inner {
+            width: min(1180px, calc(100% - 40px));
+            min-height: 100px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .footer-brand {
-            margin-bottom: 7px;
             color: #f5f1e8;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 23px;
-            font-weight: 500;
-            letter-spacing: 4px;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            font-size: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 900px) {
 
-            header {
-                padding-left: 30px;
-                padding-right: 30px;
+            .header-inner {
+                min-height: 72px;
             }
 
             nav {
-                gap: 22px;
+                display: none;
             }
 
-            .collection-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .product-image {
-                height: 285px;
-            }
-
-            .contact-options {
+            .hero-inner {
                 grid-template-columns: 1fr;
-                max-width: 560px;
-                margin-left: auto;
-                margin-right: auto;
+                gap: 55px;
+            }
+
+            .hero-logo-area {
+                order: -1;
+            }
+
+            .hero-logo-frame {
+                width: 240px;
+                height: 240px;
             }
 
             .hero-logo {
-                width: 100px;
-                height: 100px;
+                width: 185px;
+                height: 185px;
             }
 
-            .hero-wordmark {
-                font-size: clamp(54px, 9vw, 90px);
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        @media (max-width: 600px) {
 
-        @media (max-width: 768px) {
-
-            html {
-                scroll-padding-top: 102px;
-            }
-
-            header {
-                min-height: 0;
-                padding: 9px 16px 8px;
-                flex-direction: column;
-                gap: 5px;
-                align-items: center;
+            .header-inner {
+                width: calc(100% - 24px);
+                gap: 10px;
             }
 
             .brand {
@@ -802,822 +914,505 @@
             }
 
             .brand-mark {
-                width: 32px;
-                height: 32px;
+                width: 45px;
+                height: 45px;
             }
 
             .brand-name {
-                font-size: 24px;
-                letter-spacing: 3px;
+                font-size: 20px;
             }
 
-            nav {
-                width: 100%;
-                justify-content: center;
-                gap: 6px 13px;
-                flex-wrap: nowrap;
-            }
-
-            nav a {
-                font-size: 7.5px;
-                letter-spacing: 1px;
-                padding: 4px 0;
-                white-space: nowrap;
-            }
-
-
-            /* HERO */
-
-            .hero {
-                min-height: calc(100svh - 94px);
-                padding: 48px 18px 70px;
-            }
-
-            .hero::before {
-                width: 390px;
-                height: 390px;
-            }
-
-            .hero::after {
-                width: 285px;
-                height: 285px;
-            }
-
-            .hero-logo {
-                width: 82px;
-                height: 82px;
-                margin-bottom: 22px;
-            }
-
-            .hero-kicker {
-                margin-bottom: 11px;
-                font-size: 8px;
-                letter-spacing: 3px;
-            }
-
-            .hero-wordmark {
-                font-size: clamp(43px, 13vw, 68px);
-                line-height: .88;
-                letter-spacing: 4px;
-                padding-left: 4px;
-            }
-
-            .hero-tagline {
-                margin-top: 21px;
-                font-size: 25px;
-                line-height: 1;
-            }
-
-            .hero-description {
-                max-width: 370px;
-                margin: 19px auto 26px;
-                font-size: 10.5px;
-                line-height: 1.8;
-            }
-
-            .hero-button {
-                min-width: 190px;
-                min-height: 46px;
-                padding: 13px 20px;
-                font-size: 8px;
-                letter-spacing: 1.6px;
-            }
-
-            .hero-scroll {
-                bottom: 19px;
+            .brand-tagline {
                 font-size: 6px;
-                letter-spacing: 2.4px;
-            }
-
-
-            /* SECTIONS */
-
-            .section {
-                padding: 70px 18px;
-            }
-
-            .section-heading {
-                margin-bottom: 35px;
-            }
-
-            .section-kicker {
-                margin-bottom: 10px;
-                font-size: 8px;
-                letter-spacing: 2.8px;
-            }
-
-            .section-heading h2 {
-                font-size: 43px;
-            }
-
-            .section-line {
-                margin-top: 16px;
-            }
-
-
-            /* COLLECTION */
-
-            .collection-grid {
-                grid-template-columns: 1fr;
-                gap: 17px;
-            }
-
-            .product-card:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            .product-image {
-                height: 270px;
-            }
-
-            .product-image::after {
-                inset: 10px;
-            }
-
-            .product-image img {
-                padding: 21px;
-            }
-
-            .product-card:hover .product-image img {
-                transform: none;
-            }
-
-            .product-info {
-                padding: 17px 17px 19px;
-            }
-
-            .product-collection {
-                font-size: 7px;
-                letter-spacing: 2px;
-            }
-
-            .product-name {
-                font-size: 25px;
-            }
-
-            .product-bottom {
-                margin-top: 12px;
-            }
-
-            .product-price {
-                font-size: 11px;
-            }
-
-            .view-product {
-                font-size: 6.5px;
                 letter-spacing: 1.4px;
             }
 
-
-            /* ABOUT */
-
-            .about-text {
-                font-size: 11px;
-                line-height: 1.85;
-            }
-
-            .values {
-                margin-top: 36px;
-                grid-template-columns: 1fr;
-                gap: 11px;
-            }
-
-            .value-card {
-                padding: 22px 20px;
-            }
-
-            .value-number {
-                margin-bottom: 9px;
-                font-size: 17px;
-            }
-
-            .value-card h3 {
-                margin-bottom: 7px;
-                font-size: 26px;
-            }
-
-            .value-card p {
-                font-size: 9.5px;
-                line-height: 1.7;
-            }
-
-            .value-card:hover {
-                transform: none;
-            }
-
-
-            /* CONTACT */
-
-            .contact-intro {
-                margin-bottom: 25px;
-                font-size: 10px;
-                line-height: 1.75;
-            }
-
-            .contact-options {
-                gap: 9px;
-            }
-
-            .contact-card {
-                min-height: 66px;
-                padding: 14px 12px;
-            }
-
-            .contact-label {
-                font-size: 7px;
-                letter-spacing: 1.5px;
-            }
-
-            .contact-name {
-                font-size: 19px;
-            }
-
-            .contact-card:hover {
-                transform: none;
-            }
-
-
-            /* FOOTER */
-
-            footer {
-                padding: 30px 20px 27px;
-                font-size: 9px;
-                line-height: 1.6;
-            }
-
-            .footer-mark {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 9px;
-            }
-
-            .footer-brand {
-                margin-bottom: 5px;
-                font-size: 20px;
-                letter-spacing: 3px;
-            }
-
-        }
-
-
-        /* =========================
-           SMALL PHONES
-        ========================= */
-
-        @media (max-width: 400px) {
-
-            header {
-                padding: 8px 12px 7px;
-            }
-
-            .brand {
-                gap: 7px;
-            }
-
-            .brand-mark {
-                width: 30px;
-                height: 30px;
-            }
-
-            .brand-name {
-                font-size: 22px;
-                letter-spacing: 2.3px;
-            }
-
-            nav {
-                gap: 5px 11px;
-            }
-
-            nav a {
-                font-size: 7px;
-                letter-spacing: .9px;
-            }
-
-
-            /* HERO */
-
-            .hero {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .hero-logo {
-                width: 72px;
-                height: 72px;
-                margin-bottom: 19px;
-            }
-
-            .hero-kicker {
-                font-size: 7.5px;
-                letter-spacing: 2.5px;
-            }
-
-            .hero-wordmark {
-                font-size: 40px;
-                letter-spacing: 3px;
-            }
-
-            .hero-tagline {
-                font-size: 22px;
-            }
-
-            .hero-description {
-                font-size: 10px;
-            }
-
-
-            /* SECTIONS */
-
-            .section {
-                padding: 62px 15px;
-            }
-
-            .section-heading h2 {
-                font-size: 39px;
-            }
-
-
-            /* PRODUCTS */
-
-            .product-image {
-                height: 255px;
-            }
-
-            .product-image img {
-                padding: 17px;
-            }
-
-            .product-name {
-                font-size: 24px;
-            }
-
-
-            /* ABOUT */
-
-            .about-text {
-                font-size: 10.5px;
-            }
-
-
-            /* FOOTER */
-
-            footer {
-                padding: 27px 15px 24px;
+            .header-search-button {
+                min-width: 78px;
+                padding: 10px 11px;
                 font-size: 8px;
             }
 
-            .footer-mark {
-                width: 44px;
-                height: 44px;
+            .search-inner {
+                width: calc(100% - 28px);
             }
 
-            .footer-brand {
-                font-size: 19px;
+            .search-form {
+                flex-direction: column;
             }
 
-        }
-
-
-        /* =========================
-           VERY SMALL PHONES
-        ========================= */
-
-        @media (max-width: 340px) {
-
-            header {
-                padding: 7px 10px 6px;
+            .search-submit {
+                width: 100%;
             }
 
-            .brand {
-                gap: 6px;
+            .hero {
+                min-height: 680px;
             }
 
-            .brand-mark {
-                width: 28px;
-                height: 28px;
+            .hero-inner {
+                width: calc(100% - 28px);
+                padding: 65px 0;
             }
 
-            .brand-name {
-                font-size: 20px;
-                letter-spacing: 2px;
+            .hero h1 {
+                font-size: 61px;
             }
 
-            nav {
-                gap: 4px 8px;
+            .hero-logo-frame {
+                width: 225px;
+                height: 225px;
             }
-
-            nav a {
-                font-size: 6.5px;
-                letter-spacing: .65px;
-            }
-
-
-            /* HERO */
 
             .hero-logo {
-                width: 65px;
-                height: 65px;
+                width: 175px;
+                height: 175px;
             }
 
-            .hero-kicker {
-                font-size: 7px;
-                letter-spacing: 2px;
+            .section {
+                padding: 65px 0;
             }
 
-            .hero-wordmark {
-                font-size: 34px;
-                letter-spacing: 2.2px;
+            .section-inner {
+                width: calc(100% - 28px);
             }
 
-            .hero-tagline {
-                font-size: 20px;
-            }
-
-
-            /* SECTIONS */
-
-            .section-heading h2 {
-                font-size: 36px;
+            .products-grid {
+                grid-template-columns: 1fr;
             }
 
             .product-image {
-                height: 235px;
+                height: 300px;
             }
 
-            .product-name {
-                font-size: 22px;
+            .collection-filters {
+                gap: 7px;
             }
 
+            .collection-filter {
+                padding: 9px 11px;
+                font-size: 8px;
+            }
+
+            .footer-inner {
+                width: calc(100% - 28px);
+
+                padding: 25px 0;
+
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
     </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      HEADER
-========================= -->
+========================================================= -->
 
 <header>
 
-    <a href="/" class="brand" aria-label="US Watches Home">
+    <div class="header-inner">
 
-        <!-- APPROVED LOGO — DO NOT CHANGE -->
+        <a href="/" class="brand">
 
-        <svg
-            class="brand-mark luxury-mark"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+            <!-- APPROVED LOGO — UNCHANGED -->
+
+            <svg
+                class="brand-mark luxury-mark"
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <circle class="outer-ring" cx="50" cy="50" r="44" />
+                <circle class="inner-ring" cx="50" cy="50" r="39" />
+                <circle class="inner-face" cx="50" cy="50" r="34" />
+                <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+                <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+                <path class="fine" d="M50 17 V23" />
+                <path class="fine" d="M50 77 V83" />
+                <path class="fine" d="M17 50 H23" />
+                <path class="fine" d="M77 50 H83" />
+                <path class="fine" d="M27 27 L31 31" />
+                <path class="fine" d="M73 27 L69 31" />
+                <path class="fine" d="M27 73 L31 69" />
+                <path class="fine" d="M73 73 L69 69" />
+                <path
+                    class="monogram-u"
+                    d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+                />
+                <path
+                    class="monogram-s"
+                    d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+                />
+                <path class="hour-hand" d="M50 50 L42 42" />
+                <path class="minute-hand" d="M50 50 L61 37" />
+                <circle class="gold" cx="50" cy="50" r="2.4" />
+            </svg>
+
+            <div class="brand-text">
+                <span class="brand-name">US WATCHES</span>
+                <span class="brand-tagline">Time, Defined By You</span>
+            </div>
+
+        </a>
+
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+
+        <button
+            type="button"
+            class="header-search-button"
+            id="searchToggle"
         >
+            Search
+        </button>
 
-            <circle class="outer-ring" cx="50" cy="50" r="44" />
-            <circle class="inner-ring" cx="50" cy="50" r="39" />
-            <circle class="inner-face" cx="50" cy="50" r="34" />
-
-            <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
-
-            <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
-
-            <path class="fine" d="M50 17 V23" />
-            <path class="fine" d="M50 77 V83" />
-            <path class="fine" d="M17 50 H23" />
-            <path class="fine" d="M77 50 H83" />
-
-            <path class="fine" d="M27 27 L31 31" />
-            <path class="fine" d="M73 27 L69 31" />
-            <path class="fine" d="M27 73 L31 69" />
-            <path class="fine" d="M73 73 L69 69" />
-
-            <path
-                class="monogram-u"
-                d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
-            />
-
-            <path
-                class="monogram-s"
-                d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
-            />
-
-            <path class="hour-hand" d="M50 50 L42 42" />
-            <path class="minute-hand" d="M50 50 L61 37" />
-
-            <circle class="gold" cx="50" cy="50" r="2.4" />
-
-        </svg>
-
-        <span class="brand-name">
-            US WATCHES
-        </span>
-
-    </a>
-
-
-    <nav>
-
-        <a href="/">
-            Home
-        </a>
-
-        <a href="#collection">
-            Shop
-        </a>
-
-        <a href="#collection">
-            Collections
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-    </nav>
+    </div>
 
 </header>
 
 
+<!-- =========================================================
+     SEARCH PANEL
+========================================================= -->
 
-<!-- =========================
-     HERO
-========================= -->
+<div class="search-panel" id="searchPanel">
 
-<section class="hero">
+    <div class="search-inner">
 
-    <div class="hero-content">
-
-
-        <!-- LARGE OPENING LOGO -->
-
-        <svg
-            class="hero-logo luxury-mark"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-        >
-
-            <circle class="outer-ring" cx="50" cy="50" r="44" />
-            <circle class="inner-ring" cx="50" cy="50" r="39" />
-            <circle class="inner-face" cx="50" cy="50" r="34" />
-
-            <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
-
-            <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
-
-            <path class="fine" d="M50 17 V23" />
-            <path class="fine" d="M50 77 V83" />
-            <path class="fine" d="M17 50 H23" />
-            <path class="fine" d="M77 50 H83" />
-
-            <path class="fine" d="M27 27 L31 31" />
-            <path class="fine" d="M73 27 L69 31" />
-            <path class="fine" d="M27 73 L31 69" />
-            <path class="fine" d="M73 73 L69 69" />
-
-            <path
-                class="monogram-u"
-                d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
-            />
-
-            <path
-                class="monogram-s"
-                d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
-            />
-
-            <path class="hour-hand" d="M50 50 L42 42" />
-            <path class="minute-hand" d="M50 50 L61 37" />
-
-            <circle class="gold" cx="50" cy="50" r="2.4" />
-
-        </svg>
-
-
-        <!-- BRAND NAME -->
-
-        <div class="hero-kicker">
-            Umar Subhan Watches
+        <div class="search-title">
+            Find Your Watch
         </div>
 
+        <form class="search-form" id="searchForm">
 
-        <!-- LARGE US WATCHES -->
+            <input
+                type="search"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search by watch name or collection..."
+                autocomplete="off"
+            >
 
-        <div class="hero-wordmark">
-            US WATCHES
-        </div>
+            <button
+                type="submit"
+                class="search-submit"
+            >
+                Search
+            </button>
 
+        </form>
 
-        <!-- TAGLINE -->
-
-        <div class="hero-tagline">
-            Time, Defined By You.
-        </div>
-
-
-        <!-- DESCRIPTION -->
-
-        <p class="hero-description">
-            Discover watches chosen to complement your style,
-            your moments and your everyday life.
-        </p>
-
-
-        <!-- COLLECTION BUTTON -->
-
-        <a href="#collection" class="hero-button">
-            EXPLORE COLLECTION
-        </a>
+        <div
+            class="search-results"
+            id="searchResults"
+        ></div>
 
     </div>
 
+</div>
 
-    <div class="hero-scroll">
-        Scroll to discover
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-inner">
+
+        <div>
+
+            <div class="hero-eyebrow">
+                Umar Subhan Watches
+            </div>
+
+            <h1>
+                US WATCHES
+            </h1>
+
+            <h2>
+                Time, Defined By You.
+            </h2>
+
+            <div class="hero-line"></div>
+
+            <p class="hero-description">
+                A modern watch collection created for those who value
+                character, simplicity and timeless style.
+            </p>
+
+            <a
+                href="#shop"
+                class="hero-button"
+            >
+                Explore Collection
+            </a>
+
+        </div>
+
+
+        <!-- LARGE HOMEPAGE LOGO -->
+
+        <div class="hero-logo-area">
+
+            <div class="hero-logo-frame">
+
+                <svg
+                    class="hero-logo luxury-mark"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-label="US Watches logo"
+                >
+                    <circle class="outer-ring" cx="50" cy="50" r="44" />
+                    <circle class="inner-ring" cx="50" cy="50" r="39" />
+                    <circle class="inner-face" cx="50" cy="50" r="34" />
+                    <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+                    <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+                    <path class="fine" d="M50 17 V23" />
+                    <path class="fine" d="M50 77 V83" />
+                    <path class="fine" d="M17 50 H23" />
+                    <path class="fine" d="M77 50 H83" />
+                    <path class="fine" d="M27 27 L31 31" />
+                    <path class="fine" d="M73 27 L69 31" />
+                    <path class="fine" d="M27 73 L31 69" />
+                    <path class="fine" d="M73 73 L69 69" />
+                    <path
+                        class="monogram-u"
+                        d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+                    />
+                    <path
+                        class="monogram-s"
+                        d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+                    />
+                    <path class="hour-hand" d="M50 50 L42 42" />
+                    <path class="minute-hand" d="M50 50 L61 37" />
+                    <circle class="gold" cx="50" cy="50" r="2.4" />
+                </svg>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
 
+<!-- =========================================================
+     SHOP
+========================================================= -->
 
-<!-- =========================
-     COLLECTION
-========================= -->
+<section
+    class="section shop-section"
+    id="shop"
+>
 
-<section id="collection" class="section">
+    <div class="section-inner">
 
-    <div class="section-heading">
+        <div class="section-heading">
 
-        <div class="section-kicker">
-            The Collection
+            <div class="section-eyebrow">
+                The Collection
+            </div>
+
+            <h2 class="section-title">
+                Our Watches
+            </h2>
+
+            <p class="section-description">
+                Discover the US Watches collection and find a timepiece
+                that fits your style.
+            </p>
+
         </div>
 
-        <h2>
-            Find Your Time
-        </h2>
 
-        <div class="section-line"></div>
+        <!-- SIX APPROVED CATEGORIES -->
 
-    </div>
+        <div class="collection-filters">
+
+            <button
+                type="button"
+                class="collection-filter active"
+                data-filter="all"
+            >
+                All Watches
+            </button>
+
+            <button
+                type="button"
+                class="collection-filter"
+                data-filter="classic"
+            >
+                Classic
+            </button>
+
+            <button
+                type="button"
+                class="collection-filter"
+                data-filter="premium"
+            >
+                Premium
+            </button>
+
+            <button
+                type="button"
+                class="collection-filter"
+                data-filter="everyday"
+            >
+                Everyday
+            </button>
+
+            <button
+                type="button"
+                class="collection-filter"
+                data-filter="minimal"
+            >
+                Minimal
+            </button>
+
+            <button
+                type="button"
+                class="collection-filter"
+                data-filter="new arrivals"
+            >
+                New Arrivals
+            </button>
+
+        </div>
 
 
-    {% if watches %}
+        <!-- PRODUCTS -->
 
-    <div class="collection-grid">
-
-        {% for watch in watches %}
-
-        <a
-            href="{% url 'watch_detail' watch.id %}"
-            class="product-card"
-            aria-label="View {{ watch.name }}"
+        <div
+            class="products-grid"
+            id="productsGrid"
         >
 
-            <div class="product-image">
+            {% for watch in watches %}
 
-                <img
-                    src="{{ watch.image.url }}"
-                    alt="{{ watch.name }}"
-                    loading="lazy"
+                <a
+                    href="{% url 'watch_detail' watch.id %}"
+                    class="product-card"
+                    data-name="{{ watch.name|lower }}"
+                    data-collection="{{ watch.collection|lower }}"
+                    data-description="{{ watch.description|default:''|lower }}"
+                    data-new-arrival="{% if watch.is_new_arrival %}true{% else %}false{% endif %}"
                 >
 
-            </div>
+                    <div class="product-image">
 
+                        {% if watch.image %}
 
-            <div class="product-info">
+                            <img
+                                src="{{ watch.image.url }}"
+                                alt="{{ watch.name }}"
+                            >
 
-                <div class="product-collection">
-                    {{ watch.collection }}
-                </div>
+                        {% else %}
 
-                <h3 class="product-name">
-                    {{ watch.name }}
-                </h3>
+                            <div class="product-image-placeholder">
+                                US Watches
+                            </div>
 
+                        {% endif %}
 
-                <div class="product-bottom">
-
-                    <div class="product-price">
-                        Rs. {{ watch.price }}
                     </div>
 
-                    <div class="view-product">
-                        View Watch →
+
+                    <div class="product-info">
+
+                        <div class="product-collection">
+                            {{ watch.collection|default:"US Watches" }}
+                        </div>
+
+                        <div class="product-name">
+                            {{ watch.name }}
+                        </div>
+
+                        <div class="product-price">
+                            Rs. {{ watch.price|floatformat:0 }}
+                        </div>
+
                     </div>
+
+                </a>
+
+            {% empty %}
+
+                <div class="empty-products">
+
+                    <h3>
+                        Our First Collection Is Being Prepared
+                    </h3>
+
+                    <p>
+                        New US Watches pieces will appear here soon.
+                    </p>
 
                 </div>
 
-            </div>
+            {% endfor %}
 
-        </a>
-
-        {% endfor %}
+        </div>
 
     </div>
-
-    {% else %}
-
-    <div class="empty-collection">
-        Our collection is being prepared.
-        Check back soon for the latest US Watches.
-    </div>
-
-    {% endif %}
 
 </section>
 
 
-
-<!-- =========================
+<!-- =========================================================
      ABOUT
-========================= -->
+========================================================= -->
 
-<section id="about" class="section">
+<section
+    class="section about-section"
+    id="about"
+>
 
-    <div class="section-heading">
+    <div class="section-inner">
 
-        <div class="section-kicker">
-            Our Story
+        <div class="section-heading">
+
+            <div class="section-eyebrow">
+                About US Watches
+            </div>
+
+            <h2 class="section-title">
+                Made For Your Time
+            </h2>
+
         </div>
 
-        <h2>
-            About US Watches
-        </h2>
 
-        <div class="section-line"></div>
+        <div class="about-content">
 
-    </div>
+            <p>
+                US Watches is an independent watch brand focused on
+                creating stylish, accessible and distinctive timepieces.
+            </p>
 
+            <p>
+                From everyday designs to more refined pieces, every
+                collection is selected with a balance of simplicity,
+                character and modern luxury.
+            </p>
 
-    <div class="about-content">
-
-        <p class="about-text">
-            US Watches — Umar Subhan Watches — is built around a simple idea:
-            a good watch should feel personal. We bring together distinctive
-            designs and accessible choices for people who want their timepiece
-            to reflect their own style.
-        </p>
-
-
-        <div class="values">
-
-
-            <div class="value-card">
-
-                <div class="value-number">
-                    01
-                </div>
-
-                <h3>
-                    Style
-                </h3>
-
-                <p>
-                    Designs selected to add character to your everyday look.
-                </p>
-
+            <div class="about-highlight">
+                "Your time. Your style. Your watch."
             </div>
-
-
-            <div class="value-card">
-
-                <div class="value-number">
-                    02
-                </div>
-
-                <h3>
-                    Choice
-                </h3>
-
-                <p>
-                    Different designs and price points so you can find your fit.
-                </p>
-
-            </div>
-
-
-            <div class="value-card">
-
-                <div class="value-number">
-                    03
-                </div>
-
-                <h3>
-                    Confidence
-                </h3>
-
-                <p>
-                    A watch should feel right when you put it on and step out.
-                </p>
-
-            </div>
-
 
         </div>
 
@@ -1626,102 +1421,120 @@
 </section>
 
 
-
-<!-- =========================
+<!-- =========================================================
      CONTACT
-========================= -->
+========================================================= -->
 
-<section id="contact" class="section">
+<section
+    class="section contact-section"
+    id="contact"
+>
 
-    <div class="section-heading">
+    <div class="section-inner">
 
-        <div class="section-kicker">
-            Get In Touch
+        <div class="section-heading">
+
+            <div class="section-eyebrow">
+                Get In Touch
+            </div>
+
+            <h2 class="section-title">
+                Contact US Watches
+            </h2>
+
+            <p class="section-description">
+                Order a watch, ask about availability, discuss pricing,
+                or explore other watches from our collection.
+            </p>
+
         </div>
 
-        <h2>
-            Make It Yours
-        </h2>
 
-        <div class="section-line"></div>
-
-    </div>
+        <div class="contact-grid">
 
 
-    <div class="contact-content">
-
-        <p class="contact-intro">
-            Interested in a watch? Message us directly.
-            Instagram is our preferred way to get in touch,
-            with WhatsApp also available.
-        </p>
-
-
-        <div class="contact-options">
-
-
-            <!-- INSTAGRAM — PRIMARY -->
+            <!-- 1. INSTAGRAM -->
 
             <a
                 href="https://ig.me/m/usstorepk2026"
-                class="contact-card instagram-card"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Message US Watches on Instagram"
+                class="contact-card"
             >
 
-                <span class="contact-label">
+                <div class="contact-label">
                     Instagram
-                </span>
+                </div>
 
-                <span class="contact-name">
-                    @usstorepk2026
-                </span>
+                <div class="contact-name">
+                    Instagram DM
+                </div>
+
+                <div class="contact-detail">
+                    Order, inquire, discuss price or ask for details.
+                </div>
+
+                <div class="contact-arrow">
+                    Message Us →
+                </div>
 
             </a>
 
 
-            <!-- WHATSAPP — ABDUL SUBHAN -->
+            <!-- 2. ABDUL SUBHAN -->
 
             <a
                 href="https://wa.me/923345883182"
-                class="contact-card"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Message Abdul Subhan on WhatsApp"
+                class="contact-card"
             >
 
-                <span class="contact-label">
+                <div class="contact-label">
                     WhatsApp
-                </span>
+                </div>
 
-                <span class="contact-name">
+                <div class="contact-name">
                     Abdul Subhan
-                </span>
+                </div>
+
+                <div class="contact-detail">
+                    Order, inquire, discuss price or ask about other watches.
+                </div>
+
+                <div class="contact-arrow">
+                    WhatsApp →
+                </div>
 
             </a>
 
 
-            <!-- WHATSAPP — MUHAMMAD UMAR -->
+            <!-- 3. MUHAMMAD UMAR -->
 
             <a
                 href="https://wa.me/923085144595"
-                class="contact-card"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Message Muhammad Umar on WhatsApp"
+                class="contact-card"
             >
 
-                <span class="contact-label">
+                <div class="contact-label">
                     WhatsApp
-                </span>
+                </div>
 
-                <span class="contact-name">
+                <div class="contact-name">
                     Muhammad Umar
-                </span>
+                </div>
+
+                <div class="contact-detail">
+                    Order, inquire, discuss price or ask about other watches.
+                </div>
+
+                <div class="contact-arrow">
+                    WhatsApp →
+                </div>
 
             </a>
-
 
         </div>
 
@@ -1730,69 +1543,518 @@
 </section>
 
 
-
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
+    <div class="footer-inner">
 
-    <!-- APPROVED LOGO — DO NOT CHANGE -->
+        <div class="footer-brand">
+            US Watches
+        </div>
 
-    <svg
-        class="footer-mark luxury-mark"
-        viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-    >
+        <div class="footer-copy">
+            © {% now "Y" %} US Watches — Time, Defined By You
+        </div>
 
-        <circle class="outer-ring" cx="50" cy="50" r="44" />
-        <circle class="inner-ring" cx="50" cy="50" r="39" />
-        <circle class="inner-face" cx="50" cy="50" r="34" />
-
-        <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
-
-        <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
-
-        <path class="fine" d="M50 17 V23" />
-        <path class="fine" d="M50 77 V83" />
-        <path class="fine" d="M17 50 H23" />
-        <path class="fine" d="M77 50 H83" />
-
-        <path class="fine" d="M27 27 L31 31" />
-        <path class="fine" d="M73 27 L69 31" />
-        <path class="fine" d="M27 73 L31 69" />
-        <path class="fine" d="M73 73 L69 69" />
-
-        <path
-            class="monogram-u"
-            d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
-        />
-
-        <path
-            class="monogram-s"
-            d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
-        />
-
-        <path class="hour-hand" d="M50 50 L42 42" />
-        <path class="minute-hand" d="M50 50 L61 37" />
-
-        <circle class="gold" cx="50" cy="50" r="2.4" />
-
-    </svg>
-
-
-    <div class="footer-brand">
-        US WATCHES
     </div>
-
-
-    © 2026 US Watches — Umar Subhan Watches
 
 </footer>
 
 
-</body>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
+<script>
+
+    const searchToggle =
+        document.getElementById("searchToggle");
+
+    const searchPanel =
+        document.getElementById("searchPanel");
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const searchForm =
+        document.getElementById("searchForm");
+
+    const searchResults =
+        document.getElementById("searchResults");
+
+    const productCards =
+        Array.from(
+            document.querySelectorAll(".product-card")
+        );
+
+    const filterButtons =
+        Array.from(
+            document.querySelectorAll(".collection-filter")
+        );
+
+
+    /* =====================================================
+       OPEN SEARCH
+    ===================================================== */
+
+    searchToggle.addEventListener(
+        "click",
+        function () {
+
+            searchPanel.classList.toggle("active");
+
+            if (searchPanel.classList.contains("active")) {
+
+                setTimeout(
+                    function () {
+                        searchInput.focus();
+                    },
+                    100
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       NORMALIZE TEXT
+    ===================================================== */
+
+    function normalizeText(text) {
+
+        return text
+            .toLowerCase()
+            .replace(/[^\w\s]/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+    }
+
+
+    /* =====================================================
+       SEARCH SCORE
+    ===================================================== */
+
+    function getSearchScore(card, query) {
+
+        const name =
+            normalizeText(
+                card.dataset.name || ""
+            );
+
+        const collection =
+            normalizeText(
+                card.dataset.collection || ""
+            );
+
+        const description =
+            normalizeText(
+                card.dataset.description || ""
+            );
+
+        const words =
+            query.split(" ").filter(Boolean);
+
+        let score = 0;
+
+
+        if (name === query) {
+            score += 1000;
+        }
+
+
+        if (name.includes(query)) {
+            score += 700;
+        }
+
+
+        if (collection.includes(query)) {
+            score += 250;
+        }
+
+
+        words.forEach(
+            function (word) {
+
+                if (name.includes(word)) {
+                    score += 100;
+                }
+
+                if (collection.includes(word)) {
+                    score += 40;
+                }
+
+                if (description.includes(word)) {
+                    score += 10;
+                }
+
+            }
+        );
+
+
+        return score;
+
+    }
+
+
+    /* =====================================================
+       DISPLAY SEARCH RESULTS
+    ===================================================== */
+
+    function showSearchResults(query) {
+
+        query = normalizeText(query);
+
+        searchResults.innerHTML = "";
+
+
+        if (!query) {
+            return;
+        }
+
+
+        const matches =
+            productCards
+                .map(
+                    function (card) {
+
+                        return {
+                            card: card,
+                            score: getSearchScore(
+                                card,
+                                query
+                            )
+                        };
+
+                    }
+                )
+                .filter(
+                    function (item) {
+                        return item.score > 0;
+                    }
+                )
+                .sort(
+                    function (a, b) {
+                        return b.score - a.score;
+                    }
+                );
+
+
+        if (matches.length === 0) {
+
+            const message =
+                document.createElement("div");
+
+            message.className =
+                "search-message";
+
+            message.textContent =
+                "No matching watch found. Try another watch name or collection.";
+
+            searchResults.appendChild(message);
+
+            return;
+
+        }
+
+
+        matches
+            .slice(0, 8)
+            .forEach(
+                function (item) {
+
+                    const card = item.card;
+
+                    const result =
+                        document.createElement("a");
+
+                    result.href =
+                        card.href;
+
+                    result.className =
+                        "search-result-item";
+
+
+                    const displayName =
+                        card.dataset.name ||
+                        "US Watches";
+
+                    const displayCollection =
+                        card.dataset.collection ||
+                        "US Watches";
+
+
+                    result.innerHTML = `
+                        <div class="search-result-name">
+                            ${displayName.replace(/\b\w/g, function(letter) {
+                                return letter.toUpperCase();
+                            })}
+                        </div>
+
+                        <div class="search-result-meta">
+                            ${displayCollection.replace(/\b\w/g, function(letter) {
+                                return letter.toUpperCase();
+                            })}
+                        </div>
+                    `;
+
+
+                    searchResults.appendChild(result);
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       SUBMIT SEARCH
+
+       One exact/strong match:
+       DIRECTLY OPEN WATCH.
+
+       Multiple matches:
+       SHOW SIMILAR WATCHES.
+    ===================================================== */
+
+    searchForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const query =
+                normalizeText(
+                    searchInput.value
+                );
+
+
+            if (!query) {
+                return;
+            }
+
+
+            const matches =
+                productCards
+                    .map(
+                        function (card) {
+
+                            return {
+                                card: card,
+                                score: getSearchScore(
+                                    card,
+                                    query
+                                )
+                            };
+
+                        }
+                    )
+                    .filter(
+                        function (item) {
+                            return item.score > 0;
+                        }
+                    )
+                    .sort(
+                        function (a, b) {
+                            return b.score - a.score;
+                        }
+                    );
+
+
+            if (matches.length === 1) {
+
+                window.location.href =
+                    matches[0].card.href;
+
+                return;
+
+            }
+
+
+            if (matches.length > 1) {
+
+                /*
+                 If the strongest result is clearly
+                 much stronger than the next result,
+                 open that watch directly.
+                */
+
+                if (
+                    matches[0].score >= 700 &&
+                    (
+                        matches.length === 1 ||
+                        matches[0].score >=
+                        matches[1].score + 250
+                    )
+                ) {
+
+                    window.location.href =
+                        matches[0].card.href;
+
+                    return;
+
+                }
+
+            }
+
+
+            showSearchResults(query);
+
+        }
+    );
+
+
+    /* =====================================================
+       LIVE SEARCH
+    ===================================================== */
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            showSearchResults(
+                searchInput.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       COLLECTION FILTERS
+    ===================================================== */
+
+    filterButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    filterButtons.forEach(
+                        function (item) {
+                            item.classList.remove(
+                                "active"
+                            );
+                        }
+                    );
+
+
+                    button.classList.add("active");
+
+
+                    const selected =
+                        button.dataset.filter
+                            .toLowerCase();
+
+
+                    productCards.forEach(
+                        function (card) {
+
+                            const collection =
+                                (
+                                    card.dataset.collection ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const isNewArrival =
+                                card.dataset.newArrival ===
+                                "true";
+
+
+                            let shouldShow =
+                                false;
+
+
+                            if (selected === "all") {
+
+                                shouldShow = true;
+
+                            }
+                            else if (
+                                selected ===
+                                "new arrivals"
+                            ) {
+
+                                shouldShow =
+                                    isNewArrival;
+
+                            }
+                            else {
+
+                                shouldShow =
+                                    collection ===
+                                    selected;
+
+                            }
+
+
+                            card.classList.toggle(
+                                "hidden",
+                                !shouldShow
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ESCAPE
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                searchPanel.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLICK OUTSIDE SEARCH
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                searchPanel.classList.contains("active") &&
+                !searchPanel.contains(event.target) &&
+                !searchToggle.contains(event.target)
+            ) {
+
+                searchPanel.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
 </html>
