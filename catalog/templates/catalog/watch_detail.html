@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -320,6 +321,51 @@
 
 
         /* =========================
+           PRODUCT SPECIFICATIONS
+        ========================= */
+
+        .specifications {
+            max-width: 520px;
+            margin: 0 0 30px;
+            border-top: 1px solid rgba(201, 169, 97, .20);
+            border-bottom: 1px solid rgba(201, 169, 97, .20);
+        }
+
+        .specifications-title {
+            padding: 14px 0 11px;
+            color: #c9a961;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .specification-row {
+            display: grid;
+            grid-template-columns: 42% 58%;
+            gap: 10px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(245, 241, 232, .07);
+        }
+
+        .specification-label {
+            color: #858078;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .specification-value {
+            color: #f5f1e8;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: right;
+        }
+
+
+        /* =========================
            ORDER SECTION
         ========================= */
 
@@ -456,7 +502,6 @@
             .product-detail h1 {
                 font-size: 55px;
             }
-
         }
 
 
@@ -554,6 +599,38 @@
                 font-size: 20px;
             }
 
+
+            /* SPECIFICATIONS */
+
+            .specifications {
+                margin-bottom: 25px;
+            }
+
+            .specifications-title {
+                padding: 13px 0 10px;
+                font-size: 7.5px;
+                letter-spacing: 2.2px;
+            }
+
+            .specification-row {
+                grid-template-columns: 40% 60%;
+                gap: 8px;
+                padding: 9px 0;
+            }
+
+            .specification-label {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+
+            .specification-value {
+                font-size: 9px;
+                line-height: 1.45;
+            }
+
+
+            /* ORDER */
+
             .order-title {
                 margin-bottom: 10px;
                 font-size: 8px;
@@ -596,7 +673,6 @@
                 font-size: 20px;
                 letter-spacing: 3px;
             }
-
         }
 
 
@@ -659,6 +735,24 @@
                 font-size: 19px;
             }
 
+
+            /* SPECIFICATIONS */
+
+            .specification-row {
+                grid-template-columns: 38% 62%;
+            }
+
+            .specification-label {
+                font-size: 7.5px;
+            }
+
+            .specification-value {
+                font-size: 8.5px;
+            }
+
+
+            /* ORDER */
+
             .order-button {
                 min-height: 44px;
                 padding: 12px 9px;
@@ -678,7 +772,6 @@
             .footer-brand {
                 font-size: 19px;
             }
-
         }
 
 
@@ -731,7 +824,6 @@
             .order-button {
                 font-size: 7px;
             }
-
         }
 
     </style>
@@ -770,7 +862,6 @@
             <path class="fine" d="M77 50 H83" />
             <path class="fine" d="M50 77 V83" />
             <path class="fine" d="M17 50 H23" />
-
             <path class="fine" d="M28 28 L32 32" />
             <path class="fine" d="M72 28 L68 32" />
             <path class="fine" d="M28 72 L32 68" />
@@ -827,7 +918,6 @@
 </header>
 
 
-
 <!-- =========================
      PRODUCT DETAIL
 ========================= -->
@@ -867,6 +957,145 @@
             Rs. {{ watch.price }}
         </div>
 
+
+        <!-- =========================
+             PRODUCT SPECIFICATIONS
+        ========================= -->
+
+        <div class="specifications">
+
+            <div class="specifications-title">
+                Product Specifications
+            </div>
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Model
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.name }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Collection
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.collection|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Price
+                </div>
+
+                <div class="specification-value">
+                    Rs. {{ watch.price }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Movement
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.movement|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Dial
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.dial|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Strap
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.strap|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Case
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.case|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Water Resistance
+                </div>
+
+                <div class="specification-value">
+                    {{ watch.water_resistance|default:"—" }}
+                </div>
+
+            </div>
+
+
+            <div class="specification-row">
+
+                <div class="specification-label">
+                    Availability
+                </div>
+
+                <div class="specification-value">
+
+                    {% if watch.stock > 0 %}
+                        Available
+                    {% else %}
+                        Currently unavailable
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ORDER SECTION
+        ========================= -->
 
         <div class="order-title">
             Interested in this watch?
@@ -925,7 +1154,6 @@
 </main>
 
 
-
 <!-- =========================
      FOOTER
 ========================= -->
@@ -953,7 +1181,6 @@
         <path class="fine" d="M77 50 H83" />
         <path class="fine" d="M50 77 V83" />
         <path class="fine" d="M17 50 H23" />
-
         <path class="fine" d="M28 28 L32 32" />
         <path class="fine" d="M72 28 L68 32" />
         <path class="fine" d="M28 72 L32 68" />

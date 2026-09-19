@@ -1,0 +1,323 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart | US Watches</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b0b0b;
+            color: #f5f1e8;
+            font-family: Arial, sans-serif;
+        }
+
+        .cart-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px 80px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #c8a45d;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin: 0 0 40px;
+            font-weight: 500;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 22px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .cart-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #151515;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .item-price {
+            color: #c8a45d;
+            font-size: 17px;
+        }
+
+        .quantity-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-input {
+            width: 65px;
+            padding: 10px;
+            text-align: center;
+            background: #151515;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .update-button {
+            padding: 10px 15px;
+            background: transparent;
+            border: 1px solid #c8a45d;
+            color: #c8a45d;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .update-button:hover {
+            background: #c8a45d;
+            color: #000;
+        }
+
+        .remove-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .remove-link:hover {
+            color: #fff;
+        }
+
+        .item-subtotal {
+            min-width: 120px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .cart-summary {
+            margin-top: 40px;
+            margin-left: auto;
+            max-width: 350px;
+            padding: 25px;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            background: #111;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .total-row {
+            border-top: 1px solid #333;
+            padding-top: 18px;
+            font-size: 23px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 80px 20px;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+        }
+
+        .empty-cart h2 {
+            font-family: Georgia, serif;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .shop-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 25px;
+            background: #c8a45d;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            .cart-page {
+                padding: 30px 15px 60px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .cart-item {
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .cart-image {
+                width: 90px;
+                height: 90px;
+            }
+
+            .item-name {
+                font-size: 19px;
+            }
+
+            .quantity-form {
+                width: 100%;
+            }
+
+            .item-subtotal {
+                margin-left: auto;
+                min-width: auto;
+            }
+
+            .cart-summary {
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cart-page">
+
+    <a href="{% url 'home' %}" class="back-link">
+        ← Continue Shopping
+    </a>
+
+    <h1>Your Shopping Cart</h1>
+
+    {% if cart_items %}
+
+        {% for item in cart_items %}
+
+            <div class="cart-item">
+
+                {% if item.watch.image %}
+                    <img
+                        src="{{ item.watch.image.url }}"
+                        alt="{{ item.watch.name }}"
+                        class="cart-image"
+                    >
+                {% else %}
+                    <div class="cart-image"></div>
+                {% endif %}
+
+                <div class="item-info">
+
+                    <div class="item-name">
+                        {{ item.watch.name }}
+                    </div>
+
+                    <div class="item-price">
+                        Rs. {{ item.watch.price|floatformat:0 }}
+                    </div>
+
+                </div>
+
+                <form
+                    method="post"
+                    action="{% url 'update_cart' item.watch.id %}"
+                    class="quantity-form"
+                >
+                    {% csrf_token %}
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        max="{{ item.watch.stock }}"
+                        class="quantity-input"
+                    >
+
+                    <button
+                        type="submit"
+                        class="update-button"
+                    >
+                        Update
+                    </button>
+                </form>
+
+                <div class="item-subtotal">
+                    Rs. {{ item.subtotal|floatformat:0 }}
+                    <br>
+
+                    <a
+                        href="{% url 'remove_from_cart' item.watch.id %}"
+                        class="remove-link"
+                    >
+                        Remove
+                    </a>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+        <div class="cart-summary">
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>Rs. {{ total|floatformat:0 }}</span>
+            </div>
+
+            <div class="summary-row total-row">
+                <strong>Total</strong>
+                <strong>Rs. {{ total|floatformat:0 }}</strong>
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-cart">
+
+            <h2>Your cart is empty</h2>
+
+            <p>
+                Explore our watches and add your favorites to your cart.
+            </p>
+
+            <a href="{% url 'home' %}" class="shop-button">
+                Explore Watches
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

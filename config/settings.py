@@ -23,6 +23,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "192.168.0.101",
+    "uswatches2026.pythonanywhere.com",
 ]
 
 if os.environ.get("RENDER_EXTERNAL_HOSTNAME"):

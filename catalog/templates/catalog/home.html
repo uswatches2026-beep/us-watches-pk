@@ -202,10 +202,17 @@
 
 
         /* =====================================================
-           DOMINANT SEARCH BUTTON
+           HEADER ACTIONS
         ===================================================== */
 
-        .header-search-button {
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-search-button,
+        .header-cart-button {
             min-width: 108px;
             padding: 12px 18px;
 
@@ -223,7 +230,12 @@
             transition: .25s ease;
         }
 
-        .header-search-button:hover {
+        .header-cart-button {
+            min-width: 82px;
+        }
+
+        .header-search-button:hover,
+        .header-cart-button:hover {
             background: #c9a961;
             color: #171512;
         }
@@ -608,6 +620,10 @@
                 0 16px 35px rgba(24, 23, 21, .11);
         }
 
+        .product-link {
+            display: block;
+        }
+
         .product-image {
             height: 300px;
 
@@ -638,7 +654,7 @@
         }
 
         .product-info {
-            padding: 22px;
+            padding: 22px 22px 12px;
         }
 
         .product-collection {
@@ -668,6 +684,52 @@
 
             font-size: 12px;
             font-weight: 700;
+        }
+
+        .product-actions {
+            padding: 10px 22px 22px;
+        }
+
+        .add-to-cart-button {
+            width: 100%;
+            padding: 13px 16px;
+
+            border: 1px solid #191815;
+            background: #191815;
+            color: #f5f1e8;
+
+            cursor: pointer;
+
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .add-to-cart-button:hover {
+            background: #c9a961;
+            border-color: #c9a961;
+            color: #171512;
+        }
+
+        .add-to-cart-button:disabled {
+            background: #aaa296;
+            border-color: #aaa296;
+            color: #f5f1e8;
+            cursor: not-allowed;
+        }
+
+        .stock-note {
+            margin-top: 8px;
+
+            color: #71695e;
+
+            font-size: 8px;
+            letter-spacing: .7px;
+            text-align: center;
+            text-transform: uppercase;
         }
 
         .product-card.hidden {
@@ -906,7 +968,7 @@
 
             .header-inner {
                 width: calc(100% - 24px);
-                gap: 10px;
+                gap: 7px;
             }
 
             .brand {
@@ -927,10 +989,16 @@
                 letter-spacing: 1.4px;
             }
 
-            .header-search-button {
-                min-width: 78px;
-                padding: 10px 11px;
-                font-size: 8px;
+            .header-actions {
+                gap: 5px;
+            }
+
+            .header-search-button,
+            .header-cart-button {
+                min-width: auto;
+                padding: 10px 9px;
+                font-size: 7px;
+                letter-spacing: 1px;
             }
 
             .search-inner {
@@ -1070,13 +1138,24 @@
         </nav>
 
 
-        <button
-            type="button"
-            class="header-search-button"
-            id="searchToggle"
-        >
-            Search
-        </button>
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="header-search-button"
+                id="searchToggle"
+            >
+                Search
+            </button>
+
+            <a
+                href="{% url 'cart' %}"
+                class="header-cart-button"
+            >
+                Cart
+            </a>
+
+        </div>
 
     </div>
 
@@ -1303,52 +1382,102 @@
 
             {% for watch in watches %}
 
-                <a
-                    href="{% url 'watch_detail' watch.id %}"
+                <div
                     class="product-card"
                     data-name="{{ watch.name|lower }}"
                     data-collection="{{ watch.collection|lower }}"
                     data-description="{{ watch.description|default:''|lower }}"
                     data-new-arrival="{% if watch.is_new_arrival %}true{% else %}false{% endif %}"
+                    data-url="{% url 'watch_detail' watch.id %}"
                 >
 
-                    <div class="product-image">
+                    <a
+                        href="{% url 'watch_detail' watch.id %}"
+                        class="product-link"
+                    >
 
-                        {% if watch.image %}
+                        <div class="product-image">
 
-                            <img
-                                src="{{ watch.image.url }}"
-                                alt="{{ watch.name }}"
+                            {% if watch.image %}
+
+                                <img
+                                    src="{{ watch.image.url }}"
+                                    alt="{{ watch.name }}"
+                                >
+
+                            {% else %}
+
+                                <div class="product-image-placeholder">
+                                    US Watches
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="product-info">
+
+                            <div class="product-collection">
+                                {{ watch.collection|default:"US Watches" }}
+                            </div>
+
+                            <div class="product-name">
+                                {{ watch.name }}
+                            </div>
+
+                            <div class="product-price">
+                                Rs. {{ watch.price|floatformat:0 }}
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="product-actions">
+
+                        {% if watch.stock > 0 %}
+
+                            <form
+                                method="post"
+                                action="{% url 'add_to_cart' watch.id %}"
                             >
+
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="add-to-cart-button"
+                                >
+                                    Add to Cart
+                                </button>
+
+                            </form>
+
+                            <div class="stock-note">
+                                Available
+                            </div>
 
                         {% else %}
 
-                            <div class="product-image-placeholder">
-                                US Watches
+                            <button
+                                type="button"
+                                class="add-to-cart-button"
+                                disabled
+                            >
+                                Out of Stock
+                            </button>
+
+                            <div class="stock-note">
+                                Currently unavailable
                             </div>
 
                         {% endif %}
 
                     </div>
 
-
-                    <div class="product-info">
-
-                        <div class="product-collection">
-                            {{ watch.collection|default:"US Watches" }}
-                        </div>
-
-                        <div class="product-name">
-                            {{ watch.name }}
-                        </div>
-
-                        <div class="product-price">
-                            Rs. {{ watch.price|floatformat:0 }}
-                        </div>
-
-                    </div>
-
-                </a>
+                </div>
 
             {% empty %}
 
@@ -1774,7 +1903,7 @@
                         document.createElement("a");
 
                     result.href =
-                        card.href;
+                        card.dataset.url;
 
                     result.className =
                         "search-result-item";
@@ -1870,7 +1999,7 @@
             if (matches.length === 1) {
 
                 window.location.href =
-                    matches[0].card.href;
+                    matches[0].card.dataset.url;
 
                 return;
 
@@ -1895,7 +2024,7 @@
                 ) {
 
                     window.location.href =
-                        matches[0].card.href;
+                        matches[0].card.dataset.url;
 
                     return;
 
