@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import JsonResponse
 from .models import Watch
 
 
@@ -18,6 +19,9 @@ def home(request):
         "New Arrivals",
     ]
 
+    cart = request.session.get("cart", {})
+    cart_count = sum(cart.values())
+
     return render(
         request,
         "catalog/home.html",
@@ -25,6 +29,7 @@ def home(request):
             "watches": watches,
             "collections": collections,
             "selected_collection": collection,
+            "cart_count": cart_count,
         }
     )
 
@@ -60,6 +65,16 @@ def add_to_cart(request, watch_id):
 
     request.session["cart"] = cart
     request.session.modified = True
+
+    cart_count = sum(cart.values())
+
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({
+            "success": True,
+            "cart_count": cart_count,
+            "quantity": cart.get(watch_id_str, 0),
+            "stock": watch.stock,
+        })
 
     return redirect(request.META.get("HTTP_REFERER", "home"))
 
@@ -132,7 +147,14 @@ def update_cart(request, watch_id):
 
 def remove_from_cart(request, watch_id):
     cart = request.session.get("cart", {})
-    cart.pop(str(watch_id), None)
+    watch_id_str = str(watch_id)
+
+    current_quantity = cart.get(watch_id_str, 0)
+
+    if current_quantity > 1:
+        cart[watch_id_str] = current_quantity - 1
+    else:
+        cart.pop(watch_id_str, None)
 
     request.session["cart"] = cart
     request.session.modified = True

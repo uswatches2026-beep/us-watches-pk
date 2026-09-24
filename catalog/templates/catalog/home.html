@@ -240,6 +240,34 @@
             color: #171512;
         }
 
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 17px;
+            height: 17px;
+
+            margin-left: 4px;
+            padding: 0 4px;
+
+            border: 1px solid rgba(201, 169, 97, .75);
+            border-radius: 50%;
+
+            color: #c9a961;
+
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0;
+            line-height: 1;
+            text-transform: none;
+        }
+
+        .header-cart-button:hover .cart-count {
+            border-color: #171512;
+            color: #171512;
+        }
+
 
         /* =====================================================
            SEARCH
@@ -592,12 +620,13 @@
 
         /* =====================================================
            PRODUCTS
+           REFINED CARD / IMAGE LAYOUT
         ===================================================== */
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
+            gap: 20px;
         }
 
         .product-card {
@@ -625,7 +654,8 @@
         }
 
         .product-image {
-            height: 300px;
+            width: 100%;
+            aspect-ratio: 4 / 3;
 
             display: flex;
             align-items: center;
@@ -643,6 +673,7 @@
             display: block;
 
             object-fit: cover;
+            object-position: center;
         }
 
         .product-image-placeholder {
@@ -654,45 +685,47 @@
         }
 
         .product-info {
-            padding: 22px 22px 12px;
+            padding: 17px 18px 10px;
         }
 
         .product-collection {
             color: #a7894e;
 
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
-            letter-spacing: 1.8px;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
         }
 
         .product-name {
-            margin-top: 7px;
+            margin-top: 6px;
 
             color: #171512;
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 28px;
+            font-size: 25px;
             font-weight: 600;
-            line-height: 1;
+            line-height: 1.05;
         }
 
         .product-price {
-            margin-top: 13px;
+            margin-top: 10px;
 
             color: #39352f;
 
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.2;
         }
 
         .product-actions {
-            padding: 10px 22px 22px;
+            padding: 9px 18px 18px;
         }
 
         .add-to-cart-button {
             width: 100%;
-            padding: 13px 16px;
+            padding: 12px 14px;
 
             border: 1px solid #191815;
             background: #191815;
@@ -700,9 +733,9 @@
 
             cursor: pointer;
 
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.4px;
             text-transform: uppercase;
 
             transition: .25s ease;
@@ -722,11 +755,11 @@
         }
 
         .stock-note {
-            margin-top: 8px;
+            margin-top: 7px;
 
             color: #71695e;
 
-            font-size: 8px;
+            font-size: 7px;
             letter-spacing: .7px;
             text-align: center;
             text-transform: uppercase;
@@ -922,7 +955,7 @@
 
 
         /* =====================================================
-           MOBILE
+           TABLET
         ===================================================== */
 
         @media (max-width: 900px) {
@@ -956,6 +989,23 @@
 
             .products-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .product-image {
+                aspect-ratio: 4 / 3;
+            }
+
+            .product-info {
+                padding: 16px 17px 9px;
+            }
+
+            .product-name {
+                font-size: 24px;
+            }
+
+            .product-actions {
+                padding: 9px 17px 17px;
             }
 
             .contact-grid {
@@ -963,6 +1013,10 @@
             }
         }
 
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 600px) {
 
@@ -1044,12 +1098,72 @@
                 width: calc(100% - 28px);
             }
 
+
+            /* =================================================
+               MOBILE PRODUCT GRID
+            ================================================= */
+
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-card {
+                min-width: 0;
+            }
+
+            .product-card:hover {
+                transform: translateY(-2px);
             }
 
             .product-image {
-                height: 300px;
+                aspect-ratio: 4 / 3;
+            }
+
+            .product-info {
+                padding: 12px 12px 7px;
+            }
+
+            .product-collection {
+                font-size: 6.5px;
+                letter-spacing: 1.15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .product-name {
+                margin-top: 5px;
+
+                font-size: 19px;
+                line-height: 1.05;
+
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .product-price {
+                margin-top: 7px;
+                font-size: 9px;
+            }
+
+            .product-actions {
+                padding: 6px 12px 12px;
+            }
+
+            .add-to-cart-button {
+                padding: 10px 7px;
+
+                font-size: 6.5px;
+                letter-spacing: 1px;
+            }
+
+            .stock-note {
+                margin-top: 5px;
+                font-size: 6px;
+                letter-spacing: .5px;
             }
 
             .collection-filters {
@@ -1068,6 +1182,37 @@
 
                 flex-direction: column;
                 align-items: flex-start;
+            }
+        }
+
+
+        /* =====================================================
+           VERY SMALL PHONES
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .products-grid {
+                gap: 9px;
+            }
+
+            .product-info {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .product-name {
+                font-size: 17px;
+            }
+
+            .product-actions {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .add-to-cart-button {
+                font-size: 6px;
+                letter-spacing: .8px;
             }
         }
 
@@ -1153,6 +1298,12 @@
                 class="header-cart-button"
             >
                 Cart
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    {{ cart_count }}
+                </span>
             </a>
 
         </div>
@@ -1442,6 +1593,7 @@
                             <form
                                 method="post"
                                 action="{% url 'add_to_cart' watch.id %}"
+                                class="add-to-cart-form"
                             >
 
                                 {% csrf_token %}
@@ -1713,6 +1865,9 @@
 
     const searchResults =
         document.getElementById("searchResults");
+
+    const cartCount =
+        document.getElementById("cartCount");
 
     const productCards =
         Array.from(
@@ -2049,6 +2204,143 @@
 
             showSearchResults(
                 searchInput.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ADD TO CART — AJAX
+       NO PAGE RELOAD
+       NO SCROLL JUMP
+    ===================================================== */
+
+    const addToCartForms =
+        Array.from(
+            document.querySelectorAll(".add-to-cart-form")
+        );
+
+
+    addToCartForms.forEach(
+        function (form) {
+
+            form.addEventListener(
+                "submit",
+                async function (event) {
+
+                    event.preventDefault();
+
+
+                    const button =
+                        form.querySelector(
+                            ".add-to-cart-button"
+                        );
+
+
+                    if (!button || button.disabled) {
+                        return;
+                    }
+
+
+                    const originalText =
+                        button.textContent.trim();
+
+
+                    button.disabled = true;
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                form.action,
+                                {
+                                    method: "POST",
+
+                                    headers: {
+                                        "X-Requested-With":
+                                            "XMLHttpRequest",
+                                        "Accept":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        new FormData(form),
+
+                                    credentials:
+                                        "same-origin"
+                                }
+                            );
+
+
+                        if (!response.ok) {
+                            throw new Error(
+                                "Unable to add item to cart."
+                            );
+                        }
+
+
+                        const data =
+                            await response.json();
+
+
+                        if (!data.success) {
+                            throw new Error(
+                                "Item could not be added to cart."
+                            );
+                        }
+
+
+                        cartCount.textContent =
+                            data.cart_count;
+
+
+                        button.textContent =
+                            "Added";
+
+
+                        setTimeout(
+                            function () {
+
+                                button.textContent =
+                                    originalText;
+
+                                button.disabled =
+                                    false;
+
+                            },
+                            600
+                        );
+
+
+                    }
+                    catch (error) {
+
+                        console.error(
+                            "Add to Cart Error:",
+                            error
+                        );
+
+                        button.textContent =
+                            "Try Again";
+
+                        setTimeout(
+                            function () {
+
+                                button.textContent =
+                                    originalText;
+
+                                button.disabled =
+                                    false;
+
+                            },
+                            800
+                        );
+
+                    }
+
+                }
             );
 
         }

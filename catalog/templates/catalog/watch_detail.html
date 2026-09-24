@@ -1,10 +1,9 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-```
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -51,6 +50,7 @@
     button {
         -webkit-tap-highlight-color: transparent;
     }
+
 
 
     /* =========================
@@ -131,6 +131,7 @@
     nav a:hover::after {
         width: 100%;
     }
+
 
 
     /* =========================
@@ -218,6 +219,7 @@
     }
 
 
+
     /* =========================
        PRODUCT DETAIL
     ========================= */
@@ -234,9 +236,14 @@
     }
 
 
+
     /* =========================
        PRODUCT IMAGE
     ========================= */
+
+    .product-gallery {
+        width: 100%;
+    }
 
     .product-detail-image {
         height: 500px;
@@ -270,6 +277,41 @@
     .product-detail-image:hover img {
         transform: scale(1.035);
     }
+
+    /* =========================
+       PRODUCT IMAGE GALLERY
+    ========================= */
+
+    .gallery-thumbnails {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .gallery-thumbnail {
+        width: 72px;
+        height: 72px;
+        flex: 0 0 72px;
+        padding: 0;
+        background: #e8e4dc;
+        border: 1px solid rgba(201, 169, 97, .20);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .gallery-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .gallery-thumbnail.active {
+        border-color: #c9a961;
+    }
+
 
 
     /* =========================
@@ -309,6 +351,7 @@
     }
 
 
+
     /* =========================
        PRICE
     ========================= */
@@ -320,6 +363,7 @@
         font-weight: 600;
         letter-spacing: .5px;
     }
+
 
 
     /* =========================
@@ -365,6 +409,7 @@
         line-height: 1.5;
         text-align: right;
     }
+
 
 
     /* =========================
@@ -439,6 +484,7 @@
     }
 
 
+
     /* =========================
        BACK BUTTON
     ========================= */
@@ -460,6 +506,7 @@
     .back-button:hover {
         color: #c9a961;
     }
+
 
 
     /* =========================
@@ -493,6 +540,7 @@
     }
 
 
+
     /* =========================
        TABLET
     ========================= */
@@ -516,6 +564,7 @@
             font-size: 55px;
         }
     }
+
 
 
     /* =========================
@@ -563,6 +612,7 @@
             padding: 4px 0;
             white-space: nowrap;
         }
+
 
 
         /* PRODUCT */
@@ -613,6 +663,21 @@
         }
 
 
+
+        /* GALLERY */
+
+        .gallery-thumbnails {
+            gap: 8px;
+        }
+
+        .gallery-thumbnail {
+            width: 62px;
+            height: 62px;
+            flex-basis: 62px;
+        }
+
+
+
         /* SPECIFICATIONS */
 
         .specifications {
@@ -642,6 +707,7 @@
         }
 
 
+
         /* ORDER */
 
         .order-title {
@@ -667,6 +733,7 @@
         }
 
 
+
         /* FOOTER */
 
         footer {
@@ -687,6 +754,7 @@
             letter-spacing: 3px;
         }
     }
+
 
 
     /* =========================
@@ -749,6 +817,21 @@
         }
 
 
+
+        /* GALLERY */
+
+        .gallery-thumbnails {
+            gap: 7px;
+        }
+
+        .gallery-thumbnail {
+            width: 56px;
+            height: 56px;
+            flex-basis: 56px;
+        }
+
+
+
         /* SPECIFICATIONS */
 
         .specification-row {
@@ -762,6 +845,7 @@
         .specification-value {
             font-size: 8.5px;
         }
+
 
 
         /* ORDER */
@@ -786,6 +870,7 @@
             font-size: 19px;
         }
     }
+
 
 
     /* =========================
@@ -837,10 +922,15 @@
         .order-button {
             font-size: 7px;
         }
+
+        .gallery-thumbnail {
+            width: 52px;
+            height: 52px;
+            flex-basis: 52px;
+        }
     }
 
 </style>
-```
 
 </head>
 
@@ -852,7 +942,6 @@
 
 <header>
 
-```
 <a href="/" class="brand" aria-label="US Watches Home">
 
     <!-- APPROVED LOGO — DO NOT CHANGE -->
@@ -875,6 +964,7 @@
         <path class="fine" d="M77 50 H83" />
         <path class="fine" d="M50 77 V83" />
         <path class="fine" d="M17 50 H23" />
+
         <path class="fine" d="M28 28 L32 32" />
         <path class="fine" d="M72 28 L68 32" />
         <path class="fine" d="M28 72 L32 68" />
@@ -892,7 +982,6 @@
 
         <path class="hand-hour" d="M50 50 L42 40" />
         <path class="hand-minute" d="M50 50 L61 34" />
-
         <circle class="gold" cx="50" cy="50" r="2.4" />
 
     </svg>
@@ -902,6 +991,7 @@
     </span>
 
 </a>
+
 
 
 <nav>
@@ -927,9 +1017,9 @@
     </a>
 
 </nav>
-```
 
 </header>
+
 
 <!-- =========================
      PRODUCT DETAIL
@@ -937,15 +1027,60 @@
 
 <main class="product-detail">
 
-```
-<div class="product-detail-image">
+<div class="product-gallery">
 
-    <img
-        src="{{ watch.image.url }}"
-        alt="{{ watch.name }}"
-    >
+    <div class="product-detail-image">
+
+        <img
+            id="mainProductImage"
+            src="{{ watch.image.url }}"
+            alt="{{ watch.name }}"
+        >
+
+    </div>
+
+
+    {% if watch.images.all %}
+
+        <div class="gallery-thumbnails">
+
+            <button
+                type="button"
+                class="gallery-thumbnail active"
+                onclick="changeProductImage('{{ watch.image.url }}', this)"
+            >
+
+                <img
+                    src="{{ watch.image.url }}"
+                    alt="{{ watch.name }}"
+                >
+
+            </button>
+
+
+            {% for gallery_image in watch.images.all %}
+
+                <button
+                    type="button"
+                    class="gallery-thumbnail"
+                    onclick="changeProductImage('{{ gallery_image.image.url }}', this)"
+                >
+
+                    <img
+                        src="{{ gallery_image.image.url }}"
+                        alt="{{ watch.name }}"
+                    >
+
+                </button>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
 
 </div>
+
 
 
 <div class="product-detail-info">
@@ -956,9 +1091,11 @@
     </div>
 
 
+
     <h1>
         {{ watch.name }}
     </h1>
+
 
 
     <p class="description">
@@ -966,9 +1103,11 @@
     </p>
 
 
+
     <div class="price">
         Rs. {{ watch.price }}
     </div>
+
 
 
     <!-- =========================
@@ -980,6 +1119,7 @@
         <div class="specifications-title">
             Product Specifications
         </div>
+
 
 
         <div class="specification-row">
@@ -995,6 +1135,7 @@
         </div>
 
 
+
         <div class="specification-row">
 
             <div class="specification-label">
@@ -1006,6 +1147,7 @@
             </div>
 
         </div>
+
 
 
         <div class="specification-row">
@@ -1021,6 +1163,7 @@
         </div>
 
 
+
         <div class="specification-row">
 
             <div class="specification-label">
@@ -1032,6 +1175,7 @@
             </div>
 
         </div>
+
 
 
         <div class="specification-row">
@@ -1047,6 +1191,7 @@
         </div>
 
 
+
         <div class="specification-row">
 
             <div class="specification-label">
@@ -1058,6 +1203,7 @@
             </div>
 
         </div>
+
 
 
         <div class="specification-row">
@@ -1073,6 +1219,7 @@
         </div>
 
 
+
         <div class="specification-row">
 
             <div class="specification-label">
@@ -1086,6 +1233,7 @@
         </div>
 
 
+
         <div class="specification-row">
 
             <div class="specification-label">
@@ -1095,9 +1243,13 @@
             <div class="specification-value">
 
                 {% if watch.stock > 0 %}
+
                     Available
+
                 {% else %}
+
                     Currently unavailable
+
                 {% endif %}
 
             </div>
@@ -1107,6 +1259,7 @@
     </div>
 
 
+
     <!-- =========================
          ORDER SECTION
     ========================= -->
@@ -1114,6 +1267,7 @@
     <div class="order-title">
         Interested in this watch?
     </div>
+
 
 
     <div class="order-options">
@@ -1148,6 +1302,7 @@
         {% endif %}
 
 
+
         <!-- PRIMARY: INSTAGRAM -->
 
         <a
@@ -1158,6 +1313,7 @@
         >
             MESSAGE US ON INSTAGRAM — @USSTOREPK2026
         </a>
+
 
 
         <!-- WHATSAPP: ABDUL SUBHAN -->
@@ -1172,6 +1328,7 @@
         </a>
 
 
+
         <!-- WHATSAPP: MUHAMMAD UMAR -->
 
         <a
@@ -1184,7 +1341,9 @@
         </a>
 
 
+
     </div>
+
 
 
     <a href="/" class="back-button">
@@ -1192,10 +1351,11 @@
     </a>
 
 
+
 </div>
-```
 
 </main>
+
 
 <!-- =========================
      FOOTER
@@ -1203,7 +1363,7 @@
 
 <footer>
 
-```
+
 <!-- APPROVED LOGO — DO NOT CHANGE -->
 
 <svg
@@ -1224,6 +1384,7 @@
     <path class="fine" d="M77 50 H83" />
     <path class="fine" d="M50 77 V83" />
     <path class="fine" d="M17 50 H23" />
+
     <path class="fine" d="M28 28 L32 32" />
     <path class="fine" d="M72 28 L68 32" />
     <path class="fine" d="M28 72 L32 68" />
@@ -1241,10 +1402,10 @@
 
     <path class="hand-hour" d="M50 50 L42 40" />
     <path class="hand-minute" d="M50 50 L61 34" />
-
     <circle class="gold" cx="50" cy="50" r="2.4" />
 
 </svg>
+
 
 
 <div class="footer-brand">
@@ -1252,11 +1413,31 @@
 </div>
 
 
+
 © 2026 US Watches — Umar Subhan Watches
-```
+
 
 </footer>
+
+
+<script>
+
+function changeProductImage(imageUrl, thumbnail) {
+
+    document.getElementById("mainProductImage").src = imageUrl;
+
+    document.querySelectorAll(".gallery-thumbnail").forEach(function(item) {
+        item.classList.remove("active");
+    });
+
+    thumbnail.classList.add("active");
+
+}
+
+</script>
+
 
 </body>
 
 </html>
+```

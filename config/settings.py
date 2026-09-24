@@ -23,6 +23,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "192.168.0.101",
+    "192.168.0.105",
     "uswatches2026.pythonanywhere.com",
 ]
 

@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from .models import Watch, Review
+from .models import Watch, WatchImage, Review
+
+
+class WatchImageInline(admin.TabularInline):
+    model = WatchImage
+    extra = 3
 
 
 @admin.register(Watch)
@@ -72,6 +77,8 @@ class WatchAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
     )
+
+    inlines = [WatchImageInline]
 
 
 @admin.register(Review)

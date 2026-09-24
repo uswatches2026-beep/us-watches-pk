@@ -67,6 +67,27 @@ class Watch(models.Model):
         return self.name
 
 
+class WatchImage(models.Model):
+
+    watch = models.ForeignKey(
+        Watch,
+        on_delete=models.CASCADE,
+        related_name="images"
+    )
+
+    image = models.ImageField(
+        upload_to="watches/gallery/"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_at"]
+
+    def __str__(self):
+        return f"{self.watch.name} - Image"
+
+
 class Review(models.Model):
 
     RATING_CHOICES = [
