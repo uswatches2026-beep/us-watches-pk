@@ -1,480 +1,477 @@
-```html
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | US Watches</title>
 
-    <title>Cart | US Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet"
+>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    >
+    * {
+        box-sizing: border-box;
+    }
 
-    <style>
+    body {
+        margin: 0;
+        background: #f7f4ee;
+        color: #171717;
+        font-family: "Montserrat", sans-serif;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    header {
+        background: #111111;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
 
-        body {
-            margin: 0;
-            background: #f7f4ee;
-            color: #171717;
-            font-family: "Montserrat", sans-serif;
-        }
+    .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 82px;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
 
-        header {
-            background: #111111;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-        }
+    .brand {
+        color: #f4efe5;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-mark {
+        width: 42px;
+        height: 42px;
+        border: 1px solid #c9a96a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c9a96a;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .brand-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+
+    .brand-tagline {
+        font-size: 8px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #b9b3a8;
+    }
+
+    .back-link {
+        color: #f4efe5;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.8px;
+        border: 1px solid rgba(201,169,106,0.65);
+        padding: 10px 16px;
+    }
+
+    main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 24px 80px;
+    }
+
+    .page-title {
+        margin: 0 0 40px;
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 52px;
+        font-weight: 600;
+    }
+
+    .cart-layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .cart-items {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .cart-item {
+        background: #ffffff;
+        border: 1px solid #e4ded2;
+        padding: 14px;
+        display: grid;
+        grid-template-columns: 95px 1fr auto;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .cart-image {
+        width: 82px;
+        height: 82px;
+        background: #f1eee8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .cart-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cart-item-info h2 {
+        margin: 0 0 5px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .collection {
+        margin-bottom: 5px;
+        color: #9a7b42;
+        font-size: 10px;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+    }
+
+    .unit-price {
+        color: #555;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+        letter-spacing: 0.15px;
+    }
+
+    .quantity-area {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        min-width: 165px;
+    }
+
+    .subtotal {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 23px;
+        font-weight: 600;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+        letter-spacing: 0.2px;
+        min-width: 120px;
+        text-align: right;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+    }
+
+    .quantity-button {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #cfc8bb;
+        background: #f7f4ee;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        line-height: 34px;
+        padding: 0;
+        text-align: center;
+        display: block;
+    }
+
+    .quantity-button:hover {
+        background: #ebe6dc;
+    }
+
+    .quantity-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+    }
+
+    .quantity-number {
+        width: 42px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #cfc8bb;
+        border-bottom: 1px solid #cfc8bb;
+        background: #ffffff;
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+        letter-spacing: 0;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .quantity-form {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin: 0;
+    }
+
+    .quantity-form input {
+        width: 58px;
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #cfc8bb;
+        background: #ffffff;
+        font-family: "Montserrat", sans-serif;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+    }
+
+    .update-button {
+        background: #171717;
+        color: #ffffff;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-size: 10px;
+    }
+
+    .update-button:hover {
+        opacity: 0.9;
+    }
+
+    .update-button:disabled {
+        cursor: wait;
+        opacity: 0.7;
+    }
+
+    .summary {
+        background: #171717;
+        color: #ffffff;
+        padding: 28px;
+        position: sticky;
+        top: 20px;
+    }
+
+    .summary h2 {
+        margin: 0 0 24px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        font-size: 13px;
+    }
+
+    .summary-row span:last-child {
+        min-width: 30px;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+    }
+
+    .summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-top: 22px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+    }
+
+    .summary-total span:last-child {
+        min-width: 130px;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .empty-cart {
+        text-align: center;
+        padding: 80px 20px;
+        background: #ffffff;
+        border: 1px solid #e4ded2;
+    }
+
+    .empty-cart h2 {
+        margin: 0 0 12px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 38px;
+    }
+
+    .empty-cart p {
+        color: #666;
+        margin-bottom: 28px;
+    }
+
+    .shop-button {
+        display: inline-block;
+        padding: 13px 24px;
+        background: #171717;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 800px) {
 
         .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 82px;
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .brand {
-            color: #f4efe5;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-mark {
-            width: 42px;
-            height: 42px;
-            border: 1px solid #c9a96a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c9a96a;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
+            min-height: 70px;
+            padding: 12px 16px;
         }
 
         .brand-name {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 24px;
-            letter-spacing: 2px;
-            font-weight: 700;
+            font-size: 20px;
         }
 
         .brand-tagline {
-            font-size: 8px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #b9b3a8;
-        }
-
-        .back-link {
-            color: #f4efe5;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 0.8px;
-            border: 1px solid rgba(201,169,106,0.65);
-            padding: 10px 16px;
+            font-size: 7px;
         }
 
         main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 24px 80px;
+            padding: 40px 16px 60px;
         }
 
         .page-title {
-            margin: 0 0 40px;
-            text-align: center;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 52px;
-            font-weight: 600;
+            font-size: 42px;
         }
 
         .cart-layout {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 30px;
-            align-items: start;
-        }
-
-        .cart-items {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .cart-item {
-            background: #ffffff;
-            border: 1px solid #e4ded2;
-            padding: 14px;
-            display: grid;
-            grid-template-columns: 95px 1fr auto;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .cart-image {
-            width: 82px;
-            height: 82px;
-            background: #f1eee8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .cart-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cart-item-info h2 {
-            margin: 0 0 5px;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 25px;
-            font-weight: 600;
-        }
-
-        .collection {
-            margin-bottom: 5px;
-            color: #9a7b42;
-            font-size: 10px;
-            letter-spacing: 1.3px;
-            text-transform: uppercase;
-        }
-
-        .unit-price {
-            color: #555;
-            font-size: 12px;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
-            letter-spacing: 0.15px;
-        }
-
-        .quantity-area {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-            min-width: 165px;
-        }
-
-        .subtotal {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 23px;
-            font-weight: 600;
-            white-space: nowrap;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
-            letter-spacing: 0.2px;
-            min-width: 120px;
-            text-align: right;
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
-        }
-
-        .quantity-controls form {
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        .quantity-button {
-            width: 34px;
-            height: 34px;
-            border: 1px solid #cfc8bb;
-            background: #f7f4ee;
-            cursor: pointer;
-            font-family: "Montserrat", sans-serif;
-            font-size: 18px;
-            line-height: 34px;
-            padding: 0;
-            text-align: center;
-            display: block;
-        }
-
-        .quantity-button:hover {
-            background: #ebe6dc;
-        }
-
-        .quantity-button:disabled {
-            cursor: not-allowed;
-            opacity: 0.45;
-        }
-
-        .quantity-number {
-            width: 42px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid #cfc8bb;
-            border-bottom: 1px solid #cfc8bb;
-            background: #ffffff;
-            font-family: "Montserrat", sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
-            letter-spacing: 0;
-            line-height: 1;
-            text-align: center;
-        }
-
-        .quantity-form {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            margin: 0;
-        }
-
-        .quantity-form input {
-            width: 58px;
-            padding: 8px;
-            text-align: center;
-            border: 1px solid #cfc8bb;
-            background: #ffffff;
-            font-family: "Montserrat", sans-serif;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
-        }
-
-        .update-button {
-            background: #171717;
-            color: #ffffff;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-family: "Montserrat", sans-serif;
-            font-size: 10px;
-        }
-
-        .update-button:hover {
-            opacity: 0.9;
+            grid-template-columns: 1fr;
         }
 
         .summary {
-            background: #171717;
-            color: #ffffff;
-            padding: 28px;
-            position: sticky;
-            top: 20px;
+            position: static;
+        }
+    }
+
+    @media (max-width: 560px) {
+
+        .cart-item {
+            grid-template-columns: 70px 1fr;
+            gap: 11px;
+            padding: 12px;
         }
 
-        .summary h2 {
-            margin: 0 0 24px;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 32px;
-            font-weight: 600;
+        .cart-image {
+            width: 68px;
+            height: 68px;
         }
 
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            font-size: 13px;
+        .cart-item-info h2 {
+            font-size: 21px;
         }
 
-        .summary-row span:last-child {
-            min-width: 30px;
+        .collection {
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .unit-price {
+            font-size: 11px;
+        }
+
+        .quantity-area {
+            grid-column: 1 / -1;
+            align-items: flex-start;
+            padding-top: 10px;
+            border-top: 1px solid #eee8dd;
+            min-width: 0;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .subtotal {
+            margin-left: auto;
+            min-width: 120px;
             text-align: right;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
+            font-size: 21px;
         }
 
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding-top: 22px;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 28px;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "tnum";
+        .quantity-button {
+            width: 32px;
+            height: 32px;
+            font-size: 17px;
+            line-height: 32px;
+        }
+
+        .quantity-number {
+            width: 38px;
+            height: 32px;
+            font-size: 11px;
+        }
+
+        .quantity-form {
+            gap: 6px;
+        }
+
+        .quantity-form input {
+            width: 56px;
+            padding: 7px;
+        }
+
+        .update-button {
+            padding: 7px 11px;
+            font-size: 10px;
+        }
+
+        .page-title {
+            font-size: 36px;
         }
 
         .summary-total span:last-child {
-            min-width: 130px;
-            text-align: right;
-            white-space: nowrap;
+            min-width: 0;
         }
+    }
 
-        .empty-cart {
-            text-align: center;
-            padding: 80px 20px;
-            background: #ffffff;
-            border: 1px solid #e4ded2;
-        }
-
-        .empty-cart h2 {
-            margin: 0 0 12px;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 38px;
-        }
-
-        .empty-cart p {
-            color: #666;
-            margin-bottom: 28px;
-        }
-
-        .shop-button {
-            display: inline-block;
-            padding: 13px 24px;
-            background: #171717;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 800px) {
-
-            .header-inner {
-                min-height: 70px;
-                padding: 12px 16px;
-            }
-
-            .brand-name {
-                font-size: 20px;
-            }
-
-            .brand-tagline {
-                font-size: 7px;
-            }
-
-            main {
-                padding: 40px 16px 60px;
-            }
-
-            .page-title {
-                font-size: 42px;
-            }
-
-            .cart-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .summary {
-                position: static;
-            }
-
-        }
-
-        @media (max-width: 560px) {
-
-            .cart-item {
-                grid-template-columns: 70px 1fr;
-                gap: 11px;
-                padding: 12px;
-            }
-
-            .cart-image {
-                width: 68px;
-                height: 68px;
-            }
-
-            .cart-item-info h2 {
-                font-size: 21px;
-            }
-
-            .collection {
-                font-size: 9px;
-                margin-bottom: 4px;
-            }
-
-            .unit-price {
-                font-size: 11px;
-            }
-
-            .quantity-area {
-                grid-column: 1 / -1;
-                align-items: flex-start;
-                padding-top: 10px;
-                border-top: 1px solid #eee8dd;
-                min-width: 0;
-                width: 100%;
-                gap: 8px;
-            }
-
-            .subtotal {
-                margin-left: auto;
-                min-width: 120px;
-                text-align: right;
-                font-size: 21px;
-            }
-
-            .quantity-button {
-                width: 32px;
-                height: 32px;
-                font-size: 17px;
-                line-height: 32px;
-            }
-
-            .quantity-number {
-                width: 38px;
-                height: 32px;
-                font-size: 11px;
-            }
-
-            .quantity-form {
-                gap: 6px;
-            }
-
-            .quantity-form input {
-                width: 56px;
-                padding: 7px;
-            }
-
-            .update-button {
-                padding: 7px 11px;
-                font-size: 10px;
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .summary-total span:last-child {
-                min-width: 0;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
@@ -482,243 +479,536 @@
 
 <header>
 
-    <div class="header-inner">
+```
+<div class="header-inner">
 
-        <a href="{% url 'home' %}" class="brand">
+    <a href="{% url 'home' %}" class="brand">
 
-            <div class="brand-mark">
-                US
-            </div>
+        <div class="brand-mark">
+            US
+        </div>
 
-            <div class="brand-text">
+        <div class="brand-text">
 
-                <span class="brand-name">US WATCHES</span>
+            <span class="brand-name">
+                US WATCHES
+            </span>
 
-                <span class="brand-tagline">Time, Defined By You</span>
+            <span class="brand-tagline">
+                Time, Defined By You
+            </span>
 
-            </div>
+        </div>
 
-        </a>
+    </a>
 
-        <a href="{% url 'home' %}" class="back-link">
-            Continue Shopping
-        </a>
+    <a href="{% url 'home' %}" class="back-link">
+        Continue Shopping
+    </a>
 
-    </div>
+</div>
+```
 
 </header>
 
 <main>
 
-    <h1 class="page-title">
-        Your Cart
-    </h1>
+```
+<h1 class="page-title">
+    Your Cart
+</h1>
 
-    {% if cart_items %}
 
-        <div class="cart-layout">
+{% if cart_items %}
 
-            <section class="cart-items">
+    <div class="cart-layout">
 
-                {% for item in cart_items %}
+        <section class="cart-items">
 
-                    <article class="cart-item">
+            {% for item in cart_items %}
 
-                        <div class="cart-image">
+                <article
+                    class="cart-item"
+                    data-watch-id="{{ item.watch.id }}"
+                    data-unit-price="{{ item.watch.price }}"
+                    data-stock="{{ item.watch.stock }}"
+                >
 
-                            {% if item.watch.image %}
+                    <div class="cart-image">
 
-                                <img
-                                    src="{{ item.watch.image.url }}"
-                                    alt="{{ item.watch.name }}"
-                                >
+                        {% if item.watch.image %}
 
-                            {% else %}
-
-                                <span>US Watches</span>
-
-                            {% endif %}
-
-                        </div>
-
-                        <div class="cart-item-info">
-
-                            <div class="collection">
-                                {{ item.watch.collection|default:"US Watches" }}
-                            </div>
-
-                            <h2>
-                                {{ item.watch.name }}
-                            </h2>
-
-                            <div class="unit-price">
-                                Rs. {{ item.watch.price|floatformat:0 }} each
-                            </div>
-
-                        </div>
-
-                        <div class="quantity-area">
-
-                            <div class="subtotal">
-                                Rs. {{ item.subtotal|floatformat:0 }}
-                            </div>
-
-                            <!-- PLUS / MINUS CONTROLS -->
-
-                            <div class="quantity-controls">
-
-                                <!-- MINUS: remove exactly ONE item -->
-
-                                <form
-                                    method="post"
-                                    action="{% url 'remove_from_cart' item.watch.id %}"
-                                >
-
-                                    {% csrf_token %}
-
-                                    <button
-                                        type="submit"
-                                        class="quantity-button"
-                                        aria-label="Decrease quantity"
-                                    >
-                                        −
-                                    </button>
-
-                                </form>
-
-                                <div class="quantity-number">
-                                    {{ item.quantity }}
-                                </div>
-
-                                <!-- PLUS: add exactly ONE item -->
-
-                                {% if item.quantity < item.watch.stock %}
-
-                                    <form
-                                        method="post"
-                                        action="{% url 'update_cart' item.watch.id %}"
-                                    >
-
-                                        {% csrf_token %}
-
-                                        <input
-                                            type="hidden"
-                                            name="quantity"
-                                            value="{{ item.quantity|add:'1' }}"
-                                        >
-
-                                        <button
-                                            type="submit"
-                                            class="quantity-button"
-                                            aria-label="Increase quantity"
-                                        >
-                                            +
-                                        </button>
-
-                                    </form>
-
-                                {% else %}
-
-                                    <button
-                                        type="button"
-                                        class="quantity-button"
-                                        disabled
-                                        aria-label="Maximum stock reached"
-                                    >
-                                        +
-                                    </button>
-
-                                {% endif %}
-
-                            </div>
-
-                            <!-- EXACT QUANTITY UPDATE -->
-
-                            <form
-                                method="post"
-                                action="{% url 'update_cart' item.watch.id %}"
-                                class="quantity-form"
+                            <img
+                                src="{{ item.watch.image.url }}"
+                                alt="{{ item.watch.name }}"
                             >
 
-                                {% csrf_token %}
+                        {% else %}
 
-                                <input
-                                    type="number"
-                                    name="quantity"
-                                    value="{{ item.quantity }}"
-                                    min="1"
-                                    max="{{ item.watch.stock }}"
-                                >
+                            <span>US Watches</span>
 
-                                <button
-                                    type="submit"
-                                    class="update-button"
-                                >
-                                    Update
-                                </button>
+                        {% endif %}
 
-                            </form>
+                    </div>
+
+
+                    <div class="cart-item-info">
+
+                        <div class="collection">
+                            {{ item.watch.collection|default:"US Watches" }}
+                        </div>
+
+                        <h2>
+                            {{ item.watch.name }}
+                        </h2>
+
+                        <div class="unit-price">
+                            Rs. {{ item.watch.price|floatformat:0 }} each
+                        </div>
+
+                    </div>
+
+
+                    <div class="quantity-area">
+
+                        <div class="subtotal">
+                            Rs. {{ item.subtotal|floatformat:0 }}
+                        </div>
+
+
+                        <!-- PLUS / MINUS CONTROLS -->
+
+                        <div class="quantity-controls">
+
+                            <button
+                                type="button"
+                                class="quantity-button minus-button"
+                                aria-label="Decrease quantity"
+                                data-action="minus"
+                            >
+                                −
+                            </button>
+
+
+                            <div class="quantity-number">
+                                {{ item.quantity }}
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="quantity-button plus-button"
+                                aria-label="Increase quantity"
+                                data-action="plus"
+                                {% if item.quantity >= item.watch.stock %}disabled{% endif %}
+                            >
+                                +
+                            </button>
 
                         </div>
 
-                    </article>
 
-                {% endfor %}
+                        <!-- EXACT QUANTITY UPDATE -->
 
-            </section>
+                        <form
+                            method="post"
+                            action="{% url 'update_cart' item.watch.id %}"
+                            class="quantity-form"
+                        >
 
-            <aside class="summary">
+                            {% csrf_token %}
 
-                <h2>
-                    Order Summary
-                </h2>
+                            <input
+                                type="number"
+                                name="quantity"
+                                value="{{ item.quantity }}"
+                                min="1"
+                                max="{{ item.watch.stock }}"
+                                class="quantity-input"
+                            >
 
-                <div class="summary-row">
+                            <button
+                                type="submit"
+                                class="update-button"
+                            >
+                                Update
+                            </button>
 
-                    <span>Products</span>
+                        </form>
 
-                    <span>{{ cart_items|length }}</span>
+                    </div>
 
-                </div>
+                </article>
 
-                <div class="summary-total">
+            {% endfor %}
 
-                    <span>Total</span>
+        </section>
 
-                    <span>Rs. {{ total|floatformat:0 }}</span>
 
-                </div>
-
-            </aside>
-
-        </div>
-
-    {% else %}
-
-        <div class="empty-cart">
+        <aside class="summary">
 
             <h2>
-                Your Cart Is Empty
+                Order Summary
             </h2>
 
-            <p>
-                Add a US Watches piece to your cart to see it here.
-            </p>
 
-            <a
-                href="{% url 'home' %}"
-                class="shop-button"
-            >
-                Continue Shopping
-            </a>
+            <div class="summary-row">
 
-        </div>
+                <span>
+                    Products
+                </span>
 
-    {% endif %}
+                <span>
+                    {{ cart_items|length }}
+                </span>
+
+            </div>
+
+
+            <div class="summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="cartTotal">
+                    Rs. {{ total|floatformat:0 }}
+                </span>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+{% else %}
+
+    <div class="empty-cart">
+
+        <h2>
+            Your Cart Is Empty
+        </h2>
+
+        <p>
+            Add a US Watches piece to your cart to see it here.
+        </p>
+
+        <a
+            href="{% url 'home' %}"
+            class="shop-button"
+        >
+            Continue Shopping
+        </a>
+
+    </div>
+
+{% endif %}
+```
 
 </main>
+
+<script>
+
+(function () {
+
+    const cartItems = document.querySelectorAll(".cart-item");
+    const cartTotalElement = document.getElementById("cartTotal");
+
+    const pendingRequests = new Map();
+
+
+    function getCsrfToken(form) {
+
+        const tokenInput = form.querySelector(
+            'input[name="csrfmiddlewaretoken"]'
+        );
+
+        return tokenInput ? tokenInput.value : "";
+
+    }
+
+
+    function formatPrice(value) {
+
+        return Number(value).toLocaleString("en-US", {
+            maximumFractionDigits: 0
+        });
+
+    }
+
+
+    function getCurrentQuantity(item) {
+
+        return parseInt(
+            item.querySelector(".quantity-number").textContent,
+            10
+        ) || 0;
+
+    }
+
+
+    function getUnitPrice(item) {
+
+        return parseFloat(
+            item.dataset.unitPrice
+        ) || 0;
+
+    }
+
+
+    function getStock(item) {
+
+        return parseInt(
+            item.dataset.stock,
+            10
+        ) || 0;
+
+    }
+
+
+    function updateItemDisplay(item, quantity) {
+
+        const quantityNumber = item.querySelector(".quantity-number");
+        const quantityInput = item.querySelector(".quantity-input");
+        const subtotal = item.querySelector(".subtotal");
+        const plusButton = item.querySelector(".plus-button");
+        const minusButton = item.querySelector(".minus-button");
+
+        const stock = getStock(item);
+        const unitPrice = getUnitPrice(item);
+
+        quantityNumber.textContent = quantity;
+        quantityInput.value = quantity;
+
+        subtotal.textContent =
+            "Rs. " + formatPrice(unitPrice * quantity);
+
+        plusButton.disabled = quantity >= stock;
+        minusButton.disabled = quantity <= 1;
+
+    }
+
+
+    function updateCartTotal() {
+
+        if (!cartTotalElement) {
+            return;
+        }
+
+        let total = 0;
+
+        cartItems.forEach(function (item) {
+
+            const quantity = getCurrentQuantity(item);
+            const unitPrice = getUnitPrice(item);
+
+            total += unitPrice * quantity;
+
+        });
+
+        cartTotalElement.textContent =
+            "Rs. " + formatPrice(total);
+
+    }
+
+
+    function sendQuantityToServer(item, quantity) {
+
+        const updateForm = item.querySelector(".quantity-form");
+        const updateButton = item.querySelector(".update-button");
+
+        if (!updateForm) {
+            return Promise.reject();
+        }
+
+        const url = updateForm.action;
+        const csrfToken = getCsrfToken(updateForm);
+
+        updateButton.disabled = true;
+
+        return fetch(url, {
+
+            method: "POST",
+
+            headers: {
+                "X-CSRFToken": csrfToken,
+                "X-Requested-With": "XMLHttpRequest",
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+
+            body: new URLSearchParams({
+                csrfmiddlewaretoken: csrfToken,
+                quantity: quantity
+            })
+
+        })
+
+        .then(function (response) {
+
+            if (!response.ok) {
+                throw new Error("Cart update failed.");
+            }
+
+            return response;
+
+        })
+
+        .finally(function () {
+
+            updateButton.disabled = false;
+
+        });
+
+    }
+
+
+    function queueQuantityUpdate(item, quantity) {
+
+        const key = item.dataset.watchId;
+
+        const previous = pendingRequests.get(key);
+
+        const request = previous
+            ? previous.catch(function () {}).then(function () {
+                return sendQuantityToServer(item, quantity);
+            })
+            : sendQuantityToServer(item, quantity);
+
+        pendingRequests.set(key, request);
+
+        request.finally(function () {
+
+            if (pendingRequests.get(key) === request) {
+                pendingRequests.delete(key);
+            }
+
+        });
+
+        return request;
+
+    }
+
+
+    function changeQuantity(item, newQuantity) {
+
+        const stock = getStock(item);
+
+        newQuantity = Math.max(
+            1,
+            Math.min(stock, newQuantity)
+        );
+
+        updateItemDisplay(item, newQuantity);
+        updateCartTotal();
+
+        queueQuantityUpdate(item, newQuantity)
+
+            .catch(function () {
+
+                window.location.reload();
+
+            });
+
+    }
+
+
+    cartItems.forEach(function (item) {
+
+        const minusButton = item.querySelector(".minus-button");
+        const plusButton = item.querySelector(".plus-button");
+        const quantityInput = item.querySelector(".quantity-input");
+        const quantityForm = item.querySelector(".quantity-form");
+
+
+        minusButton.addEventListener("click", function () {
+
+            const currentQuantity = getCurrentQuantity(item);
+
+            if (currentQuantity > 1) {
+                changeQuantity(item, currentQuantity - 1);
+            }
+
+        });
+
+
+        plusButton.addEventListener("click", function () {
+
+            const currentQuantity = getCurrentQuantity(item);
+            const stock = getStock(item);
+
+            if (currentQuantity < stock) {
+                changeQuantity(item, currentQuantity + 1);
+            }
+
+        });
+
+
+        quantityForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const stock = getStock(item);
+
+            let quantity = parseInt(
+                quantityInput.value,
+                10
+            );
+
+            if (isNaN(quantity)) {
+                quantity = 1;
+            }
+
+            quantity = Math.max(
+                1,
+                Math.min(stock, quantity)
+            );
+
+            quantityInput.value = quantity;
+
+            changeQuantity(item, quantity);
+
+        });
+
+
+        quantityInput.addEventListener("change", function () {
+
+            const stock = getStock(item);
+
+            let quantity = parseInt(
+                quantityInput.value,
+                10
+            );
+
+            if (isNaN(quantity)) {
+                quantity = 1;
+            }
+
+            quantity = Math.max(
+                1,
+                Math.min(stock, quantity)
+            );
+
+            quantityInput.value = quantity;
+
+        });
+
+    });
+
+
+    cartItems.forEach(function (item) {
+
+        const minusButton = item.querySelector(".minus-button");
+
+        if (getCurrentQuantity(item) <= 1) {
+            minusButton.disabled = true;
+        }
+
+    });
+
+})();
+
+</script>
 
 </body>
 
 </html>
-```
