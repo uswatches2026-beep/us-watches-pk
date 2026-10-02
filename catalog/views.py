@@ -3,6 +3,10 @@ from django.http import JsonResponse
 from .models import Watch
 
 
+def maintenance(request):
+    return render(request, "catalog/maintenance.html")
+
+
 def home(request):
     collection = request.GET.get("collection")
 

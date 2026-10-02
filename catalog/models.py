@@ -4,11 +4,14 @@ from django.db import models
 class Watch(models.Model):
 
     COLLECTION_CHOICES = [
+        ("Full Collection", "Full Collection"),
         ("Classic", "Classic"),
         ("Premium", "Premium"),
         ("Everyday", "Everyday"),
-        ("Minimal", "Minimal"),
-        ("New Arrivals", "New Arrivals"),
+        ("Automatic", "Automatic"),
+        ("Chronograph", "Chronograph"),
+        ("Leather Strap", "Leather Strap"),
+        ("Limited Edition", "Limited Edition"),
     ]
 
     name = models.CharField(max_length=200)
