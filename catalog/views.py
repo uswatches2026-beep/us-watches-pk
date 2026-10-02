@@ -15,8 +15,10 @@ def home(request):
         "Classic",
         "Premium",
         "Everyday",
-        "Minimal",
-        "New Arrivals",
+        "Automatic",
+        "Chronograph",
+        "Leather Strap",
+        "Limited Edition",
     ]
 
     cart = request.session.get("cart", {})

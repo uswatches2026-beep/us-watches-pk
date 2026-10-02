@@ -30,9 +30,14 @@
 
         body {
             font-family: "Montserrat", sans-serif;
-            background: #f1eadc;
-            color: #181715;
+            background: var(--ivory);
+            color: var(--charcoal);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         a {
@@ -43,6 +48,60 @@
         button,
         input {
             font-family: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--emerald);
+            color: var(--ivory-light);
+        }
+
+
+        /* =====================================================
+           DESIGN SYSTEM
+        ===================================================== */
+
+        :root {
+            --ivory: #f7f2e8;
+            --ivory-light: #fcfaf5;
+            --ivory-warm: #f8f3e9;
+            --ivory-dark: #e8dfd0;
+
+            --emerald: #0f7054;
+            --emerald-dark: #0a4939;
+            --emerald-deep: #062b22;
+            --emerald-soft: #1a7b5d;
+
+            --gold: #c9a961;
+            --gold-light: #dfc78f;
+            --gold-soft: rgba(201, 169, 97, .20);
+
+            --bronze: #9a7047;
+            --bronze-soft: rgba(154, 112, 71, .18);
+
+            --charcoal: #1c211f;
+            --charcoal-soft: #50544d;
+
+            --muted: #72746d;
+
+            --white: #fffdf8;
+
+            --border: rgba(28, 33, 31, .11);
+            --gold-border: rgba(201, 169, 97, .42);
+
+            --shadow-soft:
+                0 18px 45px rgba(25, 32, 27, .08);
+
+            --shadow-card:
+                0 18px 42px rgba(25, 32, 27, .08);
+
+            --shadow-luxury:
+                0 30px 80px rgba(5, 31, 26, .24);
+
+            --container: 1240px;
         }
 
 
@@ -132,26 +191,44 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(18, 17, 15, .97);
-            border-bottom: 1px solid rgba(201, 169, 97, .28);
-            backdrop-filter: blur(12px);
+
+            background:
+                linear-gradient(105deg,
+                    #062b22 0%,
+                    #0f7054 45%,
+                    #164f3f 72%,
+                    #062b22 100%
+                );
+
+            border-bottom: 1px solid rgba(201, 169, 97, .34);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 8px 30px rgba(4, 26, 21, .18),
+                0 1px 0 rgba(201, 169, 97, .08);
         }
 
         .header-inner {
-            width: min(1180px, calc(100% - 40px));
+            width: min(var(--container), calc(100% - 44px));
             min-height: 82px;
+
             margin: auto;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
+
+            gap: 24px;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 13px;
+
+            flex-shrink: 0;
         }
 
         .brand-mark {
@@ -167,16 +244,20 @@
 
         .brand-name {
             color: #f5f1e8;
+
             font-family: "Cormorant Garamond", serif;
             font-size: 25px;
             font-weight: 700;
+
             letter-spacing: 1.5px;
             line-height: 1;
         }
 
         .brand-tagline {
             margin-top: 4px;
-            color: #c9a961;
+
+            color: var(--gold);
+
             font-size: 8px;
             letter-spacing: 2.2px;
             text-transform: uppercase;
@@ -185,19 +266,44 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 28px;
         }
 
         nav a {
-            color: rgba(245, 241, 232, .82);
-            font-size: 11px;
+            position: relative;
+
+            color: rgba(245, 241, 232, .76);
+
+            font-size: 9px;
             font-weight: 600;
-            letter-spacing: 1.1px;
+
+            letter-spacing: 1.35px;
             text-transform: uppercase;
+
+            transition: color .25s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -9px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--gold);
+
+            transition: width .25s ease;
         }
 
         nav a:hover {
-            color: #c9a961;
+            color: var(--gold-light);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
 
@@ -208,36 +314,46 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .header-search-button,
         .header-cart-button {
-            min-width: 108px;
-            padding: 12px 18px;
+            min-width: 100px;
 
-            border: 1px solid #c9a961;
+            padding: 11px 17px;
+
+            border: 1px solid rgba(201, 169, 97, .68);
+
             background: transparent;
             color: #f5f1e8;
 
             cursor: pointer;
 
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 700;
-            letter-spacing: 1.7px;
+
+            letter-spacing: 1.5px;
             text-transform: uppercase;
 
-            transition: .25s ease;
+            transition:
+                background .25s ease,
+                color .25s ease,
+                border-color .25s ease,
+                transform .25s ease;
         }
 
         .header-cart-button {
-            min-width: 82px;
+            min-width: 76px;
         }
 
         .header-search-button:hover,
         .header-cart-button:hover {
-            background: #c9a961;
-            color: #171512;
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #17211c;
+
+            transform: translateY(-1px);
         }
 
         .cart-count {
@@ -254,18 +370,151 @@
             border: 1px solid rgba(201, 169, 97, .75);
             border-radius: 50%;
 
-            color: #c9a961;
+            color: var(--gold);
 
             font-size: 8px;
             font-weight: 700;
+
             letter-spacing: 0;
             line-height: 1;
             text-transform: none;
         }
 
         .header-cart-button:hover .cart-count {
-            border-color: #171512;
-            color: #171512;
+            border-color: #17211c;
+            color: #17211c;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
+
+        .mobile-menu-button {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid rgba(201, 169, 97, .55);
+            background: transparent;
+            color: #f5f1e8;
+
+            cursor: pointer;
+        }
+
+        .mobile-menu-lines {
+            width: 18px;
+            margin: auto;
+        }
+
+        .mobile-menu-lines span {
+            display: block;
+
+            width: 100%;
+            height: 1px;
+
+            margin: 4px 0;
+
+            background: var(--gold);
+
+            transition:
+                transform .25s ease,
+                opacity .25s ease;
+        }
+
+        .mobile-menu-button.active
+        .mobile-menu-lines span:nth-child(1) {
+            transform: translateY(5px) rotate(45deg);
+        }
+
+        .mobile-menu-button.active
+        .mobile-menu-lines span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-button.active
+        .mobile-menu-lines span:nth-child(3) {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        .mobile-nav {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            z-index: 999;
+
+            background:
+                radial-gradient(
+                    circle at 82% 18%,
+                    rgba(201, 169, 97, .12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(28, 81, 67, .38),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #08231e,
+                    #123c32
+                );
+
+            padding: 105px 28px 40px;
+
+            transform: translateX(100%);
+            transition: transform .35s ease;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-inner {
+            width: min(420px, 100%);
+            margin: auto;
+        }
+
+        .mobile-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 17px 0;
+
+            border-bottom: 1px solid rgba(201, 169, 97, .18);
+
+            color: #f5f1e8;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 31px;
+            font-weight: 600;
+
+            transition: color .25s ease,
+                        padding-left .25s ease;
+        }
+
+        .mobile-nav a::after {
+            content: "→";
+
+            color: var(--gold);
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold-light);
+            padding-left: 6px;
         }
 
 
@@ -276,10 +525,17 @@
         .search-panel {
             display: none;
 
-            background: #eee6d8;
-            border-bottom: 1px solid rgba(201, 169, 97, .5);
+            background:
+                linear-gradient(
+                    135deg,
+                    #fbf8f1,
+                    #eee7d9
+                );
 
-            box-shadow: 0 12px 30px rgba(20, 18, 15, .12);
+            border-bottom: 1px solid var(--gold-border);
+
+            box-shadow:
+                0 18px 45px rgba(20, 25, 21, .13);
         }
 
         .search-panel.active {
@@ -288,16 +544,19 @@
 
         .search-inner {
             width: min(900px, calc(100% - 40px));
+
             margin: auto;
-            padding: 28px 0 30px;
+
+            padding: 31px 0 33px;
         }
 
         .search-title {
             margin-bottom: 14px;
 
-            color: #171512;
+            color: var(--charcoal);
+
             font-family: "Cormorant Garamond", serif;
-            font-size: 30px;
+            font-size: 36px;
             font-weight: 600;
         }
 
@@ -308,42 +567,55 @@
 
         .search-input {
             flex: 1;
-            height: 51px;
 
-            padding: 0 16px;
+            height: 53px;
 
-            border: 1px solid rgba(24, 23, 21, .28);
+            padding: 0 17px;
+
+            border: 1px solid rgba(32, 35, 31, .22);
             outline: none;
 
-            background: #f8f3e9;
-            color: #171512;
+            background: #fffdf8;
+            color: var(--charcoal);
 
             font-size: 13px;
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease;
         }
 
         .search-input:focus {
-            border-color: #c9a961;
+            border-color: var(--gold);
+
+            box-shadow:
+                0 0 0 3px rgba(201, 169, 97, .09);
         }
 
         .search-submit {
-            height: 51px;
-            padding: 0 24px;
+            height: 53px;
 
-            border: 1px solid #c9a961;
-            background: #191815;
+            padding: 0 27px;
+
+            border: 1px solid var(--emerald);
+            background: var(--emerald);
             color: #f5f1e8;
 
             cursor: pointer;
 
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 700;
+
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
+            transition: .25s ease;
         }
 
         .search-submit:hover {
-            background: #c9a961;
-            color: #171512;
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--charcoal);
         }
 
         .search-results {
@@ -356,24 +628,29 @@
             margin-top: 7px;
             padding: 13px 15px;
 
-            background: #e4dac9;
-            border: 1px solid rgba(201, 169, 97, .35);
+            background: #eee8db;
+            border: 1px solid rgba(201, 169, 97, .3);
+
+            transition: .25s ease;
         }
 
         .search-result-item:hover {
-            border-color: #c9a961;
-            background: #ddd1be;
+            border-color: var(--gold);
+            background: #e7dfcf;
+            transform: translateX(3px);
         }
 
         .search-result-name {
-            color: #171512;
+            color: var(--charcoal);
+
             font-family: "Cormorant Garamond", serif;
             font-size: 21px;
             font-weight: 700;
         }
 
         .search-result-meta {
-            color: #776f63;
+            color: var(--muted);
+
             font-size: 9px;
             letter-spacing: 1.2px;
             text-transform: uppercase;
@@ -381,7 +658,8 @@
 
         .search-message {
             padding-top: 8px;
-            color: #776f63;
+
+            color: var(--muted);
             font-size: 11px;
         }
 
@@ -391,140 +669,585 @@
         ===================================================== */
 
         .hero {
-            min-height: 650px;
+            position: relative;
+            overflow: hidden;
+
+            min-height: 730px;
 
             background:
-                radial-gradient(
-                    circle at 76% 42%,
+                radial-gradient(ellipse at 78% 43%,
                     rgba(201, 169, 97, .18),
-                    transparent 28%
-                ),
-                linear-gradient(
-                    135deg,
-                    #11110f 0%,
-                    #1b1a17 48%,
-                    #24211c 100%
-                );
+                    transparent 28%),
+                radial-gradient(ellipse at 14% 92%,
+                    rgba(26, 123, 93, .34),
+                    transparent 38%),
+                linear-gradient(120deg,
+                    #041f19 0%,
+                    #0a4939 42%,
+                    #0f7054 100%);
 
             color: #f5f1e8;
+        }
 
-            display: flex;
-            align-items: center;
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 31, 25, .985) 0%,
+                    rgba(4, 31, 25, .88) 34%,
+                    rgba(4, 31, 25, .40) 63%,
+                    rgba(4, 31, 25, .05) 100%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 850px;
+            height: 850px;
+
+            right: -430px;
+            top: -155px;
+
+            border: 1px solid rgba(201, 169, 97, .10);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 1px rgba(201, 169, 97, .025),
+                0 0 0 65px rgba(201, 169, 97, .017),
+                0 0 0 130px rgba(201, 169, 97, .011);
+
+            pointer-events: none;
+        }
+
+        .hero-grid-line {
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+
+            width: 1px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(201, 169, 97, .09),
+                    transparent
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-grid-line.one {
+            left: 14%;
+        }
+
+        .hero-grid-line.two {
+            left: 51%;
         }
 
         .hero-inner {
-            width: min(1180px, calc(100% - 40px));
+            position: relative;
+            z-index: 2;
+
+            width: min(1280px, calc(100% - 44px));
+
             margin: auto;
 
-            padding: 85px 0;
+            min-height: 730px;
+
+            padding: 62px 0 68px;
 
             display: grid;
-            grid-template-columns: 1.15fr .85fr;
+
+            grid-template-columns: minmax(0, 1fr);
+
             align-items: center;
-            gap: 70px;
+
+            gap: 22px;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 4;
+
+            max-width: 760px;
+
+            padding-left: 0;
+
+            margin: 0 auto;
+
+            text-align: center;
+
+            animation: heroText .85s ease both;
+        }
+
+        @keyframes heroText {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-brand-logo {
+            width: 78px;
+            height: 78px;
+            margin: 0 auto 22px;
+            opacity: .98;
+            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .18));
+            animation: heroLogo .9s ease both;
+        }
+
+        .hero-logo {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @keyframes heroLogo {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(.94);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .hero-eyebrow {
-            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
-            color: #c9a961;
+            justify-content: center;
 
-            font-size: 10px;
+            margin-bottom: 24px;
+
+            color: var(--gold-light);
+
+            font-size: 8px;
             font-weight: 700;
+
             letter-spacing: 4px;
             text-transform: uppercase;
+        }
+
+        .hero-eyebrow::before {
+            content: "";
+
+            width: 39px;
+            height: 1px;
+
+            background: var(--gold);
         }
 
         .hero h1 {
             color: #f5f1e8;
 
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(58px, 8vw, 100px);
+
+            font-size: clamp(76px, 9vw, 128px);
             font-weight: 600;
-            letter-spacing: -2px;
-            line-height: .84;
+
+            letter-spacing: -4.5px;
+            line-height: .72;
         }
 
         .hero h2 {
-            margin-top: 24px;
+            max-width: 500px;
 
-            color: rgba(245, 241, 232, .86);
+            margin: 31px auto 0;
+
+            color: rgba(245, 241, 232, .95);
 
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(26px, 4vw, 39px);
+
+            font-size: clamp(32px, 3.5vw, 48px);
             font-weight: 500;
+
+            line-height: 1.01;
         }
 
         .hero-line {
-            width: 75px;
+            width: 96px;
             height: 1px;
 
-            margin: 29px 0;
+            margin: 27px auto;
 
-            background: #c9a961;
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    rgba(201, 169, 97, .12)
+                );
         }
 
         .hero-description {
-            max-width: 535px;
+            max-width: 470px;
+
+            margin-left: auto;
+            margin-right: auto;
 
             color: rgba(245, 241, 232, .65);
 
-            font-size: 12px;
-            line-height: 1.95;
+            font-size: 11px;
+            line-height: 2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 32px;
         }
 
         .hero-button {
-            display: inline-block;
+            position: relative;
 
-            margin-top: 29px;
-            padding: 13px 23px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-            border: 1px solid #c9a961;
+            min-height: 50px;
+
+            padding: 0 26px;
+
+            border: 1px solid var(--gold);
 
             color: #f5f1e8;
 
-            font-size: 10px;
+            overflow: hidden;
+
+            font-size: 8px;
             font-weight: 700;
+
             letter-spacing: 1.6px;
             text-transform: uppercase;
+
+            transition:
+                background .25s ease,
+                color .25s ease,
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .hero-button::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: var(--gold);
+
+            transform: translateX(-101%);
+
+            transition: transform .35s ease;
+
+            z-index: -1;
         }
 
         .hero-button:hover {
-            background: #c9a961;
-            color: #171512;
+            color: #15221d;
+            transform: translateY(-2px);
+        }
+
+        .hero-button:hover::before {
+            transform: translateX(0);
+        }
+
+        .hero-button.secondary {
+            border-color: rgba(245, 241, 232, .27);
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .hero-button.secondary::before {
+            background: rgba(201, 169, 97, .12);
+        }
+
+        .hero-button.secondary:hover {
+            border-color: var(--gold);
+            color: #f5f1e8;
         }
 
 
         /* =====================================================
-           LARGE HOMEPAGE LOGO
-           RESTORED
+           HERO WATCH DISPLAY
         ===================================================== */
 
-        .hero-logo-area {
+        .hero-visual {
+            min-height: 580px;
+
+            position: relative;
+
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .hero-logo-frame {
-            width: 310px;
-            height: 310px;
+        .hero-visual::before {
+            content: "";
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute;
 
-            border: 1px solid rgba(201, 169, 97, .25);
+            width: 540px;
+            height: 540px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(201, 169, 97, .15) 0%,
+                    rgba(201, 169, 97, .055) 33%,
+                    transparent 67%
+                );
+
+            filter: blur(2px);
+
+            pointer-events: none;
+        }
+
+        .hero-orbit {
+            position: absolute;
+
+            width: 530px;
+            height: 530px;
+
+            border: 1px solid rgba(201, 169, 97, .17);
             border-radius: 50%;
 
             box-shadow:
-                0 0 0 14px rgba(201, 169, 97, .025),
-                0 0 60px rgba(201, 169, 97, .08);
+                0 0 0 32px rgba(201, 169, 97, .018),
+                0 0 0 75px rgba(201, 169, 97, .011),
+                0 0 100px rgba(201, 169, 97, .08);
+
+            animation: orbitPulse 7s ease-in-out infinite;
         }
 
-        .hero-logo {
-            width: 235px;
-            height: 235px;
+        @keyframes orbitPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .84;
+            }
+
+            50% {
+                transform: scale(1.018);
+                opacity: 1;
+            }
+
+        }
+
+        .hero-orbit::before,
+        .hero-orbit::after {
+            content: "";
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(201, 169, 97, .10);
+        }
+
+        .hero-orbit::before {
+            inset: 35px;
+        }
+
+        .hero-orbit::after {
+            inset: 80px;
+        }
+
+        .hero-watch-card {
+            position: relative;
+            z-index: 3;
+
+            width: min(435px, 77%);
+
+            min-height: 530px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, .115),
+                    rgba(255, 255, 255, .015)
+                );
+
+            border: 1px solid rgba(201, 169, 97, .34);
+
+            box-shadow:
+                0 40px 95px rgba(0, 0, 0, .34),
+                inset 0 0 75px rgba(255, 255, 255, .025);
+
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+
+            animation: watchFloat 5.5s ease-in-out infinite;
+        }
+
+        @keyframes watchFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-11px);
+            }
+
+        }
+
+        .hero-watch-card::before {
+            content: "";
+
+            position: absolute;
+            inset: 11px;
+
+            border: 1px solid rgba(201, 169, 97, .13);
+
+            pointer-events: none;
+        }
+
+        .hero-watch-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 55%;
+            height: 1px;
+
+            left: 22.5%;
+            bottom: 19px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(201, 169, 97, .45),
+                    transparent
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-watch-card img {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            height: 485px;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(0 28px 32px rgba(0, 0, 0, .38));
+
+            transition:
+                transform .6s ease,
+                filter .6s ease;
+        }
+
+        .hero-watch-card:hover img {
+            transform: scale(1.028);
+
+            filter:
+                drop-shadow(0 32px 38px rgba(0, 0, 0, .43));
+        }
+
+        .hero-watch-placeholder {
+            color: rgba(245, 241, 232, .55);
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 29px;
+        }
+
+        .hero-visual-label {
+            position: absolute;
+
+            right: 0;
+            bottom: 58px;
+
+            color: rgba(245, 241, 232, .40);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            writing-mode: vertical-rl;
+        }
+
+        .hero-side-detail {
+            position: absolute;
+
+            left: 0;
+            bottom: 63px;
+
+            color: rgba(245, 241, 232, .33);
+
+            font-size: 6px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            writing-mode: vertical-rl;
+        }
+
+        .hero-scroll {
+            position: absolute;
+
+            left: 50%;
+            bottom: 21px;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: rgba(245, 241, 232, .38);
+
+            font-size: 6px;
+            font-weight: 700;
+
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll::after {
+            content: "";
+
+            width: 34px;
+            height: 1px;
+
+            background: rgba(201, 169, 97, .50);
         }
 
 
@@ -533,45 +1256,59 @@
         ===================================================== */
 
         .section {
-            padding: 90px 0;
+            padding: 105px 0;
         }
 
         .section-inner {
-            width: min(1180px, calc(100% - 40px));
+            width: min(var(--container), calc(100% - 44px));
             margin: auto;
         }
 
         .section-heading {
-            margin-bottom: 37px;
+            margin-bottom: 43px;
+        }
+
+        .section-heading.center {
+            text-align: center;
         }
 
         .section-eyebrow {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
 
             color: #a7894e;
 
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
+
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .section-title {
-            color: #171512;
+            color: var(--charcoal);
 
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 55px);
+
+            font-size: clamp(41px, 5vw, 61px);
             font-weight: 600;
-            line-height: 1;
+
+            line-height: .95;
         }
 
         .section-description {
-            max-width: 610px;
-            margin-top: 12px;
+            max-width: 630px;
 
-            color: #71695e;
+            margin-top: 15px;
 
-            font-size: 12px;
+            color: #6e716a;
+
+            font-size: 11px;
+            line-height: 1.9;
+        }
+
+        .section-heading.center .section-description {
+            margin-left: auto;
+            margin-right: auto;
         }
 
 
@@ -580,73 +1317,164 @@
         ===================================================== */
 
         .shop-section {
+            position: relative;
+
             background:
                 linear-gradient(
                     135deg,
-                    #f3ecdf 0%,
-                    #ece2d2 100%
+                    #faf7ef 0%,
+                    #eee7da 100%
                 );
         }
 
+        .shop-section::before {
+            content: "US";
+
+            position: absolute;
+
+            right: 2%;
+            top: 45px;
+
+            color: rgba(18, 60, 50, .025);
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 220px;
+            font-weight: 700;
+
+            line-height: 1;
+
+            pointer-events: none;
+        }
+
+        .shop-topline {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            margin-bottom: 34px;
+        }
+
+        .shop-topline .section-heading {
+            margin-bottom: 0;
+        }
+
+        .shop-note {
+            max-width: 280px;
+
+            color: #7a7b73;
+
+            font-size: 9px;
+            line-height: 1.8;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           COLLECTION FILTERS
+        ===================================================== */
+
         .collection-filters {
+            position: relative;
+            z-index: 2;
+
             display: flex;
             flex-wrap: wrap;
-            gap: 9px;
-            margin-bottom: 38px;
+
+            gap: 7px;
+
+            margin-bottom: 40px;
+
+            padding-bottom: 1px;
         }
 
         .collection-filter {
+            position: relative;
+
             padding: 10px 16px;
 
-            border: 1px solid rgba(24, 23, 21, .22);
-            background: rgba(255, 251, 242, .45);
-            color: #292721;
+            border: 1px solid rgba(32, 35, 31, .16);
+
+            background: rgba(255, 255, 255, .42);
+            color: #353832;
 
             cursor: pointer;
 
-            font-size: 9px;
+            font-size: 7.5px;
             font-weight: 700;
-            letter-spacing: 1px;
+
+            letter-spacing: 1.1px;
             text-transform: uppercase;
+
+            transition:
+                background .25s ease,
+                border-color .25s ease,
+                color .25s ease,
+                transform .25s ease;
+        }
+
+        .collection-filter:hover {
+            border-color: var(--emerald);
+            transform: translateY(-1px);
         }
 
         .collection-filter:hover,
         .collection-filter.active {
-            border-color: #c9a961;
-            background: #191815;
+            background: var(--emerald);
             color: #f5f1e8;
+
+            box-shadow:
+                0 7px 18px rgba(18, 60, 50, .12);
         }
 
 
         /* =====================================================
            PRODUCTS
-           REFINED CARD / IMAGE LAYOUT
         ===================================================== */
 
         .products-grid {
+            position: relative;
+            z-index: 1;
+
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
         }
 
         .product-card {
+            position: relative;
+
             display: block;
 
             overflow: hidden;
 
-            background: #e4dbca;
-            border: 1px solid rgba(24, 23, 21, .08);
+            background: #faf7ef;
 
-            transition: .25s ease;
+            border: 1px solid rgba(32, 35, 31, .08);
+
+            box-shadow:
+                0 6px 22px rgba(30, 34, 29, .035);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
 
-            border-color: rgba(201, 169, 97, .58);
+            border-color: rgba(201, 169, 97, .62);
 
-            box-shadow:
-                0 16px 35px rgba(24, 23, 21, .11);
+            box-shadow: var(--shadow-card);
         }
 
         .product-link {
@@ -654,7 +1482,10 @@
         }
 
         .product-image {
+            position: relative;
+
             width: 100%;
+
             aspect-ratio: 4 / 3;
 
             display: flex;
@@ -663,10 +1494,50 @@
 
             overflow: hidden;
 
-            background: #d9cfbd;
+            background:
+                radial-gradient(
+                    circle at 50% 44%,
+                    #eee7d9,
+                    #d6cbb9
+                );
+        }
+
+        .product-image::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255, 255, 255, .28),
+                    transparent 48%
+                );
+
+            pointer-events: none;
+        }
+
+        .product-image::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, .17),
+                    transparent 44%
+                );
+
+            pointer-events: none;
         }
 
         .product-image img {
+            position: relative;
+            z-index: 1;
+
             width: 100%;
             height: 100%;
 
@@ -674,93 +1545,139 @@
 
             object-fit: cover;
             object-position: center;
+
+            transition:
+                transform .55s ease,
+                filter .55s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.055);
+            filter: saturate(1.04);
         }
 
         .product-image-placeholder {
             color: #777064;
 
-            font-size: 10px;
+            font-size: 8px;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
+        .product-badge {
+            position: absolute;
+            z-index: 3;
+
+            left: 13px;
+            top: 13px;
+
+            padding: 6px 8px;
+
+            background: var(--emerald);
+            color: #f5f1e8;
+
+            font-size: 6px;
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
         .product-info {
-            padding: 17px 18px 10px;
+            padding: 20px 20px 11px;
         }
 
         .product-collection {
             color: #a7894e;
 
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 700;
+
             letter-spacing: 1.6px;
             text-transform: uppercase;
         }
 
         .product-name {
-            margin-top: 6px;
+            margin-top: 7px;
 
-            color: #171512;
+            color: var(--charcoal);
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 25px;
+
+            font-size: 29px;
             font-weight: 600;
-            line-height: 1.05;
+
+            line-height: 1.02;
         }
 
         .product-price {
-            margin-top: 10px;
+            margin-top: 11px;
 
-            color: #39352f;
+            color: #393d38;
 
             font-size: 11px;
             font-weight: 700;
+
             font-variant-numeric: tabular-nums;
+
             line-height: 1.2;
         }
 
         .product-actions {
-            padding: 9px 18px 18px;
+            padding: 9px 20px 20px;
         }
 
         .add-to-cart-button {
             width: 100%;
+
             padding: 12px 14px;
 
-            border: 1px solid #191815;
-            background: #191815;
+            border: 1px solid var(--emerald);
+
+            background: var(--emerald);
             color: #f5f1e8;
 
             cursor: pointer;
 
-            font-size: 8px;
+            font-size: 7.5px;
             font-weight: 700;
+
             letter-spacing: 1.4px;
             text-transform: uppercase;
 
-            transition: .25s ease;
+            transition:
+                background .25s ease,
+                border-color .25s ease,
+                color .25s ease,
+                transform .25s ease;
         }
 
         .add-to-cart-button:hover {
-            background: #c9a961;
-            border-color: #c9a961;
-            color: #171512;
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--charcoal);
+
+            transform: translateY(-1px);
         }
 
         .add-to-cart-button:disabled {
-            background: #aaa296;
-            border-color: #aaa296;
+            background: #aaa79f;
+            border-color: #aaa79f;
             color: #f5f1e8;
+
             cursor: not-allowed;
+
+            transform: none;
         }
 
         .stock-note {
             margin-top: 7px;
 
-            color: #71695e;
+            color: #716f67;
 
-            font-size: 7px;
+            font-size: 6.5px;
             letter-spacing: .7px;
+
             text-align: center;
             text-transform: uppercase;
         }
@@ -772,39 +1689,560 @@
         .empty-products {
             grid-column: 1 / -1;
 
-            padding: 70px 20px;
+            padding: 75px 20px;
 
             text-align: center;
 
-            background: #e4dbca;
-            border: 1px solid rgba(24, 23, 21, .08);
+            background: #f8f4eb;
+
+            border: 1px solid rgba(32, 35, 31, .08);
         }
 
         .empty-products h3 {
-            color: #171512;
+            color: var(--charcoal);
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 34px;
+            font-size: 36px;
         }
 
         .empty-products p {
             margin-top: 8px;
 
-            color: #71695e;
+            color: #716f67;
+
             font-size: 11px;
         }
 
 
         /* =====================================================
-           ABOUT
+           NEW ARRIVALS
         ===================================================== */
 
-        .about-section {
+        .new-arrivals-section {
+            position: relative;
+            overflow: hidden;
+
             background:
                 linear-gradient(
                     135deg,
-                    #1a1916,
-                    #24221e
+                    #072a22,
+                    #0f4b3b
+                );
+
+            color: #f5f1e8;
+        }
+
+        .new-arrivals-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -250px;
+            top: -230px;
+
+            border: 1px solid rgba(201, 169, 97, .13);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 45px rgba(201, 169, 97, .018),
+                0 0 0 95px rgba(201, 169, 97, .012);
+
+            pointer-events: none;
+        }
+
+        .new-arrivals-section .section-title {
+            color: #f5f1e8;
+        }
+
+        .new-arrivals-section .section-description {
+            color: rgba(245, 241, 232, .62);
+        }
+
+        .new-arrivals-section .section-eyebrow {
+            color: var(--gold-light);
+        }
+
+        .new-arrivals-grid {
+            position: relative;
+            z-index: 1;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .arrival-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background: rgba(255, 255, 255, .045);
+
+            border: 1px solid rgba(201, 169, 97, .24);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .arrival-card:hover {
+            transform: translateY(-6px);
+
+            border-color: rgba(201, 169, 97, .58);
+
+            box-shadow:
+                0 24px 55px rgba(0, 0, 0, .20);
+        }
+
+        .arrival-image {
+            position: relative;
+
+            aspect-ratio: 4 / 3;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    #e6dfd1,
+                    #cfc3b0
+                );
+        }
+
+        .arrival-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: transform .55s ease;
+        }
+
+        .arrival-card:hover .arrival-image img {
+            transform: scale(1.055);
+        }
+
+        .arrival-content {
+            padding: 18px 19px 20px;
+        }
+
+        .arrival-label {
+            color: var(--gold);
+
+            font-size: 6.5px;
+            font-weight: 700;
+
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .arrival-name {
+            margin-top: 7px;
+
+            color: #f5f1e8;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            font-weight: 600;
+
+            line-height: 1;
+        }
+
+        .arrival-price {
+            margin-top: 9px;
+
+            color: rgba(245, 241, 232, .68);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .arrival-link {
+            display: inline-block;
+
+            margin-top: 13px;
+
+            color: var(--gold-light);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+
+            transition: transform .25s ease;
+        }
+
+        .arrival-card:hover .arrival-link {
+            transform: translateX(4px);
+        }
+
+        .no-arrivals {
+            grid-column: 1 / -1;
+
+            padding: 42px 25px;
+
+            border: 1px solid rgba(201, 169, 97, .20);
+
+            background: rgba(255, 255, 255, .035);
+
+            text-align: center;
+        }
+
+        .no-arrivals h3 {
+            color: #f5f1e8;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 32px;
+        }
+
+        .no-arrivals p {
+            margin-top: 7px;
+
+            color: rgba(245, 241, 232, .55);
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           VISUAL COLLECTIONS
+        ===================================================== */
+
+        .collections-section {
+            background:
+                linear-gradient(
+                    180deg,
+                    #fbf8f1,
+                    #f1ebdf
+                );
+        }
+
+        .collections-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .collection-card {
+            position: relative;
+
+            min-height: 410px;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 34px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #195b47,
+                    #05271f
+                );
+
+            border: 1px solid rgba(201, 169, 97, .20);
+
+            color: #f5f1e8;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .collection-card::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 76% 22%,
+                    rgba(201, 169, 97, .20),
+                    transparent 29%
+                ),
+                radial-gradient(
+                    circle at 20% 100%,
+                    rgba(255, 255, 255, .035),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    transparent 42%,
+                    rgba(0, 0, 0, .23)
+                );
+        }
+
+        .collection-card::after {
+            content: "";
+
+            position: absolute;
+            inset: 12px;
+
+            border: 1px solid rgba(201, 169, 97, .18);
+
+            pointer-events: none;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-7px);
+
+            border-color: rgba(201, 169, 97, .62);
+
+            box-shadow:
+                0 30px 80px rgba(5, 31, 26, .28),
+                0 8px 28px var(--bronze-soft);
+        }
+
+        .collection-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .collection-number {
+            margin-bottom: 72px;
+
+            color: var(--gold);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        .collection-card h3 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 48px;
+            font-weight: 600;
+
+            line-height: 1;
+        }
+
+        .collection-card p {
+            max-width: 290px;
+
+            margin-top: 10px;
+
+            color: rgba(245, 241, 232, .62);
+
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .collection-card-arrow {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            color: var(--gold-light);
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            transition: transform .25s ease;
+        }
+
+        .collection-card:hover .collection-card-arrow {
+            transform: translateX(4px);
+        }
+
+
+        /* =====================================================
+           BRAND STORY
+        ===================================================== */
+
+        .story-strip {
+            padding: 25px 0;
+
+            background: var(--gold);
+
+            color: var(--emerald-deep);
+
+            border-top: 1px solid rgba(10, 43, 36, .12);
+            border-bottom: 1px solid rgba(10, 43, 36, .12);
+
+            overflow: hidden;
+        }
+
+        .story-strip-inner {
+            width: min(1100px, calc(100% - 44px));
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 25px;
+
+            text-align: center;
+        }
+
+        .story-strip span {
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+        }
+
+        .story-strip-dot {
+            width: 4px;
+            height: 4px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: var(--emerald-deep);
+        }
+
+
+        /* =====================================================
+           TRUST
+        ===================================================== */
+
+        .trust-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8e1d4,
+                    #f5f1e8
+                );
+        }
+
+        .trust-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .trust-card {
+            position: relative;
+
+            min-height: 230px;
+
+            padding: 31px 25px;
+
+            background:
+                rgba(255, 255, 255, .56);
+
+            border: 1px solid rgba(32, 35, 31, .08);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .trust-card::after {
+            content: "";
+
+            position: absolute;
+
+            right: 18px;
+            bottom: 17px;
+
+            width: 22px;
+            height: 1px;
+
+            background: rgba(201, 169, 97, .45);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-6px);
+
+            border-color: var(--gold-border);
+
+            box-shadow:
+                0 14px 35px rgba(25, 32, 27, .07);
+        }
+
+        .trust-icon {
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 26px;
+
+            border: 1px solid var(--gold);
+
+            color: var(--gold);
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 17px;
+        }
+
+        .trust-card h3 {
+            color: var(--charcoal);
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 27px;
+            font-weight: 600;
+
+            line-height: 1.05;
+        }
+
+        .trust-card p {
+            margin-top: 10px;
+
+            color: #70736b;
+
+            font-size: 9px;
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           ABOUT / BRAND STORY
+        ===================================================== */
+
+        .about-section {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 88% 50%,
+                    rgba(201, 169, 97, .09),
+                    transparent 29%
+                ),
+                radial-gradient(
+                    circle at 5% 100%,
+                    rgba(35, 95, 76, .20),
+                    transparent 31%
+                ),
+                linear-gradient(
+                    135deg,
+                    #092e26,
+                    #155040
                 );
 
             color: #f5f1e8;
@@ -814,6 +2252,16 @@
             color: #f5f1e8;
         }
 
+        .about-layout {
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 75px;
+
+            align-items: center;
+        }
+
         .about-content {
             max-width: 760px;
         }
@@ -821,23 +2269,245 @@
         .about-content p {
             margin-bottom: 18px;
 
-            color: rgba(245, 241, 232, .68);
+            color: rgba(245, 241, 232, .67);
 
             font-size: 12px;
             line-height: 2;
         }
 
         .about-highlight {
-            margin-top: 30px;
-            padding-left: 22px;
+            margin-top: 31px;
+            padding: 18px 0 18px 23px;
 
-            border-left: 1px solid #c9a961;
+            border-left: 1px solid var(--gold);
 
             color: #f5f1e8;
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 28px;
+
+            font-size: 31px;
             line-height: 1.35;
+        }
+
+        .about-emblem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-emblem-ring {
+            position: relative;
+
+            width: 290px;
+            height: 290px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(201, 169, 97, .28);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 15px rgba(201, 169, 97, .025),
+                0 0 0 45px rgba(201, 169, 97, .012),
+                0 0 70px rgba(201, 169, 97, .08);
+        }
+
+        .about-emblem-ring::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 18px;
+
+            border: 1px dashed rgba(201, 169, 97, .15);
+            border-radius: 50%;
+        }
+
+        .about-emblem-ring svg {
+            width: 190px;
+            height: 190px;
+        }
+
+
+        /* =====================================================
+           REVIEWS
+        ===================================================== */
+
+        .reviews-section {
+            background: var(--ivory-light);
+        }
+
+        .review-intro {
+            max-width: 680px;
+
+            margin: 0 auto 40px;
+
+            text-align: center;
+        }
+
+        .review-note {
+            position: relative;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            padding: 43px 30px;
+
+            border: 1px solid rgba(201, 169, 97, .30);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5efe3,
+                    #ece4d5
+                );
+
+            text-align: center;
+
+            box-shadow:
+                0 14px 40px rgba(30, 34, 29, .05);
+        }
+
+        .review-note::before,
+        .review-note::after {
+            content: "“";
+
+            position: absolute;
+
+            color: rgba(201, 169, 97, .18);
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 95px;
+
+            line-height: 1;
+        }
+
+        .review-note::before {
+            left: 20px;
+            top: 8px;
+        }
+
+        .review-note::after {
+            right: 20px;
+            bottom: -23px;
+
+            transform: rotate(180deg);
+        }
+
+        .review-stars {
+            color: var(--gold);
+
+            font-size: 16px;
+            letter-spacing: 4px;
+        }
+
+        .review-note h3 {
+            margin-top: 13px;
+
+            color: var(--charcoal);
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .review-note p {
+            max-width: 520px;
+
+            margin: 8px auto 0;
+
+            color: #71736b;
+
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           FAQ
+        ===================================================== */
+
+        .faq-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ece6da,
+                    #f6f2e9
+                );
+        }
+
+        .faq-list {
+            width: min(850px, 100%);
+
+            margin: auto;
+        }
+
+        .faq-item {
+            border-top: 1px solid rgba(32, 35, 31, .16);
+        }
+
+        .faq-item:last-child {
+            border-bottom: 1px solid rgba(32, 35, 31, .16);
+        }
+
+        .faq-question {
+            width: 100%;
+
+            padding: 23px 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border: 0;
+
+            background: transparent;
+            color: var(--charcoal);
+
+            cursor: pointer;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 27px;
+            font-weight: 600;
+
+            text-align: left;
+        }
+
+        .faq-plus {
+            color: var(--gold);
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+
+            transition: transform .25s ease;
+        }
+
+        .faq-answer {
+            display: none;
+
+            max-width: 760px;
+
+            padding: 0 45px 23px 0;
+
+            color: #70736b;
+
+            font-size: 10px;
+            line-height: 1.9;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-plus {
+            transform: rotate(45deg);
         }
 
 
@@ -849,36 +2519,70 @@
             background:
                 linear-gradient(
                     135deg,
-                    #eee6d8,
-                    #e5dac9
+                    #f0eadf,
+                    #e6dfd1
                 );
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
         }
 
         .contact-card {
-            padding: 30px 24px;
+            position: relative;
 
-            background: #f4eee3;
-            border: 1px solid rgba(24, 23, 21, .09);
+            min-height: 245px;
 
-            transition: .25s ease;
+            padding: 34px 26px;
+
+            background: #f9f5ec;
+
+            border: 1px solid rgba(32, 35, 31, .09);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .contact-card::after {
+            content: "→";
+
+            position: absolute;
+
+            right: 25px;
+            bottom: 24px;
+
+            color: var(--gold);
+
+            font-size: 15px;
+
+            transition: transform .25s ease;
         }
 
         .contact-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(201, 169, 97, .6);
+            transform: translateY(-6px);
+
+            border-color: var(--gold-border);
+
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-card:hover::after {
+            transform: translateX(5px);
         }
 
         .contact-label {
             color: #a7894e;
 
-            font-size: 9px;
+            font-size: 7px;
             font-weight: 700;
+
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -886,32 +2590,137 @@
         .contact-name {
             margin-top: 10px;
 
-            color: #171512;
+            color: var(--charcoal);
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 28px;
+
+            font-size: 31px;
             font-weight: 600;
         }
 
         .contact-detail {
+            max-width: 280px;
+
             margin-top: 7px;
 
-            color: #71695e;
+            color: #716f67;
 
-            font-size: 10px;
+            font-size: 9px;
+            line-height: 1.7;
         }
 
         .contact-arrow {
             display: inline-block;
 
-            margin-top: 20px;
+            margin-top: 21px;
 
-            color: #171512;
+            color: var(--emerald);
 
-            font-size: 9px;
+            font-size: 7px;
             font-weight: 700;
+
             letter-spacing: 1.2px;
             text-transform: uppercase;
+
+            transition:
+                transform .25s ease,
+                color .25s ease;
+        }
+
+        .contact-card:hover .contact-arrow {
+            color: #a7894e;
+            transform: translateX(4px);
+        }
+
+
+        /* =====================================================
+           FINAL CTA
+        ===================================================== */
+
+        .final-cta {
+            position: relative;
+            overflow: hidden;
+
+            padding: 108px 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(201, 169, 97, .17),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(35, 95, 76, .30),
+                    transparent 36%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b3028,
+                    #123c32
+                );
+
+            color: #f5f1e8;
+
+            text-align: center;
+        }
+
+        .final-cta::before,
+        .final-cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 370px;
+            height: 370px;
+
+            border: 1px solid rgba(201, 169, 97, .09);
+            border-radius: 50%;
+        }
+
+        .final-cta::before {
+            left: -200px;
+            top: -190px;
+        }
+
+        .final-cta::after {
+            right: -200px;
+            bottom: -190px;
+        }
+
+        .final-cta .section-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta .section-eyebrow {
+            color: var(--gold-light);
+        }
+
+        .final-cta h2 {
+            color: #f5f1e8;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 74px);
+            font-weight: 600;
+
+            line-height: .95;
+        }
+
+        .final-cta p {
+            max-width: 500px;
+
+            margin: 15px auto 0;
+
+            color: rgba(245, 241, 232, .63);
+
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .final-cta .hero-button {
+            margin-top: 28px;
         }
 
 
@@ -920,7 +2729,7 @@
         ===================================================== */
 
         footer {
-            background: #12110f;
+            background: #0b1915;
 
             color: rgba(245, 241, 232, .65);
 
@@ -928,27 +2737,93 @@
         }
 
         .footer-inner {
-            width: min(1180px, calc(100% - 40px));
-            min-height: 100px;
+            width: min(var(--container), calc(100% - 44px));
 
             margin: auto;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            padding: 48px 0;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr 1fr 1fr;
+
+            gap: 35px;
         }
 
         .footer-brand {
             color: #f5f1e8;
 
             font-family: "Cormorant Garamond", serif;
-            font-size: 24px;
+
+            font-size: 31px;
             font-weight: 600;
         }
 
-        .footer-copy {
+        .footer-tagline {
+            margin-top: 5px;
+
+            color: var(--gold);
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        .footer-title {
+            margin-bottom: 13px;
+
+            color: #f5f1e8;
+
+            font-size: 7px;
+            font-weight: 700;
+
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 241, 232, .55);
+
             font-size: 8px;
+
+            transition: color .2s ease,
+                        transform .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            width: min(var(--container), calc(100% - 44px));
+
+            margin: auto;
+
+            padding: 17px 0;
+
+            border-top: 1px solid rgba(245, 241, 232, .08);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-copy {
+            font-size: 7px;
+
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -956,6 +2831,78 @@
 
         /* =====================================================
            TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            nav {
+                gap: 17px;
+            }
+
+            .header-actions {
+                gap: 5px;
+            }
+
+            .header-search-button,
+            .header-cart-button {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .hero-inner {
+                gap: 18px;
+            }
+
+            .hero-copy {
+                padding-left: 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(70px, 8.5vw, 106px);
+            }
+
+            .hero-orbit {
+                width: 430px;
+                height: 430px;
+            }
+
+            .hero-watch-card {
+                width: min(375px, 82%);
+                min-height: 465px;
+            }
+
+            .hero-watch-card img {
+                height: 425px;
+            }
+
+            .hero-side-detail {
+                display: none;
+            }
+
+            .collections-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .trust-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .new-arrivals-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .about-layout {
+                gap: 45px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL TABLET
         ===================================================== */
 
         @media (max-width: 900px) {
@@ -968,49 +2915,116 @@
                 display: none;
             }
 
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .header-actions {
+                margin-left: auto;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                min-height: auto;
+            }
+
             .hero-inner {
                 grid-template-columns: 1fr;
-                gap: 55px;
+
+                min-height: auto;
+
+                padding: 82px 0 82px;
+
+                gap: 22px;
             }
 
-            .hero-logo-area {
-                order: -1;
+            .hero-copy {
+                max-width: 700px;
+
+                margin: auto;
+
+                text-align: center;
             }
 
-            .hero-logo-frame {
-                width: 240px;
-                height: 240px;
+            .hero-eyebrow {
+                justify-content: center;
             }
 
-            .hero-logo {
-                width: 185px;
-                height: 185px;
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-line {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 510px;
+
+                order: 2;
+            }
+
+            .hero-orbit {
+                width: 395px;
+                height: 395px;
+            }
+
+            .hero-watch-card {
+                width: 335px;
+                min-height: 430px;
+            }
+
+            .hero-watch-card img {
+                height: 390px;
+            }
+
+            .hero-visual-label {
+                display: none;
+            }
+
+            .hero-scroll {
+                display: none;
             }
 
             .products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
                 gap: 18px;
             }
 
-            .product-image {
-                aspect-ratio: 4 / 3;
+            .about-layout {
+                grid-template-columns: 1fr;
             }
 
-            .product-info {
-                padding: 16px 17px 9px;
-            }
-
-            .product-name {
-                font-size: 24px;
-            }
-
-            .product-actions {
-                padding: 9px 17px 17px;
+            .about-emblem {
+                display: none;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-brand-column {
+                grid-column: 1 / -1;
+            }
+
         }
 
 
@@ -1020,9 +3034,50 @@
 
         @media (max-width: 600px) {
 
+        .hero-brand-logo {
+            width: 62px;
+            height: 62px;
+            margin-bottom: 17px;
+        }
+
+        .collections-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .collection-card {
+            min-height: 275px;
+            padding: 20px;
+        }
+
+        .collection-card::after {
+            inset: 8px;
+        }
+
+        .collection-number {
+            margin-bottom: 42px;
+            font-size: 6px;
+        }
+
+        .collection-card h3 {
+            font-size: 30px;
+        }
+
+        .collection-card p {
+            max-width: 150px;
+            font-size: 7px;
+        }
+
+        .collection-card-arrow {
+            font-size: 6px;
+        }
+
             .header-inner {
                 width: calc(100% - 24px);
-                gap: 7px;
+
+                min-height: 66px;
+
+                gap: 5px;
             }
 
             .brand {
@@ -1030,29 +3085,49 @@
             }
 
             .brand-mark {
-                width: 45px;
-                height: 45px;
+                width: 42px;
+                height: 42px;
             }
 
             .brand-name {
-                font-size: 20px;
+                font-size: 19px;
             }
 
             .brand-tagline {
-                font-size: 6px;
-                letter-spacing: 1.4px;
+                font-size: 5.5px;
+                letter-spacing: 1.2px;
             }
 
             .header-actions {
-                gap: 5px;
+                gap: 4px;
             }
 
             .header-search-button,
             .header-cart-button {
                 min-width: auto;
-                padding: 10px 9px;
-                font-size: 7px;
-                letter-spacing: 1px;
+
+                padding: 9px 8px;
+
+                font-size: 6.5px;
+                letter-spacing: .8px;
+            }
+
+            .header-cart-button {
+                padding-left: 7px;
+                padding-right: 7px;
+            }
+
+            .mobile-menu-button {
+                width: 38px;
+                height: 38px;
+            }
+
+            .mobile-nav {
+                padding-top: 88px;
+            }
+
+            .mobile-nav a {
+                font-size: 27px;
             }
 
             .search-inner {
@@ -1067,53 +3142,192 @@
                 width: 100%;
             }
 
-            .hero {
-                min-height: 680px;
-            }
+
+            /* HERO */
 
             .hero-inner {
                 width: calc(100% - 28px);
-                padding: 65px 0;
+
+                padding: 60px 0 70px;
+
+                gap: 7px;
+            }
+
+            .hero-copy {
+                max-width: 100%;
+            }
+
+            .hero-eyebrow {
+                margin-bottom: 20px;
+
+                gap: 8px;
+
+                font-size: 6.5px;
+                letter-spacing: 2.8px;
+            }
+
+            .hero-eyebrow::before {
+                width: 25px;
             }
 
             .hero h1 {
-                font-size: 61px;
+                font-size: 62px;
+
+                letter-spacing: -2.5px;
+                line-height: .76;
             }
 
-            .hero-logo-frame {
-                width: 225px;
-                height: 225px;
+            .hero h2 {
+                margin-top: 23px;
+
+                font-size: 29px;
             }
 
-            .hero-logo {
-                width: 175px;
-                height: 175px;
+            .hero-line {
+                width: 65px;
+
+                margin-top: 23px;
+                margin-bottom: 22px;
             }
+
+            .hero-description {
+                max-width: 330px;
+
+                font-size: 9px;
+                line-height: 1.9;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                width: min(300px, 100%);
+
+                margin-left: auto;
+                margin-right: auto;
+
+                margin-top: 27px;
+            }
+
+            .hero-button {
+                width: 100%;
+
+                min-height: 46px;
+            }
+
+            .hero-visual {
+                min-height: 385px;
+
+                margin-top: 2px;
+            }
+
+            .hero-visual::before {
+                width: 330px;
+                height: 330px;
+            }
+
+            .hero-orbit {
+                width: 275px;
+                height: 275px;
+            }
+
+            .hero-orbit::before {
+                inset: 22px;
+            }
+
+            .hero-orbit::after {
+                inset: 47px;
+            }
+
+            .hero-watch-card {
+                width: 245px;
+                min-height: 315px;
+
+                padding: 14px;
+            }
+
+            .hero-watch-card::before {
+                inset: 9px;
+            }
+
+            .hero-watch-card img {
+                height: 282px;
+            }
+
+            .hero-watch-placeholder {
+                font-size: 22px;
+            }
+
+
+            /* SECTIONS */
 
             .section {
-                padding: 65px 0;
+                padding: 72px 0;
             }
 
             .section-inner {
                 width: calc(100% - 28px);
             }
 
-
-            /* =================================================
-               MOBILE PRODUCT GRID
-            ================================================= */
-
-            .products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
+            .section-heading {
+                margin-bottom: 31px;
             }
 
-            .product-card {
-                min-width: 0;
+            .section-title {
+                font-size: 42px;
+            }
+
+            .section-description {
+                font-size: 10px;
+            }
+
+            .shop-topline {
+                display: block;
+            }
+
+            .shop-note {
+                max-width: 100%;
+
+                margin-top: 13px;
+
+                text-align: left;
+            }
+
+
+            /* FILTERS */
+
+            .collection-filters {
+                gap: 6px;
+
+                margin-bottom: 31px;
+            }
+
+            .collection-filter {
+                padding: 8px 10px;
+
+                font-size: 6.5px;
+            }
+
+
+            /* PRODUCTS */
+
+            .products-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 10px;
             }
 
             .product-card:hover {
                 transform: translateY(-2px);
+            }
+
+            .product-badge {
+                left: 8px;
+                top: 8px;
+
+                padding: 5px 6px;
+
+                font-size: 5px;
             }
 
             .product-image {
@@ -1121,12 +3335,13 @@
             }
 
             .product-info {
-                padding: 12px 12px 7px;
+                padding: 12px 11px 7px;
             }
 
             .product-collection {
-                font-size: 6.5px;
-                letter-spacing: 1.15px;
+                font-size: 6px;
+                letter-spacing: 1px;
+
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -1141,48 +3356,277 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
+
                 overflow: hidden;
             }
 
             .product-price {
                 margin-top: 7px;
-                font-size: 9px;
+                font-size: 8.5px;
             }
 
             .product-actions {
-                padding: 6px 12px 12px;
+                padding: 6px 11px 11px;
             }
 
             .add-to-cart-button {
-                padding: 10px 7px;
+                padding: 9px 5px;
 
-                font-size: 6.5px;
-                letter-spacing: 1px;
+                font-size: 6px;
+                letter-spacing: .8px;
             }
 
             .stock-note {
                 margin-top: 5px;
-                font-size: 6px;
-                letter-spacing: .5px;
+
+                font-size: 5.5px;
+                letter-spacing: .4px;
             }
 
-            .collection-filters {
-                gap: 7px;
+
+            /* NEW ARRIVALS */
+
+            .new-arrivals-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 9px;
             }
 
-            .collection-filter {
-                padding: 9px 11px;
+            .arrival-content {
+                padding: 12px 11px 14px;
+            }
+
+            .arrival-label {
+                font-size: 5px;
+                letter-spacing: 1px;
+            }
+
+            .arrival-name {
+                margin-top: 5px;
+
+                font-size: 20px;
+            }
+
+            .arrival-price {
+                font-size: 7px;
+            }
+
+            .arrival-link {
+                margin-top: 9px;
+
+                font-size: 5.5px;
+                letter-spacing: .9px;
+            }
+
+            .no-arrivals {
+                padding: 35px 15px;
+            }
+
+            .no-arrivals h3 {
+                font-size: 27px;
+            }
+
+            .no-arrivals p {
                 font-size: 8px;
             }
+
+
+            /* COLLECTIONS */
+
+            .collections-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 9px;
+            }
+
+            .collection-card {
+                min-height: 220px;
+
+                padding: 17px;
+            }
+
+            .collection-card::after {
+                inset: 8px;
+            }
+
+            .collection-number {
+                margin-bottom: 25px;
+
+                font-size: 6px;
+            }
+
+            .collection-card h3 {
+                font-size: 25px;
+            }
+
+            .collection-card p {
+                font-size: 7px;
+            }
+
+            .collection-card-arrow {
+                margin-top: 12px;
+
+                font-size: 6px;
+            }
+
+
+            /* STORY STRIP */
+
+            .story-strip {
+                padding: 19px 0;
+            }
+
+            .story-strip-inner {
+                width: calc(100% - 28px);
+
+                gap: 12px;
+            }
+
+            .story-strip span {
+                font-size: 5.5px;
+                letter-spacing: 1.4px;
+            }
+
+            .story-strip-dot {
+                width: 3px;
+                height: 3px;
+            }
+
+
+            /* TRUST */
+
+            .trust-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 9px;
+            }
+
+            .trust-card {
+                min-height: 205px;
+
+                padding: 22px 15px;
+            }
+
+            .trust-icon {
+                width: 31px;
+                height: 31px;
+
+                margin-bottom: 18px;
+
+                font-size: 15px;
+            }
+
+            .trust-card h3 {
+                font-size: 22px;
+            }
+
+            .trust-card p {
+                font-size: 7.5px;
+            }
+
+
+            /* ABOUT */
+
+            .about-content p {
+                font-size: 10px;
+            }
+
+            .about-highlight {
+                padding-left: 16px;
+
+                font-size: 24px;
+            }
+
+
+            /* REVIEWS */
+
+            .review-note {
+                padding: 29px 17px;
+            }
+
+            .review-note h3 {
+                font-size: 27px;
+            }
+
+            .review-note p {
+                font-size: 8.5px;
+            }
+
+
+            /* FAQ */
+
+            .faq-question {
+                padding: 18px 0;
+
+                font-size: 21px;
+            }
+
+            .faq-answer {
+                padding-right: 20px;
+
+                font-size: 8.5px;
+            }
+
+
+            /* CONTACT */
+
+            .contact-card {
+                min-height: 220px;
+
+                padding: 28px 20px;
+            }
+
+            .contact-name {
+                font-size: 27px;
+            }
+
+            .contact-detail {
+                font-size: 8.5px;
+            }
+
+
+            /* CTA */
+
+            .final-cta {
+                padding: 75px 0;
+            }
+
+            .final-cta h2 {
+                font-size: 47px;
+            }
+
+            .final-cta p {
+                font-size: 8.5px;
+            }
+
+
+            /* FOOTER */
 
             .footer-inner {
                 width: calc(100% - 28px);
 
-                padding: 25px 0;
+                padding: 35px 0;
+
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .footer-brand-column {
+                grid-column: auto;
+            }
+
+            .footer-bottom {
+                width: calc(100% - 28px);
+
+                padding: 15px 0;
 
                 flex-direction: column;
                 align-items: flex-start;
             }
+
         }
 
 
@@ -1192,13 +3636,74 @@
 
         @media (max-width: 380px) {
 
+            .brand-name {
+                font-size: 17px;
+            }
+
+            .brand-tagline {
+                display: none;
+            }
+
+            .header-search-button,
+            .header-cart-button {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+
+            .mobile-menu-button {
+                width: 35px;
+            }
+
+
+            /* HERO */
+
+            .hero-inner {
+                width: calc(100% - 24px);
+
+                padding-top: 55px;
+                padding-bottom: 64px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero h2 {
+                font-size: 26px;
+            }
+
+            .hero-description {
+                font-size: 8.5px;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .hero-orbit {
+                width: 245px;
+                height: 245px;
+            }
+
+            .hero-watch-card {
+                width: 220px;
+                min-height: 285px;
+            }
+
+            .hero-watch-card img {
+                height: 255px;
+            }
+
+
+            /* PRODUCTS */
+
             .products-grid {
-                gap: 9px;
+                gap: 8px;
             }
 
             .product-info {
-                padding-left: 10px;
-                padding-right: 10px;
+                padding-left: 9px;
+                padding-right: 9px;
             }
 
             .product-name {
@@ -1206,14 +3711,37 @@
             }
 
             .product-actions {
-                padding-left: 10px;
-                padding-right: 10px;
+                padding-left: 9px;
+                padding-right: 9px;
             }
 
             .add-to-cart-button {
-                font-size: 6px;
-                letter-spacing: .8px;
+                font-size: 5.5px;
+                letter-spacing: .6px;
             }
+
+
+            /* ARRIVALS */
+
+            .new-arrivals-grid {
+                gap: 8px;
+            }
+
+            .arrival-name {
+                font-size: 18px;
+            }
+
+
+            /* COLLECTIONS */
+
+            .collection-card {
+                min-height: 205px;
+            }
+
+            .collection-card h3 {
+                font-size: 22px;
+            }
+
         }
 
     </style>
@@ -1278,6 +3806,7 @@
         <nav>
             <a href="#home">Home</a>
             <a href="#shop">Shop</a>
+            <a href="#collections">Collections</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -1306,11 +3835,61 @@
                 </span>
             </a>
 
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                <span class="mobile-menu-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+
         </div>
 
     </div>
 
 </header>
+
+
+<!-- =========================================================
+     MOBILE NAVIGATION
+========================================================= -->
+
+<div
+    class="mobile-nav"
+    id="mobileNav"
+>
+
+    <div class="mobile-nav-inner">
+
+        <a href="#home" class="mobile-nav-link">
+            Home
+        </a>
+
+        <a href="#shop" class="mobile-nav-link">
+            Shop
+        </a>
+
+        <a href="#collections" class="mobile-nav-link">
+            Collections
+        </a>
+
+        <a href="#about" class="mobile-nav-link">
+            About
+        </a>
+
+        <a href="#contact" class="mobile-nav-link">
+            Contact
+        </a>
+
+    </div>
+
+</div>
 
 
 <!-- =========================================================
@@ -1362,48 +3941,13 @@
 
     <div class="hero-inner">
 
-        <div>
+        <div class="hero-copy">
 
-            <div class="hero-eyebrow">
-                Umar Subhan Watches
-            </div>
-
-            <h1>
-                US WATCHES
-            </h1>
-
-            <h2>
-                Time, Defined By You.
-            </h2>
-
-            <div class="hero-line"></div>
-
-            <p class="hero-description">
-                A modern watch collection created for those who value
-                character, simplicity and timeless style.
-            </p>
-
-            <a
-                href="#shop"
-                class="hero-button"
-            >
-                Explore Collection
-            </a>
-
-        </div>
-
-
-        <!-- LARGE HOMEPAGE LOGO -->
-
-        <div class="hero-logo-area">
-
-            <div class="hero-logo-frame">
-
+            <div class="hero-brand-logo" aria-hidden="true">
                 <svg
                     class="hero-logo luxury-mark"
                     viewBox="0 0 100 100"
                     xmlns="http://www.w3.org/2000/svg"
-                    aria-label="US Watches logo"
                 >
                     <circle class="outer-ring" cx="50" cy="50" r="44" />
                     <circle class="inner-ring" cx="50" cy="50" r="39" />
@@ -1418,22 +3962,37 @@
                     <path class="fine" d="M73 27 L69 31" />
                     <path class="fine" d="M27 73 L31 69" />
                     <path class="fine" d="M73 73 L69 69" />
-                    <path
-                        class="monogram-u"
-                        d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
-                    />
-                    <path
-                        class="monogram-s"
-                        d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
-                    />
+                    <path class="monogram-u" d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30" />
+                    <path class="monogram-s" d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67" />
                     <path class="hour-hand" d="M50 50 L42 42" />
                     <path class="minute-hand" d="M50 50 L61 37" />
                     <circle class="gold" cx="50" cy="50" r="2.4" />
                 </svg>
-
             </div>
 
+            <div class="hero-eyebrow">
+                Umar Subhan Watches
+            </div>
+
+            <h1>
+                US<br>WATCHES
+            </h1>
+
+            <h2>
+                Time, Defined By You.
+            </h2>
+
+            <div class="hero-line"></div>
+
+            <p class="hero-description">
+                A modern watch collection created for those who value
+                character, simplicity and timeless style.
+            </p>
+
+
+
         </div>
+
 
     </div>
 
@@ -1441,7 +4000,7 @@
 
 
 <!-- =========================================================
-     SHOP
+     SHOP / COLLECTIONS
 ========================================================= -->
 
 <section
@@ -1451,201 +4010,397 @@
 
     <div class="section-inner">
 
-        <div class="section-heading">
+        <div class="shop-topline">
 
-            <div class="section-eyebrow">
-                The Collection
+            <div class="section-heading">
+
+                <div class="section-eyebrow">
+                    The Collection
+                </div>
+
+                <h2 class="section-title">
+                    Shop Watches
+                </h2>
+
+                <p class="section-description">
+                    Discover the US Watches collection and find a
+                    timepiece that fits your style.
+                </p>
+
             </div>
 
-            <h2 class="section-title">
-                Our Watches
-            </h2>
+            <div class="shop-note">
+                Browse by collection or explore all available
+                US Watches pieces below.
+            </div>
+
+        </div>
+
+
+        <div class="shop-collections-heading">
+
+            <div class="section-eyebrow">
+                Explore Your Style
+            </div>
 
             <p class="section-description">
-                Discover the US Watches collection and find a timepiece
-                that fits your style.
+                Choose a US Watches collection and discover the timepieces within it.
             </p>
 
         </div>
 
 
-        <!-- SIX APPROVED CATEGORIES -->
+<div class="collections-grid">
 
-        <div class="collection-filters">
+    <!-- FULL COLLECTION -->
 
-            <button
-                type="button"
-                class="collection-filter active"
-                data-filter="all"
-            >
-                All Watches
-            </button>
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="all"
+    >
 
-            <button
-                type="button"
-                class="collection-filter"
-                data-filter="classic"
-            >
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                01 / FULL COLLECTION
+            </div>
+
+            <h3>
+                Full Collection
+            </h3>
+
+            <p>
+                Explore every US Watches timepiece from all collections in one place.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- CLASSIC -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="classic"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                02 / CLASSIC
+            </div>
+
+            <h3>
                 Classic
-            </button>
+            </h3>
 
-            <button
-                type="button"
-                class="collection-filter"
-                data-filter="premium"
-            >
+            <p>
+                Timeless designs with a refined character.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- PREMIUM -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="premium"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                03 / PREMIUM
+            </div>
+
+            <h3>
                 Premium
-            </button>
+            </h3>
 
-            <button
-                type="button"
-                class="collection-filter"
-                data-filter="everyday"
-            >
+            <p>
+                Distinctive pieces for a more elevated look.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- EVERYDAY -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="everyday"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                04 / EVERYDAY
+            </div>
+
+            <h3>
                 Everyday
-            </button>
+            </h3>
 
-            <button
-                type="button"
-                class="collection-filter"
-                data-filter="minimal"
-            >
-                Minimal
-            </button>
+            <p>
+                Versatile watches made for everyday moments.
+            </p>
 
-            <button
-                type="button"
-                class="collection-filter"
-                data-filter="new arrivals"
-            >
-                New Arrivals
-            </button>
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- AUTOMATIC -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="automatic"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                05 / AUTOMATIC
+            </div>
+
+            <h3>
+                Automatic
+            </h3>
+
+            <p>
+                Mechanical timepieces with an enduring character.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- CHRONOGRAPH -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="chronograph"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                06 / CHRONOGRAPH
+            </div>
+
+            <h3>
+                Chronograph
+            </h3>
+
+            <p>
+                Detailed timepieces built around a distinctive presence.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- LEATHER STRAP -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="leather strap"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                07 / LEATHER STRAP
+            </div>
+
+            <h3>
+                Leather Strap
+            </h3>
+
+            <p>
+                Refined leather finishes for a timeless, sophisticated look.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- LIMITED EDITION -->
+
+    <a
+        href="#shop"
+        class="collection-card"
+        data-collection-jump="limited edition"
+    >
+
+        <div class="collection-card-content">
+
+            <div class="collection-number">
+                08 / LIMITED EDITION
+            </div>
+
+            <h3>
+                Limited Edition
+            </h3>
+
+            <p>
+                Distinctive pieces presented in a more exclusive collection.
+            </p>
+
+            <span class="collection-card-arrow">
+                Explore →
+            </span>
+
+        </div>
+
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     TRUST / WHY US WATCHES
+========================================================= -->
+
+<section class="section trust-section">
+
+    <div class="section-inner">
+
+        <div class="section-heading center">
+
+            <div class="section-eyebrow">
+                The US Watches Experience
+            </div>
+
+            <h2 class="section-title">
+                Why US Watches
+            </h2>
+
+            <p class="section-description">
+                A simple shopping experience built around our watches
+                and the people who choose them.
+            </p>
 
         </div>
 
 
-        <!-- PRODUCTS -->
+        <div class="trust-grid">
 
-        <div
-            class="products-grid"
-            id="productsGrid"
-        >
+            <div class="trust-card">
 
-            {% for watch in watches %}
-
-                <div
-                    class="product-card"
-                    data-name="{{ watch.name|lower }}"
-                    data-collection="{{ watch.collection|lower }}"
-                    data-description="{{ watch.description|default:''|lower }}"
-                    data-new-arrival="{% if watch.is_new_arrival %}true{% else %}false{% endif %}"
-                    data-url="{% url 'watch_detail' watch.id %}"
-                >
-
-                    <a
-                        href="{% url 'watch_detail' watch.id %}"
-                        class="product-link"
-                    >
-
-                        <div class="product-image">
-
-                            {% if watch.image %}
-
-                                <img
-                                    src="{{ watch.image.url }}"
-                                    alt="{{ watch.name }}"
-                                >
-
-                            {% else %}
-
-                                <div class="product-image-placeholder">
-                                    US Watches
-                                </div>
-
-                            {% endif %}
-
-                        </div>
-
-
-                        <div class="product-info">
-
-                            <div class="product-collection">
-                                {{ watch.collection|default:"US Watches" }}
-                            </div>
-
-                            <div class="product-name">
-                                {{ watch.name }}
-                            </div>
-
-                            <div class="product-price">
-                                Rs. {{ watch.price|floatformat:0 }}
-                            </div>
-
-                        </div>
-
-                    </a>
-
-
-                    <div class="product-actions">
-
-                        {% if watch.stock > 0 %}
-
-                            <form
-                                method="post"
-                                action="{% url 'add_to_cart' watch.id %}"
-                                class="add-to-cart-form"
-                            >
-
-                                {% csrf_token %}
-
-                                <button
-                                    type="submit"
-                                    class="add-to-cart-button"
-                                >
-                                    Add to Cart
-                                </button>
-
-                            </form>
-
-                            <div class="stock-note">
-                                Available
-                            </div>
-
-                        {% else %}
-
-                            <button
-                                type="button"
-                                class="add-to-cart-button"
-                                disabled
-                            >
-                                Out of Stock
-                            </button>
-
-                            <div class="stock-note">
-                                Currently unavailable
-                            </div>
-
-                        {% endif %}
-
-                    </div>
-
+                <div class="trust-icon">
+                    01
                 </div>
 
-            {% empty %}
+                <h3>
+                    Nationwide Delivery
+                </h3>
 
-                <div class="empty-products">
+                <p>
+                    Delivery is available across Pakistan.
+                </p>
 
-                    <h3>
-                        Our First Collection Is Being Prepared
-                    </h3>
+            </div>
 
-                    <p>
-                        New US Watches pieces will appear here soon.
-                    </p>
 
+            <div class="trust-card">
+
+                <div class="trust-icon">
+                    02
                 </div>
 
-            {% endfor %}
+                <h3>
+                    Easy Ordering
+                </h3>
+
+                <p>
+                    Order or inquire directly through our available
+                    contact channels.
+                </p>
+
+            </div>
+
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+                    03
+                </div>
+
+                <h3>
+                    Customer Support
+                </h3>
+
+                <p>
+                    Ask about availability, pricing, details or
+                    other watches before ordering.
+                </p>
+
+            </div>
+
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+                    04
+                </div>
+
+                <h3>
+                    Customer First
+                </h3>
+
+                <p>
+                    We aim to make discovering and choosing your
+                    watch straightforward.
+                </p>
+
+            </div>
 
         </div>
 
@@ -1655,7 +4410,7 @@
 
 
 <!-- =========================================================
-     ABOUT
+     ABOUT / BRAND STORY
 ========================================================= -->
 
 <section
@@ -1665,34 +4420,263 @@
 
     <div class="section-inner">
 
-        <div class="section-heading">
+        <div class="about-layout">
+
+            <div>
+
+                <div class="section-heading">
+
+                    <div class="section-eyebrow">
+                        About US Watches
+                    </div>
+
+                    <h2 class="section-title">
+                        Made For Your Time
+                    </h2>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <p>
+                        US Watches is an independent watch brand focused on
+                        creating stylish, accessible and distinctive timepieces.
+                    </p>
+
+                    <p>
+                        From everyday designs to more refined pieces, every
+                        collection is selected with a balance of simplicity,
+                        character and modern luxury.
+                    </p>
+
+                    <div class="about-highlight">
+                        "Your time. Your style. Your watch."
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-emblem">
+
+                <div class="about-emblem-ring">
+
+                    <!-- APPROVED LOGO — UNCHANGED -->
+
+                    <svg
+                        class="luxury-mark"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="US Watches logo"
+                    >
+                        <circle class="outer-ring" cx="50" cy="50" r="44" />
+                        <circle class="inner-ring" cx="50" cy="50" r="39" />
+                        <circle class="inner-face" cx="50" cy="50" r="34" />
+                        <path class="crown" d="M45 5 L55 5 L58 12 L42 12 Z" />
+                        <path class="fine" d="M46 5 V2 M50 5 V2 M54 5 V2" />
+                        <path class="fine" d="M50 17 V23" />
+                        <path class="fine" d="M50 77 V83" />
+                        <path class="fine" d="M17 50 H23" />
+                        <path class="fine" d="M77 50 H83" />
+                        <path class="fine" d="M27 27 L31 31" />
+                        <path class="fine" d="M73 27 L69 31" />
+                        <path class="fine" d="M27 73 L31 69" />
+                        <path class="fine" d="M73 73 L69 69" />
+                        <path
+                            class="monogram-u"
+                            d="M29 30 V55 C29 67 35 73 44 73 C53 73 59 67 59 55 V30"
+                        />
+                        <path
+                            class="monogram-s"
+                            d="M70 33 C67 29 61 28 57 31 C53 34 54 39 59 42 L67 47 C73 51 75 56 72 62 C69 69 61 71 55 67"
+                        />
+                        <path class="hour-hand" d="M50 50 L42 42" />
+                        <path class="minute-hand" d="M50 50 L61 37" />
+                        <circle class="gold" cx="50" cy="50" r="2.4" />
+                    </svg>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOMER REVIEWS
+========================================================= -->
+
+<section class="section reviews-section">
+
+    <div class="section-inner">
+
+        <div class="review-intro">
 
             <div class="section-eyebrow">
-                About US Watches
+                Customer Feedback
             </div>
 
             <h2 class="section-title">
-                Made For Your Time
+                What Customers Say
+            </h2>
+
+            <p class="section-description">
+                We value the people who choose US Watches and the
+                experience they have with our products.
+            </p>
+
+        </div>
+
+
+        <div class="review-note">
+
+            <div class="review-stars">
+                ★ ★ ★ ★ ★
+            </div>
+
+            <h3>
+                Your Experience Matters
+            </h3>
+
+            <p>
+                Customer feedback will appear here as approved reviews
+                are added through the US Store administration.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section class="section faq-section">
+
+    <div class="section-inner">
+
+        <div class="section-heading center">
+
+            <div class="section-eyebrow">
+                Need To Know
+            </div>
+
+            <h2 class="section-title">
+                Frequently Asked Questions
             </h2>
 
         </div>
 
 
-        <div class="about-content">
+        <div class="faq-list">
 
-            <p>
-                US Watches is an independent watch brand focused on
-                creating stylish, accessible and distinctive timepieces.
-            </p>
+            <div class="faq-item">
 
-            <p>
-                From everyday designs to more refined pieces, every
-                collection is selected with a balance of simplicity,
-                character and modern luxury.
-            </p>
+                <button
+                    type="button"
+                    class="faq-question"
+                >
 
-            <div class="about-highlight">
-                "Your time. Your style. Your watch."
+                    <span>
+                        How can I place an order?
+                    </span>
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+                    You can add available watches to your cart or contact
+                    US Watches through the available WhatsApp and Instagram
+                    options for ordering and inquiries.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Do you deliver across Pakistan?
+                    </span>
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+                    US Watches offers delivery across Pakistan. Contact us
+                    if you need more information about delivery for your order.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Can I ask about a watch before ordering?
+                    </span>
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+                    Yes. You can contact US Watches to ask about availability,
+                    pricing, details or other watches from the collection.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Can I find other watches not shown here?
+                    </span>
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="faq-answer">
+                    If you are looking for another watch, contact US Watches
+                    through WhatsApp or Instagram and ask about available pieces.
+                </div>
+
             </div>
 
         </div>
@@ -1734,7 +4718,7 @@
         <div class="contact-grid">
 
 
-            <!-- 1. INSTAGRAM -->
+            <!-- INSTAGRAM -->
 
             <a
                 href="https://ig.me/m/usstorepk2026"
@@ -1762,7 +4746,7 @@
             </a>
 
 
-            <!-- 2. ABDUL SUBHAN -->
+            <!-- ABDUL SUBHAN -->
 
             <a
                 href="https://wa.me/923345883182"
@@ -1790,7 +4774,7 @@
             </a>
 
 
-            <!-- 3. MUHAMMAD UMAR -->
+            <!-- MUHAMMAD UMAR -->
 
             <a
                 href="https://wa.me/923085144595"
@@ -1832,12 +4816,99 @@
 
     <div class="footer-inner">
 
-        <div class="footer-brand">
-            US Watches
+        <div class="footer-brand-column">
+
+            <div class="footer-brand">
+                US Watches
+            </div>
+
+            <div class="footer-tagline">
+                Time, Defined By You
+            </div>
+
         </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                Explore
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#shop">
+                    Shop
+                </a>
+
+                <a href="#collections">
+                    Collections
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                Contact
+            </div>
+
+            <div class="footer-links">
+
+                <a
+                    href="https://ig.me/m/usstorepk2026"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://wa.me/923345883182"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Abdul Subhan
+                </a>
+
+                <a
+                    href="https://wa.me/923085144595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Muhammad Umar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
 
         <div class="footer-copy">
             © {% now "Y" %} US Watches — Time, Defined By You
+        </div>
+
+        <div class="footer-copy">
+            Umar Subhan Watches
         </div>
 
     </div>
@@ -1874,10 +4945,79 @@
             document.querySelectorAll(".product-card")
         );
 
-    const filterButtons =
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    const mobileMenuToggle =
+        document.getElementById("mobileMenuToggle");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    const mobileNavLinks =
         Array.from(
-            document.querySelectorAll(".collection-filter")
+            document.querySelectorAll(".mobile-nav-link")
         );
+
+
+    function closeMobileMenu() {
+
+        mobileNav.classList.remove("active");
+
+        mobileMenuToggle.classList.remove("active");
+
+        mobileMenuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        document.body.classList.remove("menu-open");
+
+    }
+
+
+    mobileMenuToggle.addEventListener(
+        "click",
+        function () {
+
+            const isActive =
+                mobileNav.classList.toggle("active");
+
+            mobileMenuToggle.classList.toggle(
+                "active",
+                isActive
+            );
+
+            mobileMenuToggle.setAttribute(
+                "aria-expanded",
+                isActive ? "true" : "false"
+            );
+
+            document.body.classList.toggle(
+                "menu-open",
+                isActive
+            );
+
+        }
+    );
+
+
+    mobileNavLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    closeMobileMenu();
+
+                }
+            );
+
+        }
+    );
 
 
     /* =====================================================
@@ -1891,6 +5031,8 @@
             searchPanel.classList.toggle("active");
 
             if (searchPanel.classList.contains("active")) {
+
+                closeMobileMenu();
 
                 setTimeout(
                     function () {
@@ -2098,12 +5240,6 @@
 
     /* =====================================================
        SUBMIT SEARCH
-
-       One exact/strong match:
-       DIRECTLY OPEN WATCH.
-
-       Multiple matches:
-       SHOW SIMILAR WATCHES.
     ===================================================== */
 
     searchForm.addEventListener(
@@ -2162,12 +5298,6 @@
 
 
             if (matches.length > 1) {
-
-                /*
-                 If the strongest result is clearly
-                 much stronger than the next result,
-                 open that watch directly.
-                */
 
                 if (
                     matches[0].score >= 700 &&
@@ -2325,6 +5455,7 @@
                         button.textContent =
                             "Try Again";
 
+
                         setTimeout(
                             function () {
 
@@ -2348,82 +5479,144 @@
 
 
     /* =====================================================
-       COLLECTION FILTERS
+       COLLECTION FILTERING
+       USED BY VISUAL COLLECTION CARDS
     ===================================================== */
 
-    filterButtons.forEach(
-        function (button) {
+    function applyCollectionFilter(selected) {
 
-            button.addEventListener(
+        productCards.forEach(
+            function (card) {
+
+                const collection =
+                    (
+                        card.dataset.collection ||
+                        ""
+                    ).toLowerCase();
+
+
+                const isNewArrival =
+                    card.dataset.newArrival ===
+                    "true";
+
+
+                let shouldShow =
+                    false;
+
+
+                if (selected === "all") {
+
+                    shouldShow = true;
+
+                }
+                else if (
+                    selected ===
+                    "new arrivals"
+                ) {
+
+                    shouldShow =
+                        isNewArrival;
+
+                }
+                else {
+
+                    shouldShow =
+                        collection ===
+                        selected;
+
+                }
+
+
+                card.classList.toggle(
+                    "hidden",
+                    !shouldShow
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       COLLECTION CARDS
+       CONNECT VISUAL COLLECTIONS TO EXISTING FILTERS
+    ===================================================== */
+
+    const collectionJumpCards =
+        Array.from(
+            document.querySelectorAll(
+                "[data-collection-jump]"
+            )
+        );
+
+
+    collectionJumpCards.forEach(
+        function (card) {
+
+            card.addEventListener(
                 "click",
                 function () {
 
-                    filterButtons.forEach(
-                        function (item) {
-                            item.classList.remove(
-                                "active"
-                            );
-                        }
-                    );
-
-
-                    button.classList.add("active");
-
-
                     const selected =
-                        button.dataset.filter
+                        card.dataset.collectionJump
                             .toLowerCase();
 
 
-                    productCards.forEach(
-                        function (card) {
+                    applyCollectionFilter(
+                        selected
+                    );
 
-                            const collection =
-                                (
-                                    card.dataset.collection ||
-                                    ""
-                                ).toLowerCase();
+                }
+            );
 
-
-                            const isNewArrival =
-                                card.dataset.newArrival ===
-                                "true";
+        }
+    );
 
 
-                            let shouldShow =
-                                false;
+    /* =====================================================
+       FAQ ACCORDION
+    ===================================================== */
+
+    const faqItems =
+        Array.from(
+            document.querySelectorAll(".faq-item")
+        );
 
 
-                            if (selected === "all") {
+    faqItems.forEach(
+        function (item) {
 
-                                shouldShow = true;
-
-                            }
-                            else if (
-                                selected ===
-                                "new arrivals"
-                            ) {
-
-                                shouldShow =
-                                    isNewArrival;
-
-                            }
-                            else {
-
-                                shouldShow =
-                                    collection ===
-                                    selected;
-
-                            }
+            const question =
+                item.querySelector(".faq-question");
 
 
-                            card.classList.toggle(
-                                "hidden",
-                                !shouldShow
+            question.addEventListener(
+                "click",
+                function () {
+
+                    const wasActive =
+                        item.classList.contains("active");
+
+
+                    faqItems.forEach(
+                        function (otherItem) {
+
+                            otherItem.classList.remove(
+                                "active"
                             );
 
                         }
                     );
+
+
+                    if (!wasActive) {
+
+                        item.classList.add(
+                            "active"
+                        );
+
+                    }
 
                 }
             );
@@ -2445,6 +5638,8 @@
                 searchPanel.classList.remove(
                     "active"
                 );
+
+                closeMobileMenu();
 
             }
 
@@ -2470,6 +5665,22 @@
                     "active"
                 );
 
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU WHEN RESIZING TO DESKTOP
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 900) {
+                closeMobileMenu();
             }
 
         }
