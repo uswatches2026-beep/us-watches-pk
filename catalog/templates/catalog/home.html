@@ -65,32 +65,32 @@
         ===================================================== */
 
         :root {
-            --ivory: #f7f2e8;
-            --ivory-light: #fcfaf5;
-            --ivory-warm: #f8f3e9;
-            --ivory-dark: #e8dfd0;
+            --ivory: #f5f2ec;
+            --ivory-light: #fcfbf8;
+            --ivory-warm: #f7f4ee;
+            --ivory-dark: #e7e0d5;
 
-            --emerald: #0f7054;
-            --emerald-dark: #0a4939;
-            --emerald-deep: #062b22;
-            --emerald-soft: #1a7b5d;
+            --emerald: #2b2823;
+            --emerald-dark: #1d1b18;
+            --emerald-deep: #211f1c;
+            --emerald-soft: #37332c;
 
-            --gold: #c9a961;
-            --gold-light: #dfc78f;
-            --gold-soft: rgba(201, 169, 97, .20);
+            --gold: #b69a68;
+            --gold-light: #d3bd8e;
+            --gold-soft: rgba(182, 154, 104, .18);
 
-            --bronze: #9a7047;
-            --bronze-soft: rgba(154, 112, 71, .18);
+            --bronze: #8b7254;
+            --bronze-soft: rgba(139, 114, 84, .16);
 
-            --charcoal: #1c211f;
-            --charcoal-soft: #50544d;
+            --charcoal: #20272b;
+            --charcoal-soft: #555a5b;
 
-            --muted: #72746d;
+            --muted: #74756f;
 
-            --white: #fffdf8;
+            --white: #fffefa;
 
-            --border: rgba(28, 33, 31, .11);
-            --gold-border: rgba(201, 169, 97, .42);
+            --border: rgba(32, 39, 43, .11);
+            --gold-border: rgba(182, 154, 104, .38);
 
             --shadow-soft:
                 0 18px 45px rgba(25, 32, 27, .08);
@@ -194,10 +194,10 @@
 
             background:
                 linear-gradient(105deg,
-                    #062b22 0%,
-                    #0f7054 45%,
-                    #164f3f 72%,
-                    #062b22 100%
+                    #211f1c 0%,
+                    #282521 45%,
+                    #353129 72%,
+                    #211f1c 100%
                 );
 
             border-bottom: 1px solid rgba(201, 169, 97, .34);
@@ -464,8 +464,8 @@
                 ),
                 linear-gradient(
                     135deg,
-                    #08231e,
-                    #123c32
+                    #211f1c,
+                    #2b2823
                 );
 
             padding: 105px 28px 40px;
@@ -683,8 +683,8 @@
                     transparent 38%),
                 linear-gradient(120deg,
                     #041f19 0%,
-                    #0a4939 42%,
-                    #0f7054 100%);
+                    #1d1b18 42%,
+                    #282521 100%);
 
             color: #f5f1e8;
         }
@@ -1951,8 +1951,8 @@
             background:
                 linear-gradient(
                     145deg,
-                    #195b47,
-                    #05271f
+                    #353129,
+                    #1b1916
                 );
 
             border: 1px solid rgba(201, 169, 97, .20);
@@ -2626,7 +2626,7 @@
                 linear-gradient(
                     135deg,
                     #0b3028,
-                    #123c32
+                    #2b2823
                 );
 
             color: #f5f1e8;
@@ -3733,7 +3733,7 @@
             top: 108px;
             align-self: start;
             padding: 22px;
-            background: linear-gradient(160deg, #123c32 0%, #062b22 100%);
+            background: linear-gradient(160deg, #2b2823 0%, #211f1c 100%);
             border: 1px solid rgba(201,169,97,.32);
             box-shadow: 0 24px 60px rgba(5,31,26,.14);
         }
@@ -3949,7 +3949,64 @@
             }
         }
 
-    </style>
+    
+        /* =====================================================
+           RICH BLACK + CHAMPAGNE PALETTE
+        ===================================================== */
+        header {
+            background: linear-gradient(105deg, #211f1c 0%, #2b2823 48%, #353129 74%, #211f1c 100%);
+            border-bottom-color: rgba(182, 154, 104, .32);
+        }
+
+        .mobile-nav {
+            background:
+                radial-gradient(circle at 82% 18%, rgba(182,154,104,.12), transparent 28%),
+                radial-gradient(circle at 15% 80%, rgba(36,71,93,.42), transparent 32%),
+                linear-gradient(135deg, #211f1c, #2b2823);
+        }
+
+        .collection-navigation {
+            background: linear-gradient(160deg, #353129 0%, #211f1c 100%);
+            border-color: rgba(182,154,104,.28);
+            box-shadow: 0 24px 60px rgba(10,29,43,.12);
+        }
+
+        .collection-navigation::before {
+            border-color: rgba(211,189,142,.12);
+        }
+
+        .collection-card {
+            background: rgba(255,255,255,.035);
+            border-color: rgba(245,242,236,.09);
+            color: rgba(252,251,248,.76);
+        }
+
+        .collection-card:hover {
+            background: rgba(182,154,104,.10);
+            border-color: rgba(211,189,142,.44);
+            color: #fcfbf8;
+        }
+
+        .collection-card.active {
+            background: linear-gradient(90deg, rgba(182,154,104,.19), rgba(182,154,104,.065));
+            border-color: rgba(211,189,142,.66);
+            color: #fcfbf8;
+        }
+
+        .collection-number { color: rgba(211,189,142,.78); }
+        .collection-card-arrow { color: rgba(211,189,142,.65); }
+        .collection-card:hover .collection-card-arrow,
+        .collection-card.active .collection-card-arrow { color: #e1cca0; }
+
+        .collection-display {
+            background: rgba(255,254,250,.72);
+            border-color: rgba(32,39,43,.08);
+            box-shadow: 0 22px 60px rgba(32,39,43,.055);
+        }
+
+        .collection-display-header { border-bottom-color: rgba(182,154,104,.30); }
+
+</style>
 </head>
 
 
