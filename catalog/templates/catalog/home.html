@@ -2000,70 +2000,39 @@
             pointer-events: none;
         }
 
-        .collection-card:hover {
-            transform: translateY(-7px);
-
-            border-color: rgba(201, 169, 97, .62);
-
-            box-shadow:
-                0 30px 80px rgba(5, 31, 26, .28),
-                0 8px 28px var(--bronze-soft);
+        .collection-card.active {
+            border-color: rgba(201, 169, 97, .78);
+            box-shadow: 0 22px 55px rgba(25, 32, 27, .16);
+            transform: translateY(-5px);
         }
 
-        .collection-card-content {
+        .collection-card.active .collection-card-arrow {
+            color: var(--gold-light);
+        }
+
+        .collection-selection {
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            margin: 34px 0 20px;
+            padding: 13px 16px;
+            border-left: 2px solid var(--gold);
+            background: rgba(255, 255, 255, .42);
         }
 
-        .collection-number {
-            margin-bottom: 72px;
-
-            color: var(--gold);
-
+        .collection-selection-label {
+            color: #a7894e;
             font-size: 7px;
             font-weight: 700;
-
-            letter-spacing: 2px;
-        }
-
-        .collection-card h3 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 48px;
-            font-weight: 600;
-
-            line-height: 1;
-        }
-
-        .collection-card p {
-            max-width: 290px;
-
-            margin-top: 10px;
-
-            color: rgba(245, 241, 232, .62);
-
-            font-size: 10px;
-            line-height: 1.8;
-        }
-
-        .collection-card-arrow {
-            display: inline-block;
-
-            margin-top: 18px;
-
-            color: var(--gold-light);
-
-            font-size: 8px;
-            font-weight: 700;
-
-            letter-spacing: 1.5px;
+            letter-spacing: 1.7px;
             text-transform: uppercase;
-
-            transition: transform .25s ease;
         }
 
-        .collection-card:hover .collection-card-arrow {
-            transform: translateX(4px);
+        .collection-selection-name {
+            margin-top: 3px;
+            color: var(--charcoal);
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            font-weight: 600;
         }
 
 
@@ -3744,6 +3713,242 @@
 
         }
 
+        /* =====================================================
+           COLLECTION EXPERIENCE — FINAL REDESIGN
+           The collection selector and its products live together.
+        ===================================================== */
+
+        .collection-experience {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 285px minmax(0, 1fr);
+            gap: 28px;
+            align-items: stretch;
+            margin-top: 34px;
+        }
+
+        .collection-navigation {
+            position: sticky;
+            top: 108px;
+            align-self: start;
+            padding: 22px;
+            background: linear-gradient(160deg, #123c32 0%, #062b22 100%);
+            border: 1px solid rgba(201,169,97,.32);
+            box-shadow: 0 24px 60px rgba(5,31,26,.14);
+        }
+
+        .collection-navigation::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(201,169,97,.13);
+            pointer-events: none;
+        }
+
+        .collection-navigation-label {
+            position: relative;
+            margin-bottom: 17px;
+            color: var(--gold-light);
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+        }
+
+        .collection-navigation-title {
+            position: relative;
+            margin-bottom: 21px;
+            color: #f5f1e8;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 29px;
+            font-weight: 600;
+            line-height: .95;
+        }
+
+        .collection-list {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .collection-card {
+            position: relative;
+            min-height: 0;
+            padding: 13px 12px;
+            display: grid;
+            grid-template-columns: 35px minmax(0,1fr) 18px;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(245,241,232,.08);
+            color: rgba(245,241,232,.72);
+            overflow: hidden;
+            transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+        }
+
+        .collection-card::before,
+        .collection-card::after {
+            display: none;
+        }
+
+        .collection-card:hover {
+            background: rgba(201,169,97,.08);
+            border-color: rgba(201,169,97,.38);
+            color: #f5f1e8;
+            transform: translateX(3px);
+        }
+
+        .collection-card.active {
+            background: linear-gradient(90deg, rgba(201,169,97,.18), rgba(201,169,97,.055));
+            border-color: rgba(201,169,97,.72);
+            box-shadow: none;
+            transform: none;
+            color: #f5f1e8;
+        }
+
+        .collection-card-content {
+            display: contents;
+        }
+
+        .collection-number {
+            color: rgba(201,169,97,.72);
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        .collection-card h3 {
+            margin: 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .collection-card p {
+            display: none;
+        }
+
+        .collection-card-arrow {
+            color: rgba(201,169,97,.58);
+            font-size: 11px;
+            text-align: right;
+            white-space: nowrap;
+            transition: color .25s ease, transform .25s ease;
+        }
+
+        .collection-card:hover .collection-card-arrow,
+        .collection-card.active .collection-card-arrow {
+            color: var(--gold-light);
+            transform: translateX(2px);
+        }
+
+        .collection-display {
+            min-width: 0;
+            padding: 31px;
+            background: rgba(255,255,255,.48);
+            border: 1px solid rgba(32,35,31,.09);
+            box-shadow: 0 22px 60px rgba(25,32,27,.07);
+        }
+
+        .collection-display-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 22px;
+            padding-bottom: 22px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid rgba(201,169,97,.34);
+        }
+
+        .collection-display-kicker {
+            margin-bottom: 6px;
+            color: #a7894e;
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .collection-selection-name {
+            margin: 0;
+            color: var(--charcoal);
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 600;
+            line-height: .9;
+        }
+
+        .collection-display-copy {
+            max-width: 310px;
+            color: #73756e;
+            font-size: 9px;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .collection-display .products-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .collection-display .product-card.hidden {
+            display: none;
+        }
+
+        .collection-display .empty-products {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 980px) {
+            .collection-experience {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-navigation {
+                position: relative;
+                top: auto;
+            }
+
+            .collection-list {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .collection-display .products-grid {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .collection-navigation,
+            .collection-display {
+                padding: 20px;
+            }
+
+            .collection-list {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-display-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .collection-display-copy {
+                max-width: none;
+                text-align: left;
+            }
+
+            .collection-display .products-grid {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+                gap: 11px;
+            }
+        }
+
     </style>
 </head>
 
@@ -3998,11 +4203,6 @@
 
 </section>
 
-
-<!-- =========================================================
-     SHOP / COLLECTIONS
-========================================================= -->
-
 <section
     class="section shop-section"
     id="shop"
@@ -4044,262 +4244,216 @@
             </div>
 
             <p class="section-description">
-                Choose a US Watches collection and discover the timepieces within it.
+                Choose a US Watches collection and discover its timepieces without leaving the collection experience.
             </p>
 
         </div>
 
 
-<div class="collections-grid">
+        <div class="collection-experience" id="collections">
 
-    <!-- FULL COLLECTION -->
+            <aside class="collection-navigation" aria-label="Watch collections">
 
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="all"
-    >
+                <div class="collection-navigation-label">
+                    US Watches Collections
+                </div>
 
-        <div class="collection-card-content">
+                <div class="collection-navigation-title">
+                    Find Your Timepiece
+                </div>
 
-            <div class="collection-number">
-                01 / FULL COLLECTION
+                <div class="collection-list">
+
+                    <a href="#collectionDisplay" data-collection-filter="all" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">01</div>
+                            <h3>Full Collection</h3>
+                            <p>Explore every US Watches timepiece.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="classic" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">02</div>
+                            <h3>Classic</h3>
+                            <p>Timeless designs with a refined character.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="premium" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">03</div>
+                            <h3>Premium</h3>
+                            <p>Distinctive pieces for an elevated look.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="everyday" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">04</div>
+                            <h3>Everyday</h3>
+                            <p>Versatile watches for everyday moments.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="automatic" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">05</div>
+                            <h3>Automatic</h3>
+                            <p>Mechanical timepieces with enduring character.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="chronograph" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">06</div>
+                            <h3>Chronograph</h3>
+                            <p>Detailed timepieces with distinctive presence.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="leather strap" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">07</div>
+                            <h3>Leather Strap</h3>
+                            <p>Refined leather finishes for timeless style.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <a href="#collectionDisplay" data-collection-filter="limited edition" class="collection-card">
+                        <div class="collection-card-content">
+                            <div class="collection-number">08</div>
+                            <h3>Limited Edition</h3>
+                            <p>Distinctive pieces with a more exclusive character.</p>
+                            <span class="collection-card-arrow">→</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+            <div class="collection-display" id="collectionDisplay" aria-live="polite">
+
+                <div class="collection-display-header">
+
+                    <div>
+                        <div class="collection-display-kicker">Currently Viewing</div>
+                        <div class="collection-selection-name" id="collectionSelectionName">Full Collection</div>
+                    </div>
+
+                    <div class="collection-display-copy" id="collectionSelectionCopy">
+                        Explore every available US Watches timepiece from across our collections.
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT COLLECTION — INSIDE THE SELECTED COLLECTION -->
+
+                <div class="products-grid" id="productsGrid">
+
+                    {% for watch in watches %}
+
+                        <div
+                            class="product-card"
+                            data-name="{{ watch.name|lower }}"
+                            data-collection="{{ watch.collection|lower }}"
+                            data-description="{{ watch.description|default:''|lower }}"
+                            data-url="{% url 'watch_detail' watch.id %}"
+                        >
+
+                            <a
+                                href="{% url 'watch_detail' watch.id %}"
+                                class="product-link"
+                            >
+                                <div class="product-image">
+                                    {% if watch.image %}
+                                        <img
+                                            src="{{ watch.image.url }}"
+                                            alt="{{ watch.name }}"
+                                        >
+                                    {% else %}
+                                        <div class="product-image-placeholder">
+                                            US Watches
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="product-info">
+                                    <div class="product-collection">
+                                        {{ watch.collection|default:"US Watches" }}
+                                    </div>
+                                    <div class="product-name">
+                                        {{ watch.name }}
+                                    </div>
+                                    <div class="product-price">
+                                        Rs. {{ watch.price|floatformat:0 }}
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="product-actions">
+                                {% if watch.stock > 0 %}
+                                    <form
+                                        method="post"
+                                        action="{% url 'add_to_cart' watch.id %}"
+                                        class="add-to-cart-form"
+                                    >
+                                        {% csrf_token %}
+                                        <button
+                                            type="submit"
+                                            class="add-to-cart-button"
+                                        >
+                                            Add to Cart
+                                        </button>
+                                    </form>
+                                    <div class="stock-note">
+                                        Available
+                                    </div>
+                                {% else %}
+                                    <button
+                                        type="button"
+                                        class="add-to-cart-button"
+                                        disabled
+                                    >
+                                        Out of Stock
+                                    </button>
+                                    <div class="stock-note">
+                                        Currently unavailable
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                    {% empty %}
+                        <div class="empty-products">
+                            <h3>
+                                Our First Collection Is Being Prepared
+                            </h3>
+                            <p>
+                                New US Watches pieces will appear here soon.
+                            </p>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
             </div>
 
-            <h3>
-                Full Collection
-            </h3>
-
-            <p>
-                Explore every US Watches timepiece from all collections in one place.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
         </div>
 
-    </a>
 
-
-    <!-- CLASSIC -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="classic"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                02 / CLASSIC
-            </div>
-
-            <h3>
-                Classic
-            </h3>
-
-            <p>
-                Timeless designs with a refined character.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- PREMIUM -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="premium"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                03 / PREMIUM
-            </div>
-
-            <h3>
-                Premium
-            </h3>
-
-            <p>
-                Distinctive pieces for a more elevated look.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- EVERYDAY -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="everyday"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                04 / EVERYDAY
-            </div>
-
-            <h3>
-                Everyday
-            </h3>
-
-            <p>
-                Versatile watches made for everyday moments.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- AUTOMATIC -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="automatic"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                05 / AUTOMATIC
-            </div>
-
-            <h3>
-                Automatic
-            </h3>
-
-            <p>
-                Mechanical timepieces with an enduring character.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- CHRONOGRAPH -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="chronograph"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                06 / CHRONOGRAPH
-            </div>
-
-            <h3>
-                Chronograph
-            </h3>
-
-            <p>
-                Detailed timepieces built around a distinctive presence.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- LEATHER STRAP -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="leather strap"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                07 / LEATHER STRAP
-            </div>
-
-            <h3>
-                Leather Strap
-            </h3>
-
-            <p>
-                Refined leather finishes for a timeless, sophisticated look.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- LIMITED EDITION -->
-
-    <a
-        href="#shop"
-        class="collection-card"
-        data-collection-jump="limited edition"
-    >
-
-        <div class="collection-card-content">
-
-            <div class="collection-number">
-                08 / LIMITED EDITION
-            </div>
-
-            <h3>
-                Limited Edition
-            </h3>
-
-            <p>
-                Distinctive pieces presented in a more exclusive collection.
-            </p>
-
-            <span class="collection-card-arrow">
-                Explore →
-            </span>
-
-        </div>
-
-    </a>
-
-</div>
+    </div>
 
 </section>
 
@@ -4947,6 +5101,135 @@
 
 
     /* =====================================================
+       COLLECTION SELECTION
+    ===================================================== */
+
+    const collectionCards =
+        Array.from(
+            document.querySelectorAll("[data-collection-filter]")
+        );
+
+    const collectionSelectionName =
+        document.getElementById("collectionSelectionName");
+
+    const collectionSelectionCopy =
+        document.getElementById("collectionSelectionCopy");
+
+
+    const collectionDescriptions = {
+        "all": "Explore every available US Watches timepiece from across our collections.",
+        "classic": "Timeless designs with a refined character, selected from the Classic collection.",
+        "premium": "Distinctive pieces with elevated finishes and a more refined presence.",
+        "everyday": "Versatile timepieces designed to fit naturally into everyday moments.",
+        "automatic": "Mechanical timepieces selected for their enduring character and movement.",
+        "chronograph": "Detailed timepieces built around a distinctive chronograph presence.",
+        "leather strap": "Refined leather finishes paired with a timeless, sophisticated character.",
+        "limited edition": "Distinctive pieces presented in a more exclusive US Watches collection."
+    };
+
+
+    function titleCaseCollection(value) {
+
+        if (value === "all") {
+            return "Full Collection";
+        }
+
+        return value
+            .split(" ")
+            .map(function (word) {
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(" ");
+    }
+
+
+    function applyCollectionFilter(collection, moveToCollection) {
+
+        const normalized =
+            normalizeText(collection || "all");
+
+        collectionCards.forEach(function (card) {
+
+            const selected =
+                normalizeText(card.dataset.collectionFilter || "all") === normalized;
+
+            card.classList.toggle("active", selected);
+
+        });
+
+
+        productCards.forEach(function (card) {
+
+            const cardCollection =
+                normalizeText(card.dataset.collection || "");
+
+            const show =
+                normalized === "all" || cardCollection === normalized;
+
+            card.classList.toggle("hidden", !show);
+
+        });
+
+
+        if (collectionSelectionName) {
+            collectionSelectionName.textContent =
+                titleCaseCollection(normalized);
+        }
+
+        if (collectionSelectionCopy) {
+            collectionSelectionCopy.textContent =
+                collectionDescriptions[normalized] ||
+                "Explore the available US Watches timepieces in this collection.";
+        }
+
+        if (moveToCollection) {
+            const collectionDisplay =
+                document.getElementById("collectionDisplay");
+
+            if (collectionDisplay) {
+                const headerOffset = 105;
+                const targetTop =
+                    collectionDisplay.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    headerOffset;
+
+                window.scrollTo({
+                    top: Math.max(0, targetTop),
+                    behavior: "smooth"
+                });
+            }
+        }
+
+    }
+
+
+    collectionCards.forEach(function (card) {
+
+        card.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            applyCollectionFilter(
+                card.dataset.collectionFilter || "all",
+                true
+            );
+
+        });
+
+    });
+
+
+    applyCollectionFilter("all", false);
+
+    const initialCollection =
+        new URLSearchParams(window.location.search).get("collection");
+
+    if (initialCollection) {
+        applyCollectionFilter(initialCollection, false);
+    }
+
+
+    /* =====================================================
        MOBILE NAVIGATION
     ===================================================== */
 
@@ -5470,102 +5753,6 @@
                         );
 
                     }
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       COLLECTION FILTERING
-       USED BY VISUAL COLLECTION CARDS
-    ===================================================== */
-
-    function applyCollectionFilter(selected) {
-
-        productCards.forEach(
-            function (card) {
-
-                const collection =
-                    (
-                        card.dataset.collection ||
-                        ""
-                    ).toLowerCase();
-
-
-                const isNewArrival =
-                    card.dataset.newArrival ===
-                    "true";
-
-
-                let shouldShow =
-                    false;
-
-
-                if (selected === "all") {
-
-                    shouldShow = true;
-
-                }
-                else if (
-                    selected ===
-                    "new arrivals"
-                ) {
-
-                    shouldShow =
-                        isNewArrival;
-
-                }
-                else {
-
-                    shouldShow =
-                        collection ===
-                        selected;
-
-                }
-
-
-                card.classList.toggle(
-                    "hidden",
-                    !shouldShow
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       COLLECTION CARDS
-       CONNECT VISUAL COLLECTIONS TO EXISTING FILTERS
-    ===================================================== */
-
-    const collectionJumpCards =
-        Array.from(
-            document.querySelectorAll(
-                "[data-collection-jump]"
-            )
-        );
-
-
-    collectionJumpCards.forEach(
-        function (card) {
-
-            card.addEventListener(
-                "click",
-                function () {
-
-                    const selected =
-                        card.dataset.collectionJump
-                            .toLowerCase();
-
-
-                    applyCollectionFilter(
-                        selected
-                    );
 
                 }
             );
