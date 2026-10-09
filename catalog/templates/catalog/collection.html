@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ collection_name }} | US Watches</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #211f1c;
+            --ink-soft: #302c26;
+            --champagne: #b69a68;
+            --champagne-light: #d3bd8e;
+            --ivory: #f5f2ec;
+            --paper: #fcfbf8;
+            --text: #252724;
+            --muted: #74736e;
+            --line: rgba(33,31,28,.12);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--ivory); color: var(--text); font-family: "Montserrat", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        header { position: sticky; top: 0; z-index: 10; background: linear-gradient(105deg, var(--ink), #2b2823 55%, #353129); border-bottom: 1px solid rgba(182,154,104,.34); }
+        .header-inner { width: min(1240px, calc(100% - 44px)); min-height: 76px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .brand { color: #fcfbf8; font-family: "Cormorant Garamond", serif; font-size: 27px; font-weight: 700; letter-spacing: 1.4px; line-height: 1; }
+        .brand span { display: block; margin-top: 6px; color: var(--champagne-light); font-family: "Montserrat", sans-serif; font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .header-links { display: flex; align-items: center; gap: 22px; color: rgba(252,251,248,.82); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+        .header-links a:hover { color: var(--champagne-light); }
+        .collection-hero { position: relative; overflow: hidden; padding: 62px 0 58px; background: radial-gradient(circle at 82% 20%, rgba(182,154,104,.13), transparent 28%), linear-gradient(125deg, var(--ink), var(--ink-soft)); color: var(--ivory); }
+        .collection-hero::after { content: ""; position: absolute; width: 280px; height: 280px; right: 8%; top: 12%; border: 1px solid rgba(211,189,142,.15); border-radius: 50%; box-shadow: 0 0 0 18px rgba(211,189,142,.025), 0 0 0 54px rgba(211,189,142,.018); pointer-events: none; }
+        .hero-inner, .products-section { width: min(1160px, calc(100% - 44px)); margin: auto; }
+        .back-link { position: relative; z-index: 1; display: inline-block; margin-bottom: 30px; color: var(--champagne-light); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+        .back-link:hover { color: #fff; }
+        .eyebrow { position: relative; z-index: 1; color: var(--champagne-light); font-size: 8px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; }
+        h1 { position: relative; z-index: 1; margin-top: 8px; color: #fcfbf8; font-family: "Cormorant Garamond", serif; font-size: clamp(48px, 7vw, 76px); font-weight: 600; line-height: .98; }
+        .collection-description { position: relative; z-index: 1; max-width: 540px; margin-top: 14px; color: rgba(252,251,248,.72); font-size: 11px; line-height: 1.9; }
+        .collection-count { position: relative; z-index: 1; display: inline-block; margin-top: 24px; padding-top: 12px; border-top: 1px solid rgba(211,189,142,.42); color: var(--champagne-light); font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+        .products-section { padding-top: 38px; padding-bottom: 80px; }
+        .products-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+        .product-card { display: flex; flex-direction: column; overflow: hidden; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 15px 38px rgba(33,31,28,.055); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+        .product-card:hover { transform: translateY(-4px); border-color: rgba(182,154,104,.48); box-shadow: 0 22px 46px rgba(33,31,28,.11); }
+        .product-link { display: block; }
+        .product-image { position: relative; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #f0ece4, #e7e0d5); }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; }
+        .product-card:hover .product-image img { transform: scale(1.04); }
+        .product-image-placeholder { color: var(--muted); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; }
+        .product-info { padding: 20px 20px 12px; }
+        .product-collection { color: #92774b; font-size: 7px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; }
+        .product-name { margin-top: 7px; color: var(--ink); font-family: "Cormorant Garamond", serif; font-size: 29px; font-weight: 600; line-height: 1.05; }
+        .product-price { margin-top: 12px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+        .product-actions { margin-top: auto; padding: 10px 20px 20px; }
+        .add-to-cart-button { width: 100%; padding: 12px 14px; border: 1px solid var(--ink); background: var(--ink); color: #fcfbf8; cursor: pointer; font-family: inherit; font-size: 8px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; transition: .2s ease; }
+        .add-to-cart-button:hover:not(:disabled) { border-color: var(--champagne); background: var(--champagne); color: var(--ink); }
+        .add-to-cart-button:disabled { border-color: #aaa79f; background: #aaa79f; cursor: not-allowed; }
+        .stock-note { margin-top: 7px; color: var(--muted); font-size: 7px; letter-spacing: .8px; text-align: center; text-transform: uppercase; }
+        .empty-products { grid-column: 1 / -1; padding: 70px 24px; border: 1px solid var(--line); background: var(--paper); text-align: center; }
+        .empty-products h2 { color: var(--ink); font-family: "Cormorant Garamond", serif; font-size: 38px; font-weight: 600; }
+        .empty-products p { margin-top: 9px; color: var(--muted); font-size: 10px; }
+        footer { padding: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 8px; letter-spacing: 1.1px; text-align: center; text-transform: uppercase; }
+        @media (max-width: 800px) { .products-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; } .product-info { padding: 15px 14px 10px; } .product-actions { padding: 8px 14px 14px; } .product-name { font-size: 24px; } }
+        @media (max-width: 540px) { .header-inner { min-height: 66px; } .header-links { gap: 12px; font-size: 7px; } .hero-inner, .products-section { width: min(100% - 30px, 1160px); } .collection-hero { padding: 44px 0 42px; } .collection-hero::after { right: -18%; top: 18%; width: 210px; height: 210px; } .products-section { padding-top: 22px; padding-bottom: 50px; } .products-grid { grid-template-columns: 1fr; gap: 14px; } .product-image { aspect-ratio: 1.15 / 1; } }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <a class="brand" href="{% url 'home' %}">US WATCHES<span>Time, Defined By You</span></a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="{% url 'home' %}#collections">All Collections</a>
+            <a href="{% url 'cart' %}">Cart ({{ cart_count }})</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <section class="collection-hero">
+        <div class="hero-inner">
+            <a class="back-link" href="{% url 'home' %}#collections">← Back to collections</a>
+            <div class="eyebrow">US Watches Collection</div>
+            <h1>{{ collection_name }}</h1>
+            <p class="collection-description">{{ collection_description }}</p>
+            <div class="collection-count">{{ watches|length }} timepieces</div>
+        </div>
+    </section>
+    <section class="products-section" aria-label="{{ collection_name }} watches">
+        <div class="products-grid">
+            {% for watch in watches %}
+                <article class="product-card">
+                    <a class="product-link" href="{% url 'watch_detail' watch.id %}">
+                        <div class="product-image">
+                            {% if watch.image %}
+                                <img src="{{ watch.image.url }}" alt="{{ watch.name }}">
+                            {% else %}
+                                <div class="product-image-placeholder">US Watches</div>
+                            {% endif %}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-collection">{{ watch.collection|default:"US Watches" }}</div>
+                            <h2 class="product-name">{{ watch.name }}</h2>
+                            <div class="product-price">Rs. {{ watch.price|floatformat:0 }}</div>
+                        </div>
+                    </a>
+                    <div class="product-actions">
+                        {% if watch.stock > 0 %}
+                            <form method="post" action="{% url 'add_to_cart' watch.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                            </form>
+                            <div class="stock-note">Available</div>
+                        {% else %}
+                            <button type="button" class="add-to-cart-button" disabled>Out of Stock</button>
+                            <div class="stock-note">Currently unavailable</div>
+                        {% endif %}
+                    </div>
+                </article>
+            {% empty %}
+                <div class="empty-products">
+                    <h2>No watches in this collection yet</h2>
+                    <p>New US Watches pieces will appear here as they become available.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+<footer>© 2026 US Watches — Time, Defined By You</footer>
+<script>
+(function () {
+    const storageKey = "collection-scroll:" + window.location.pathname;
+
+    document.querySelectorAll(".product-actions form").forEach(function (form) {
+        form.addEventListener("submit", function () {
+            sessionStorage.setItem(storageKey, String(window.scrollY));
+        });
+    });
+
+    window.addEventListener("pageshow", function () {
+        const savedScrollY = sessionStorage.getItem(storageKey);
+        if (savedScrollY !== null) {
+            sessionStorage.removeItem(storageKey);
+            requestAnimationFrame(function () {
+                window.scrollTo(0, Number(savedScrollY));
+            });
+        }
+    });
+})();
+</script>
+</body>
+</html>

@@ -784,7 +784,7 @@
             "Rs. " + formatPrice(unitPrice * quantity);
 
         plusButton.disabled = quantity >= stock;
-        minusButton.disabled = quantity <= 1;
+        minusButton.disabled = quantity <= 0;
 
     }
 
@@ -894,7 +894,7 @@
         const stock = getStock(item);
 
         newQuantity = Math.max(
-            1,
+            0,
             Math.min(stock, newQuantity)
         );
 
@@ -903,10 +903,13 @@
 
         queueQuantityUpdate(item, newQuantity)
 
+            .then(function () {
+                if (newQuantity === 0) {
+                    window.location.reload();
+                }
+            })
             .catch(function () {
-
                 window.location.reload();
-
             });
 
     }
@@ -924,7 +927,7 @@
 
             const currentQuantity = getCurrentQuantity(item);
 
-            if (currentQuantity > 1) {
+            if (currentQuantity > 0) {
                 changeQuantity(item, currentQuantity - 1);
             }
 
@@ -991,17 +994,6 @@
             quantityInput.value = quantity;
 
         });
-
-    });
-
-
-    cartItems.forEach(function (item) {
-
-        const minusButton = item.querySelector(".minus-button");
-
-        if (getCurrentQuantity(item) <= 1) {
-            minusButton.disabled = true;
-        }
 
     });
 

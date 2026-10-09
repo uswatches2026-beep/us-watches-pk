@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
+from django.utils.text import slugify
 from .models import Watch
 
 
@@ -39,6 +40,46 @@ def home(request):
         }
     )
 
+
+
+def collection_detail(request, collection_slug):
+    collection_names = {
+        slugify(label): label
+        for _, label in Watch.COLLECTION_CHOICES
+    }
+
+    collection_name = collection_names.get(collection_slug)
+    if not collection_name:
+        raise Http404("Collection not found")
+
+    watches = Watch.objects.filter(is_active=True)
+    if collection_name != "Full Collection":
+        watches = watches.filter(collection=collection_name)
+
+    descriptions = {
+        "Full Collection": "Explore every available US Watches timepiece.",
+        "Classic": "Timeless designs with a refined character.",
+        "Premium": "Distinctive pieces with elevated finishes and presence.",
+        "Everyday": "Versatile timepieces designed for everyday moments.",
+        "Automatic": "Mechanical timepieces with enduring character and movement.",
+        "Chronograph": "Detailed timepieces with a distinctive chronograph presence.",
+        "Leather Strap": "Refined leather finishes paired with timeless style.",
+        "Limited Edition": "Distinctive pieces from our more exclusive collection.",
+    }
+
+    cart = request.session.get("cart", {})
+    cart_count = sum(cart.values())
+
+    return render(
+        request,
+        "catalog/collection.html",
+        {
+            "collection_name": collection_name,
+            "collection_description": descriptions.get(collection_name, "Explore this US Watches collection."),
+            "watches": watches,
+            "cart_count": cart_count,
+        },
+    )
 
 def watch_detail(request, watch_id):
     watch = get_object_or_404(

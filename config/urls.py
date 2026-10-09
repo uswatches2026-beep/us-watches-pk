@@ -16,6 +16,8 @@ urlpatterns = [
     # Temporary maintenance page (available when needed).
     path('maintenance/', views.maintenance, name='maintenance'),
 
+    path('collections/<slug:collection_slug>/', views.collection_detail, name='collection_detail'),
+
     path('watch/<int:watch_id>/', views.watch_detail, name='watch_detail'),
 
     path('cart/', views.cart, name='cart'),
