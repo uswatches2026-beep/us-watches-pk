@@ -23,13 +23,13 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: var(--ivory); color: var(--text); font-family: "Montserrat", sans-serif; line-height: 1.6; }
         a { color: inherit; text-decoration: none; }
-        header { position: sticky; top: 0; z-index: 10; background: linear-gradient(105deg, var(--ink), #2b2823 55%, #353129); border-bottom: 1px solid rgba(182,154,104,.34); }
+        header { position: sticky; top: 0; z-index: 10; background: linear-gradient(105deg, #211f1c, #52273d 72%, #302c26); border-bottom: 1px solid rgba(211,189,142,.34); }
         .header-inner { width: min(1240px, calc(100% - 44px)); min-height: 76px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
         .brand { color: #fcfbf8; font-family: "Cormorant Garamond", serif; font-size: 27px; font-weight: 700; letter-spacing: 1.4px; line-height: 1; }
         .brand span { display: block; margin-top: 6px; color: var(--champagne-light); font-family: "Montserrat", sans-serif; font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
         .header-links { display: flex; align-items: center; gap: 22px; color: rgba(252,251,248,.82); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
         .header-links a:hover { color: var(--champagne-light); }
-        .collection-hero { position: relative; overflow: hidden; padding: 62px 0 58px; background: radial-gradient(circle at 82% 20%, rgba(182,154,104,.13), transparent 28%), linear-gradient(125deg, var(--ink), var(--ink-soft)); color: var(--ivory); }
+        .collection-hero { position: relative; overflow: hidden; padding: 62px 0 58px; background: radial-gradient(circle at 88% 50%, rgba(201,169,97,.14), transparent 29%), radial-gradient(circle at 5% 100%, rgba(185,62,104,.27), transparent 31%), linear-gradient(135deg, #211f1c, #52273d); color: var(--ivory); }
         .collection-hero::after { content: ""; position: absolute; width: 280px; height: 280px; right: 8%; top: 12%; border: 1px solid rgba(211,189,142,.15); border-radius: 50%; box-shadow: 0 0 0 18px rgba(211,189,142,.025), 0 0 0 54px rgba(211,189,142,.018); pointer-events: none; }
         .hero-inner, .products-section { width: min(1160px, calc(100% - 44px)); margin: auto; }
         .back-link { position: relative; z-index: 1; display: inline-block; margin-bottom: 30px; color: var(--champagne-light); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
@@ -52,7 +52,7 @@
         .product-name { margin-top: 7px; color: var(--ink); font-family: "Cormorant Garamond", serif; font-size: 29px; font-weight: 600; line-height: 1.05; }
         .product-price { margin-top: 12px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
         .product-actions { margin-top: auto; padding: 10px 20px 20px; }
-        .add-to-cart-button { width: 100%; padding: 12px 14px; border: 1px solid var(--ink); background: var(--ink); color: #fcfbf8; cursor: pointer; font-family: inherit; font-size: 8px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; transition: .2s ease; }
+        .add-to-cart-button { width: 100%; padding: 12px 14px; border: 1px solid #52273d; background: #52273d; color: #fcfbf8; cursor: pointer; font-family: inherit; font-size: 8px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; transition: .2s ease; }
         .add-to-cart-button:hover:not(:disabled) { border-color: var(--champagne); background: var(--champagne); color: var(--ink); }
         .add-to-cart-button:disabled { border-color: #aaa79f; background: #aaa79f; cursor: not-allowed; }
         .stock-note { margin-top: 7px; color: var(--muted); font-size: 7px; letter-spacing: .8px; text-align: center; text-transform: uppercase; }
